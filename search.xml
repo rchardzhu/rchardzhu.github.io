@@ -1,57 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>量化资源--awesome quant中文版发布</title>
-      <link href="/2022/01/08/awesome-quant-cn/"/>
-      <url>/2022/01/08/awesome-quant-cn/</url>
-      
-        <content type="html"><![CDATA[<h1 id="awesome-quant-cn"><a href="#awesome-quant-cn" class="headerlink" title="awesome-quant-cn"></a>awesome-quant-cn</h1><p><a href="https://github.com/rchardzhu/awesome-quant-cn">awesome quant中文版</a>，最近会更新比较频繁，欢迎关注github以及加入qq群～</p><h2 id="金融数据"><a href="#金融数据" class="headerlink" title="金融数据"></a>金融数据</h2><ul><li><a href="https://waditu.com/document/1?doc_id=131">tushare</a> – 分为tushare和tushare pro。tushare pro数据覆盖范围广，接口调用简单,响应快速，但获取次数较多时有积分限制。老版api有下线风险</li><li><a href="https://github.com/akfamily/akshare">akshare</a> – 基于 Python 的财经数据接口库, 目的是实现对股票、期货、期权、基金、外汇、债券、指数、加密货币等金融产品的基本面数据、实时和历史行情数据、衍生数据从数据采集、数据清洗到数据落地的一套工具</li><li><a href="https://github.com/ranaroussi/yfinance">yfinace</a> – yahoo财经</li><li><a href="https://www.joinquant.com/help/api/help#name:JQData">jqdatasdk</a> – 聚宽提供的本地量化金融数据服务</li><li><a href="https://doc.shinnytech.com/tqsdk/latest/intro.html">tqsdk</a> – TqSdk免费版本提供全部的期货、商品/金融期权和上证50、沪深300和中证500的实时行情，TqSdk专业版可提供A股股票的实时和历史行情</li><li><a href="https://github.com/Micro-sheep/efinance">efinance</a> – 个人打造的用于获取股票、基金、期货数据的免费开源 Python 库</li><li><a href="https://github.com/shidenggui/easyquotation">easyquotation</a> – 快速获取新浪/腾讯的全市场行情</li></ul><h2 id="回测引擎"><a href="#回测引擎" class="headerlink" title="回测引擎"></a>回测引擎</h2><ul><li><a href="https://github.com/quantopian/zipline">zipline</a> – Quantopian开源的本地量化回测平台，可以和pyfolio和alphalen无缝衔接</li><li><a href="https://github.com/ricequant/rqalpha">rqalpha</a> – Ricequant开源的本地量化回测平台，在 API 设计上和 Quantopian 保持一致，但License完全排除商业用途</li><li><a href="https://github.com/mementum/backtrader">backtrader</a> – 纯python实现的在线交易和回测平台</li><li><a href="https://github.com/zvtvz/zvt/blob/master/README-cn.md">zvt</a> – 包含可扩展的数据recorder，api，因子计算，选股，回测，交易,以及统一的可视化，抽象度较高</li><li><a href="https://github.com/pmorissette/bt">bt</a> – 基于ffn打造的python回测框架， 目标是充分利用python生态，不重复造轮子</li></ul><h2 id="风险分析"><a href="#风险分析" class="headerlink" title="风险分析"></a>风险分析</h2><ul><li><a href="https://github.com/quantopian/pyfolio">pyfolio</a> – Quantopian开发的用于金融投资组合性能和风险分析的Python库</li><li><a href="https://github.com/quantopian/empyrical">empyrical</a> – Quantopian开源的常见金融风险指标</li><li><a href="https://github.com/ranaroussi/quantstats">quantstats</a> – 更深层次的python量化分析和风险指标</li></ul><h2 id="实盘交易"><a href="#实盘交易" class="headerlink" title="实盘交易"></a>实盘交易</h2><ul><li><a href="https://github.com/vnpy/vnpy">vnpy</a> – 基于Python的开源量化交易系统开发框架</li><li><a href="https://openapi.futunn.com/futu-api-doc/intro/intro.html">Futu OpenAPI</a> – 功能主要有两部分：行情和交易。支持香港、美国、A 股市场的行情数据，涉及的品类包括股票、指数、期权、期货等；支持香港、美国、A 股、新加坡、日本 5 个市场的交易能力，涉及的品类包括股票、期权、期货等</li><li><a href="https://quant.itiger.com/openapi/py-docs/zh-cn/docs/intro/quickstart.html">tigeropen</a> – 老虎开放平台提供的直接管理交易、查看帐户信息、查询行情变动及交易支持功能</li></ul><h2 id="策略研究平台"><a href="#策略研究平台" class="headerlink" title="策略研究平台"></a>策略研究平台</h2><ul><li><a href="https://www.joinquant.com/">聚宽</a> – 量化平台，提供多种数据方便投资研究；提供多种的策略评价指标与评价维度；支持多种策略的编写、回测、模拟、实盘</li><li><a href="https://www.ricequant.com/">米筐</a> – 米筐科技专注于为用户提供快速便捷、功能强大的量化交易和分析工具。用户可以使用基于浏览器（网上回测平台）或本地化（RQAlpha 等项目）的米筐科技产品，随时、随地开发自己的交易策略，验证自己的投资思路</li><li><a href="https://uqer.datayes.com/">优矿</a> – 量化平台，使用通联书记，支持回测功能</li></ul><h2 id="量化书籍"><a href="#量化书籍" class="headerlink" title="量化书籍"></a>量化书籍</h2><ul><li><a href="https://book.douban.com/subject/2339892/">海龟交易法则</a> – 豆瓣评分8.5分。原版海龟首次揭密适用于任何市场的交易策略</li></ul><h2 id="其他资源"><a href="#其他资源" class="headerlink" title="其他资源"></a>其他资源</h2><ul><li><a href="https://github.com/wilsonfreitas/awesome-quant">awesome-quant</a> – 可以参考</li></ul><h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>欢迎加入qq群交流，qq群号：835894006</p>]]></content>
-      
-      
+<search>
+  <entry>
+    <title>关于</title>
+    <url>/2022/01/03/about/</url>
+    <content><![CDATA[<p>Richard Zhu</p>
+<p>A coder from China, interested in quant, search engine, feed, ads</p>
+]]></content>
+      <tags>
+        <tag>about</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>量化资源--awesome quant中文版发布</title>
+    <url>/2022/01/08/awesome-quant-cn/</url>
+    <content><![CDATA[<h1 id="awesome-quant-cn"><a href="#awesome-quant-cn" class="headerlink" title="awesome-quant-cn"></a>awesome-quant-cn</h1><p><a href="https://github.com/rchardzhu/awesome-quant-cn">awesome quant中文版</a>，最近会更新比较频繁，欢迎关注github以及加入qq群～</p>
+<h2 id="金融数据"><a href="#金融数据" class="headerlink" title="金融数据"></a>金融数据</h2><ul>
+<li><a href="https://waditu.com/document/1?doc_id=131">tushare</a> – 分为tushare和tushare pro。tushare pro数据覆盖范围广，接口调用简单,响应快速，但获取次数较多时有积分限制。老版api有下线风险</li>
+<li><a href="https://github.com/akfamily/akshare">akshare</a> – 基于 Python 的财经数据接口库, 目的是实现对股票、期货、期权、基金、外汇、债券、指数、加密货币等金融产品的基本面数据、实时和历史行情数据、衍生数据从数据采集、数据清洗到数据落地的一套工具</li>
+<li><a href="https://github.com/ranaroussi/yfinance">yfinace</a> – yahoo财经</li>
+<li><a href="https://www.joinquant.com/help/api/help#name:JQData">jqdatasdk</a> – 聚宽提供的本地量化金融数据服务</li>
+<li><a href="https://doc.shinnytech.com/tqsdk/latest/intro.html">tqsdk</a> – TqSdk免费版本提供全部的期货、商品/金融期权和上证50、沪深300和中证500的实时行情，TqSdk专业版可提供A股股票的实时和历史行情</li>
+<li><a href="https://github.com/Micro-sheep/efinance">efinance</a> – 个人打造的用于获取股票、基金、期货数据的免费开源 Python 库</li>
+<li><a href="https://github.com/shidenggui/easyquotation">easyquotation</a> – 快速获取新浪/腾讯的全市场行情</li>
+</ul>
+<h2 id="回测引擎"><a href="#回测引擎" class="headerlink" title="回测引擎"></a>回测引擎</h2><ul>
+<li><a href="https://github.com/quantopian/zipline">zipline</a> – Quantopian开源的本地量化回测平台，可以和pyfolio和alphalen无缝衔接</li>
+<li><a href="https://github.com/ricequant/rqalpha">rqalpha</a> – Ricequant开源的本地量化回测平台，在 API 设计上和 Quantopian 保持一致，但License完全排除商业用途</li>
+<li><a href="https://github.com/mementum/backtrader">backtrader</a> – 纯python实现的在线交易和回测平台</li>
+<li><a href="https://github.com/zvtvz/zvt/blob/master/README-cn.md">zvt</a> – 包含可扩展的数据recorder，api，因子计算，选股，回测，交易,以及统一的可视化，抽象度较高</li>
+<li><a href="https://github.com/pmorissette/bt">bt</a> – 基于ffn打造的python回测框架， 目标是充分利用python生态，不重复造轮子</li>
+</ul>
+<h2 id="风险分析"><a href="#风险分析" class="headerlink" title="风险分析"></a>风险分析</h2><ul>
+<li><a href="https://github.com/quantopian/pyfolio">pyfolio</a> – Quantopian开发的用于金融投资组合性能和风险分析的Python库</li>
+<li><a href="https://github.com/quantopian/empyrical">empyrical</a> – Quantopian开源的常见金融风险指标</li>
+<li><a href="https://github.com/ranaroussi/quantstats">quantstats</a> – 更深层次的python量化分析和风险指标</li>
+</ul>
+<h2 id="实盘交易"><a href="#实盘交易" class="headerlink" title="实盘交易"></a>实盘交易</h2><ul>
+<li><a href="https://github.com/vnpy/vnpy">vnpy</a> – 基于Python的开源量化交易系统开发框架</li>
+<li><a href="https://openapi.futunn.com/futu-api-doc/intro/intro.html">Futu OpenAPI</a> – 功能主要有两部分：行情和交易。支持香港、美国、A 股市场的行情数据，涉及的品类包括股票、指数、期权、期货等；支持香港、美国、A 股、新加坡、日本 5 个市场的交易能力，涉及的品类包括股票、期权、期货等</li>
+<li><a href="https://quant.itiger.com/openapi/py-docs/zh-cn/docs/intro/quickstart.html">tigeropen</a> – 老虎开放平台提供的直接管理交易、查看帐户信息、查询行情变动及交易支持功能</li>
+</ul>
+<h2 id="策略研究平台"><a href="#策略研究平台" class="headerlink" title="策略研究平台"></a>策略研究平台</h2><ul>
+<li><a href="https://www.joinquant.com/">聚宽</a> – 量化平台，提供多种数据方便投资研究；提供多种的策略评价指标与评价维度；支持多种策略的编写、回测、模拟、实盘</li>
+<li><a href="https://www.ricequant.com/">米筐</a> – 米筐科技专注于为用户提供快速便捷、功能强大的量化交易和分析工具。用户可以使用基于浏览器（网上回测平台）或本地化（RQAlpha 等项目）的米筐科技产品，随时、随地开发自己的交易策略，验证自己的投资思路</li>
+<li><a href="https://uqer.datayes.com/">优矿</a> – 量化平台，使用通联书记，支持回测功能</li>
+</ul>
+<h2 id="量化书籍"><a href="#量化书籍" class="headerlink" title="量化书籍"></a>量化书籍</h2><ul>
+<li><a href="https://book.douban.com/subject/2339892/">海龟交易法则</a> – 豆瓣评分8.5分。原版海龟首次揭密适用于任何市场的交易策略</li>
+</ul>
+<h2 id="其他资源"><a href="#其他资源" class="headerlink" title="其他资源"></a>其他资源</h2><ul>
+<li><a href="https://github.com/wilsonfreitas/awesome-quant">awesome-quant</a> – 可以参考</li>
+</ul>
+<h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>欢迎加入qq群交流，qq群号：835894006</p>
+]]></content>
       <categories>
-          
-          <category> python </category>
-          
-          <category> quant </category>
-          
+        <category>python</category>
+        <category>quant</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> quant </tag>
-            
-            <tag> awesome </tag>
-            
-            <tag> python </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>关于</title>
-      <link href="/2022/01/03/about/"/>
-      <url>/2022/01/03/about/</url>
-      
-        <content type="html"><![CDATA[<p>Richard Zhu</p><p>A coder from China, interested in quant, search engine, feed, ads</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> about </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>quant</tag>
+        <tag>awesome</tag>
+        <tag>python</tag>
+      </tags>
+  </entry>
 </search>
