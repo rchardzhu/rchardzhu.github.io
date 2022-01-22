@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Richard Zhu</title>
+  
+  
+  <link href="https://rchardzhu.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://rchardzhu.github.io/"/>
+  <updated>2022-01-22T10:24:06.757Z</updated>
+  <id>https://rchardzhu.github.io/</id>
+  
+  <author>
+    <name>Richard Zhu</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>利用github搭建自己的免费博客站点</title>
+    <link href="https://rchardzhu.github.io/2022/01/22/using-github-to-start-your-blog/"/>
+    <id>https://rchardzhu.github.io/2022/01/22/using-github-to-start-your-blog/</id>
+    <published>2022-01-22T05:43:46.000Z</published>
+    <updated>2022-01-22T10:24:06.757Z</updated>
+    
+    <content type="html"><![CDATA[<p>欢迎访问我的站点： <a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></p><h2 id="一、在github上创建一个代码库"><a href="#一、在github上创建一个代码库" class="headerlink" title="一、在github上创建一个代码库"></a>一、在github上创建一个代码库</h2><p>在github上创建一个代码库，名字为：xxx.github.io， xxx为你的github账号名</p><p>如我的代码库地址为：<a href="https://github.com/rchardzhu/rchardzhu.github.io">https://github.com/rchardzhu/rchardzhu.github.io</a></p><p>参考：<a href="https://docs.github.com/en/pages/quickstart">Quickstart for GitHub Pages - GitHub Docs</a></p><h2 id="二、安装nodejs和hexo"><a href="#二、安装nodejs和hexo" class="headerlink" title="二、安装nodejs和hexo"></a>二、安装nodejs和hexo</h2><p>由于github只支持静态网页，需要使用hexo。hexo是基于nodejs打造的一个博客框架，用于快速创建项目、页面、编译、部署 Hexo 博客。</p><ul><li>先安装nodejs</li><li><code>npm install hexo</code>， 然后把hexo的目录放到PATH目录下。或者使用-g 安装到全局目录，但需要管理员权限</li></ul><h2 id="三、运行hexo"><a href="#三、运行hexo" class="headerlink" title="三、运行hexo"></a>三、运行hexo</h2><ol><li><p>创建blog项目，<code>$hexo init blog</code><br>blog目录文件夹下就会出现 Hexo 的初始化文件，包括 themes、scaffolds、source 等文件夹</p></li><li><p>进入blog目录，生成静态文件：<code>$ cd blog &amp;&amp; hexo generate</code><br>可以看到输出结果里面包含了 js、css、font 等内容，并发现它们都在项目根目录下的 public 文件夹下面了</p></li><li><p>本地预览查看： <code>$hexo serve</code><br>可以看到一个默认的hello world页面。</p></li><li><p>部署到github： <code>$ hexo deploy</code><br>编辑_config.yml文件，编辑deploy部分，参考如下<img src="https://pic2.zhimg.com/80/v2-1578f3c362f0896c7dbe3b77e3cc94b1_720w.jpg" alt="图片"></p></li></ol><p>在新创建的blog目录下安装hexo-deployer-git，命令如下： <code>$npm install hexo-deployer-git --save</code></p><p>更多信息参考：<a href="https://hexo.io/zh-cn/docs/one-command-deployment.html">部署</a></p><p>如果出现如下错误：”ERROR Deployer not found: git”，表明hexo-deployer-git安装的目录不对，记住需要在新创建的目录下npm install。</p><h2 id="四、写博客"><a href="#四、写博客" class="headerlink" title="四、写博客"></a>四、写博客</h2><ol><li>新建文章 ： <code>$ hexo new &quot;about&quot;</code><br>创建的文章会出现在 source/_posts 文件夹下，是 MarkDown 格式。</li></ol><p>更多信息参考：<a href="https://hexo.io/zh-cn/docs/writing.html">写作</a></p><p>然后正常使用markdown格式去写文章就好了。</p><ol start="2"><li>生成静态文件并更新到github上即可<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$hexo clean</span><br><span class="line">$hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></li></ol><h2 id="更多内容"><a href="#更多内容" class="headerlink" title="更多内容"></a>更多内容</h2><ul><li><p><a href="https://zhuanlan.zhihu.com/p/454680697">如何更换博客主题</a></p></li><li><p><a href="https://zhuanlan.zhihu.com/p/454705927">如何新增标签、分类、关于等页面</a></p></li><li><p><a href="https://zhuanlan.zhihu.com/p/454840985">如何添加搜索功能?</a></p></li><li><p><a href="https://zhuanlan.zhihu.com/p/454857343">如何添加留言板功能</a></p></li><li><p><a href="https://zhuanlan.zhihu.com/p/454865095">本地运行和发布不一致问题解决</a></p></li><li><p><a href="https://zhuanlan.zhihu.com/p/459178301">添加文章阅读量及网站访问信息</a></p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;欢迎访问我的站点： &lt;a href=&quot;https://rchardzhu.github.io/&quot;&gt;https://rchardzhu.github.io/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;一、在github上创建一个代码库&quot;&gt;&lt;a href=&quot;#一、在github上创建一个</summary>
+      
+    
+    
+    
+    <category term="blog" scheme="https://rchardzhu.github.io/categories/blog/"/>
+    
+    
+    <category term="github" scheme="https://rchardzhu.github.io/tags/github/"/>
+    
+    <category term="blog" scheme="https://rchardzhu.github.io/tags/blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>量化资源--awesome quant中文版发布</title>
+    <link href="https://rchardzhu.github.io/2022/01/08/awesome-quant-cn/"/>
+    <id>https://rchardzhu.github.io/2022/01/08/awesome-quant-cn/</id>
+    <published>2022-01-07T16:35:30.000Z</published>
+    <updated>2022-01-08T05:38:49.831Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="awesome-quant-cn"><a href="#awesome-quant-cn" class="headerlink" title="awesome-quant-cn"></a>awesome-quant-cn</h1><p><a href="https://github.com/rchardzhu/awesome-quant-cn">awesome quant中文版</a>，最近会更新比较频繁，欢迎关注github以及加入qq群～</p><h2 id="金融数据"><a href="#金融数据" class="headerlink" title="金融数据"></a>金融数据</h2><ul><li><a href="https://waditu.com/document/1?doc_id=131">tushare</a> – 分为tushare和tushare pro。tushare pro数据覆盖范围广，接口调用简单,响应快速，但获取次数较多时有积分限制。老版api有下线风险</li><li><a href="https://github.com/akfamily/akshare">akshare</a> – 基于 Python 的财经数据接口库, 目的是实现对股票、期货、期权、基金、外汇、债券、指数、加密货币等金融产品的基本面数据、实时和历史行情数据、衍生数据从数据采集、数据清洗到数据落地的一套工具</li><li><a href="https://github.com/ranaroussi/yfinance">yfinace</a> – yahoo财经</li><li><a href="https://www.joinquant.com/help/api/help#name:JQData">jqdatasdk</a> – 聚宽提供的本地量化金融数据服务</li><li><a href="https://doc.shinnytech.com/tqsdk/latest/intro.html">tqsdk</a> – TqSdk免费版本提供全部的期货、商品/金融期权和上证50、沪深300和中证500的实时行情，TqSdk专业版可提供A股股票的实时和历史行情</li><li><a href="https://github.com/Micro-sheep/efinance">efinance</a> – 个人打造的用于获取股票、基金、期货数据的免费开源 Python 库</li><li><a href="https://github.com/shidenggui/easyquotation">easyquotation</a> – 快速获取新浪/腾讯的全市场行情</li></ul><h2 id="回测引擎"><a href="#回测引擎" class="headerlink" title="回测引擎"></a>回测引擎</h2><ul><li><a href="https://github.com/quantopian/zipline">zipline</a> – Quantopian开源的本地量化回测平台，可以和pyfolio和alphalen无缝衔接</li><li><a href="https://github.com/ricequant/rqalpha">rqalpha</a> – Ricequant开源的本地量化回测平台，在 API 设计上和 Quantopian 保持一致，但License完全排除商业用途</li><li><a href="https://github.com/mementum/backtrader">backtrader</a> – 纯python实现的在线交易和回测平台</li><li><a href="https://github.com/zvtvz/zvt/blob/master/README-cn.md">zvt</a> – 包含可扩展的数据recorder，api，因子计算，选股，回测，交易,以及统一的可视化，抽象度较高</li><li><a href="https://github.com/pmorissette/bt">bt</a> – 基于ffn打造的python回测框架， 目标是充分利用python生态，不重复造轮子</li></ul><h2 id="风险分析"><a href="#风险分析" class="headerlink" title="风险分析"></a>风险分析</h2><ul><li><a href="https://github.com/quantopian/pyfolio">pyfolio</a> – Quantopian开发的用于金融投资组合性能和风险分析的Python库</li><li><a href="https://github.com/quantopian/empyrical">empyrical</a> – Quantopian开源的常见金融风险指标</li><li><a href="https://github.com/ranaroussi/quantstats">quantstats</a> – 更深层次的python量化分析和风险指标</li></ul><h2 id="实盘交易"><a href="#实盘交易" class="headerlink" title="实盘交易"></a>实盘交易</h2><ul><li><a href="https://github.com/vnpy/vnpy">vnpy</a> – 基于Python的开源量化交易系统开发框架</li><li><a href="https://openapi.futunn.com/futu-api-doc/intro/intro.html">Futu OpenAPI</a> – 功能主要有两部分：行情和交易。支持香港、美国、A 股市场的行情数据，涉及的品类包括股票、指数、期权、期货等；支持香港、美国、A 股、新加坡、日本 5 个市场的交易能力，涉及的品类包括股票、期权、期货等</li><li><a href="https://quant.itiger.com/openapi/py-docs/zh-cn/docs/intro/quickstart.html">tigeropen</a> – 老虎开放平台提供的直接管理交易、查看帐户信息、查询行情变动及交易支持功能</li></ul><h2 id="策略研究平台"><a href="#策略研究平台" class="headerlink" title="策略研究平台"></a>策略研究平台</h2><ul><li><a href="https://www.joinquant.com/">聚宽</a> – 量化平台，提供多种数据方便投资研究；提供多种的策略评价指标与评价维度；支持多种策略的编写、回测、模拟、实盘</li><li><a href="https://www.ricequant.com/">米筐</a> – 米筐科技专注于为用户提供快速便捷、功能强大的量化交易和分析工具。用户可以使用基于浏览器（网上回测平台）或本地化（RQAlpha 等项目）的米筐科技产品，随时、随地开发自己的交易策略，验证自己的投资思路</li><li><a href="https://uqer.datayes.com/">优矿</a> – 量化平台，使用通联书记，支持回测功能</li></ul><h2 id="量化书籍"><a href="#量化书籍" class="headerlink" title="量化书籍"></a>量化书籍</h2><ul><li><a href="https://book.douban.com/subject/2339892/">海龟交易法则</a> – 豆瓣评分8.5分。原版海龟首次揭密适用于任何市场的交易策略</li></ul><h2 id="其他资源"><a href="#其他资源" class="headerlink" title="其他资源"></a>其他资源</h2><ul><li><a href="https://github.com/wilsonfreitas/awesome-quant">awesome-quant</a> – 可以参考</li></ul><h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>欢迎加入qq群交流，qq群号：835894006</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;awesome-quant-cn&quot;&gt;&lt;a href=&quot;#awesome-quant-cn&quot; class=&quot;headerlink&quot; title=&quot;awesome-quant-cn&quot;&gt;&lt;/a&gt;awesome-quant-cn&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https</summary>
+      
+    
+    
+    
+    <category term="python" scheme="https://rchardzhu.github.io/categories/python/"/>
+    
+    <category term="quant" scheme="https://rchardzhu.github.io/categories/quant/"/>
+    
+    
+    <category term="quant" scheme="https://rchardzhu.github.io/tags/quant/"/>
+    
+    <category term="awesome" scheme="https://rchardzhu.github.io/tags/awesome/"/>
+    
+    <category term="python" scheme="https://rchardzhu.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于</title>
+    <link href="https://rchardzhu.github.io/2022/01/03/about/"/>
+    <id>https://rchardzhu.github.io/2022/01/03/about/</id>
+    <published>2022-01-03T13:48:38.000Z</published>
+    <updated>2022-01-22T14:01:29.768Z</updated>
+    
+    <content type="html"><![CDATA[<p>Richard Zhu</p><p>A coder from China, interested in quant, search engine, feed, ads</p><p>个人博客地址：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io</a></p><p>知乎地址：<a href="https://www.zhihu.com/people/richard-zhu">https://www.zhihu.com/people/richard-zhu</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Richard Zhu&lt;/p&gt;
+&lt;p&gt;A coder from China, interested in quant, search engine, feed, ads&lt;/p&gt;
+&lt;p&gt;个人博客地址：&lt;a href=&quot;https://rchardzhu.github.io/&quot;</summary>
+      
+    
+    
+    
+    
+    <category term="about" scheme="https://rchardzhu.github.io/tags/about/"/>
+    
+  </entry>
+  
+</feed>
