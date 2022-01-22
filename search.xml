@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>关于</title>
+    <url>/2022/01/03/about/</url>
+    <content><![CDATA[<p>Richard Zhu</p>
+<p>A coder from China, interested in quant, search engine, feed, ads</p>
+<p>个人博客地址：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io</a></p>
+<p>知乎地址：<a href="https://www.zhihu.com/people/richard-zhu">https://www.zhihu.com/people/richard-zhu</a></p>
+]]></content>
+      <tags>
+        <tag>about</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>量化资源--awesome quant中文版发布</title>
     <url>/2022/01/08/awesome-quant-cn/</url>
     <content><![CDATA[<h1 id="awesome-quant-cn"><a href="#awesome-quant-cn" class="headerlink" title="awesome-quant-cn"></a>awesome-quant-cn</h1><p><a href="https://github.com/rchardzhu/awesome-quant-cn">awesome quant中文版</a>，最近会更新比较频繁，欢迎关注github以及加入qq群～</p>
@@ -107,18 +119,6 @@
       <tags>
         <tag>github</tag>
         <tag>blog</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于</title>
-    <url>/2022/01/03/about/</url>
-    <content><![CDATA[<p>Richard Zhu</p>
-<p>A coder from China, interested in quant, search engine, feed, ads</p>
-<p>个人博客地址：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io</a></p>
-<p>知乎地址：<a href="https://www.zhihu.com/people/richard-zhu">https://www.zhihu.com/people/richard-zhu</a></p>
-]]></content>
-      <tags>
-        <tag>about</tag>
       </tags>
   </entry>
 </search>
