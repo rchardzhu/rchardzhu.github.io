@@ -229,6 +229,64 @@
       </tags>
   </entry>
   <entry>
+    <title>markdown实战笔记</title>
+    <url>/2022/02/03/markdown-practice-md/</url>
+    <content><![CDATA[<p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档。Markdown 语言在 2004 由约翰·格鲁伯（英语：John Gruber）创建。Markdown 编写的文档可以导出 HTML 、Word、图像、PDF、Epub 等多种格式的文档。Markdown 编写的文档后缀为 .md, .markdown。</p>
+<h2 id="markdown语法"><a href="#markdown语法" class="headerlink" title="markdown语法"></a>markdown语法</h2><ul>
+<li>使用 # 号可表示 1-6 级标题，一级标题对应一个 # 号，二级标题对应两个 # 号，以此类推</li>
+<li><code>*斜体文本*，**粗体文本**， ***粗斜体文本***</code></li>
+<li>一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西</li>
+<li>文字要添加删除线，只需要在文字的两端加上两个波浪线 ~~即可</li>
+<li>下划线可以通过 HTML 的 <code>&lt;u&gt;&lt;/u&gt;</code> 标签来实现</li>
+<li>换行： 使用html <code>&lt;br&gt;</code>标签</li>
+<li>脚注是对文本的补充说明<code>说明文本[^要注明的文本]</code> 在文末加上<code>[^要注明的文本]: markdown说明</code></li>
+<li>无序列表使用星号(*)、加号(+)或是减号(-)作为列表标记，这些标记后面要加一个空格，然后再填写内容； 有序列表使用数字并加上 . 号来表示</li>
+<li>使用反斜杠转义特殊字符，如*号，可以使用<code>\*</code>来解决</li>
+<li>区块引用是在段落开头使用 &gt; 符号 ，然后后面紧跟一个空格符号。区块是可以嵌套的，一个 &gt; 符号是最外层，两个 &gt; 符号是第一层嵌套，以此类推。如果要在列表项目内放进区块，那么就需要在 &gt; 前添加四个空格的缩进</li>
+<li>函数或片段的代码可以用反引号`把它包起来，可以用 ``` 包裹一段代码，并指定一种语言</li>
+<li>链接：<code>[链接名称](链接地址) or &lt;链接地址&gt;</code></li>
+<li>图片：<code>![alt 属性文本](图片地址) or ![alt 属性文本](图片地址 &quot;可选标题&quot;)</code>，如果想指定图片宽度高度，需要使用html的<code>&lt;img&gt;</code>标签，如<code>&lt;img src=&quot;http://www.xxx.com/xxx.jpg&quot; width=&quot;50%&quot;&gt;</code> </li>
+<li>表格：使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。-: 设置内容和标题栏居右对齐，:- 设置内容和标题栏居左对齐， :-: 设置内容和标题栏居中对齐<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|  表头   | 表头  |</span><br><span class="line">|  ----  | ----  |</span><br><span class="line">| 单元格  | 单元格 |</span><br><span class="line">| 单元格  | 单元格 |， </span><br></pre></td></tr></table></figure></li>
+<li>任务列表：<code>- [ ] foo， - [x] bar</code></li>
+<li>公式： 要显示α，在”\alpha” 前后分别加上$，<code>$\alpha$</code>，上标 <code>$a^b$</code>，下标<code>$a_b$</code>，分数<code>$\frac&#123;3+8a&#125;&#123;5b+6&#125;$</code>， 求和 <code>$\sum&#123;3x^n&#125;$</code> 。其他写法参考<a href="https://rpruim.github.io/s341/S19/from-class/MathinRmd.html">Mathematics in R Markdown</a></li>
+</ul>
+<h2 id="markdown编辑软件"><a href="#markdown编辑软件" class="headerlink" title="markdown编辑软件"></a>markdown编辑软件</h2><ul>
+<li><a href="https://marktext.app/">marktext</a> – 从官网下载，或者使用<code>brew install --cask mark-text</code>安装， 具体见<a href="https://github.com/marktext/marktext/blob/develop/docs/i18n/zh_cn.md#readme">marktext中文说明</a></li>
+<li>visual code插件之Markdown All in One： 包括快捷键、公式等功能</li>
+<li>visual code插件之Markdown Preview Enhanced： 除了实时预览外，还包括了其他许多有用的功能，包括mermaid, PlantUML, pandoc, PDF导出等功能</li>
+<li><a href="https://typora.io/">typora</a> –  从1.0.0开始收费</li>
+</ul>
+<h2 id="markdown文件导出为html、doc、epub、pdf格式"><a href="#markdown文件导出为html、doc、epub、pdf格式" class="headerlink" title="markdown文件导出为html、doc、epub、pdf格式"></a>markdown文件导出为html、doc、epub、pdf格式</h2><ol>
+<li>安装pandoc，<code>brew install pandoc</code></li>
+<li>将markdown转成html: <code>pandoc -f markdown -t html ./test.md</code> </li>
+<li>将markdown转成doc：<code>pandoc -f markdown -t html ./test.md | pandoc -f html -t docx -o test.docx</code></li>
+<li>将markdown转成PDF，需要安装<a href="https://www.latex-project.org/">latex</a>。只要安装basicTex就可以了，大概100M+,安装完后运行：<code>pandoc -f markdown_github test.md -o test.pdf --latex-engine=xelatex -V mainfont=&quot;SimSun&quot;</code> 这个表明使用的是GitHub风格markdown语法</li>
+<li>将markdown转成epub： <code>pandoc -f markdown  ./test.md -o test.epub</code></li>
+</ol>
+<h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>我发文章的几个地方，欢迎大家在朋友圈等地方分享，多多交流。</p>
+<ul>
+<li>微信公众号：诸葛说talk</li>
+<li>知乎：<a href="https://www.zhihu.com/people/richard-zhu/posts">https://www.zhihu.com/people/richard-zhu/posts</a></li>
+<li>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://zh.wikipedia.org/wiki/Markdown">markdown wikipedia</a></li>
+<li><a href="https://github.github.com/gfm/">GitHub Flavored Markdown Spec</a> – github风味markdown规范增加了表格、删除线、自动链接和任务列表功能</li>
+<li><a href="https://pandoc.org/demos.html">pandoc demos</a></li>
+<li><a href="https://geek-docs.com/markdown/markdown-tutorial/markdown-mathematical-formula.html">Markdown数学公式</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>blog</category>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
+        <tag>blog</tag>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python代码/编码规范--pep8和google的python代码规范</title>
     <url>/2022/02/02/python-coding-style/</url>
     <content><![CDATA[<p>当所有代码均保持一致的风格时，阅读别人的代码沟通成本最低，特别是在理解大型代码库时效率提升很大。python使用的比较多的代码规范包括2种，分别如下：</p>
@@ -333,64 +391,6 @@
         <tag>python</tag>
         <tag>google</tag>
         <tag>coding</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>markdown实战笔记</title>
-    <url>/2022/02/03/markdown-practice-md/</url>
-    <content><![CDATA[<p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档。Markdown 语言在 2004 由约翰·格鲁伯（英语：John Gruber）创建。Markdown 编写的文档可以导出 HTML 、Word、图像、PDF、Epub 等多种格式的文档。Markdown 编写的文档后缀为 .md, .markdown。</p>
-<h2 id="markdown语法"><a href="#markdown语法" class="headerlink" title="markdown语法"></a>markdown语法</h2><ul>
-<li>使用 # 号可表示 1-6 级标题，一级标题对应一个 # 号，二级标题对应两个 # 号，以此类推</li>
-<li><code>*斜体文本*，**粗体文本**， ***粗斜体文本***</code></li>
-<li>一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西</li>
-<li>文字要添加删除线，只需要在文字的两端加上两个波浪线 ~~即可</li>
-<li>下划线可以通过 HTML 的 <code>&lt;u&gt;&lt;/u&gt;</code> 标签来实现</li>
-<li>换行： 使用html <code>&lt;br&gt;</code>标签</li>
-<li>脚注是对文本的补充说明<code>说明文本[^要注明的文本]</code> 在文末加上<code>[^要注明的文本]: markdown说明</code></li>
-<li>无序列表使用星号(*)、加号(+)或是减号(-)作为列表标记，这些标记后面要加一个空格，然后再填写内容； 有序列表使用数字并加上 . 号来表示</li>
-<li>使用反斜杠转义特殊字符，如*号，可以使用<code>\*</code>来解决</li>
-<li>区块引用是在段落开头使用 &gt; 符号 ，然后后面紧跟一个空格符号。区块是可以嵌套的，一个 &gt; 符号是最外层，两个 &gt; 符号是第一层嵌套，以此类推。如果要在列表项目内放进区块，那么就需要在 &gt; 前添加四个空格的缩进</li>
-<li>函数或片段的代码可以用反引号`把它包起来，可以用 ``` 包裹一段代码，并指定一种语言</li>
-<li>链接：<code>[链接名称](链接地址) or &lt;链接地址&gt;</code></li>
-<li>图片：<code>![alt 属性文本](图片地址) or ![alt 属性文本](图片地址 &quot;可选标题&quot;)</code>，如果想指定图片宽度高度，需要使用html的<code>&lt;img&gt;</code>标签，如<code>&lt;img src=&quot;http://www.xxx.com/xxx.jpg&quot; width=&quot;50%&quot;&gt;</code> </li>
-<li>表格：使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。-: 设置内容和标题栏居右对齐，:- 设置内容和标题栏居左对齐， :-: 设置内容和标题栏居中对齐<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|  表头   | 表头  |</span><br><span class="line">|  ----  | ----  |</span><br><span class="line">| 单元格  | 单元格 |</span><br><span class="line">| 单元格  | 单元格 |， </span><br></pre></td></tr></table></figure></li>
-<li>任务列表：<code>- [ ] foo， - [x] bar</code></li>
-<li>公式： 要显示α，在”\alpha” 前后分别加上$，<code>$\alpha$</code>，上标 <code>$a^b$</code>，下标<code>$a_b$</code>，分数<code>$\frac&#123;3+8a&#125;&#123;5b+6&#125;$</code>， 求和 <code>$\sum&#123;3x^n&#125;$</code> 。其他写法参考<a href="https://rpruim.github.io/s341/S19/from-class/MathinRmd.html">Mathematics in R Markdown</a></li>
-</ul>
-<h2 id="markdown编辑软件"><a href="#markdown编辑软件" class="headerlink" title="markdown编辑软件"></a>markdown编辑软件</h2><ul>
-<li><a href="https://marktext.app/">marktext</a> – 从官网下载，或者使用<code>brew install --cask mark-text</code>安装， 具体见<a href="https://github.com/marktext/marktext/blob/develop/docs/i18n/zh_cn.md#readme">marktext中文说明</a></li>
-<li>visual code插件之Markdown All in One： 包括快捷键、公式等功能</li>
-<li>visual code插件之Markdown Preview Enhanced： 除了实时预览外，还包括了其他许多有用的功能，包括mermaid, PlantUML, pandoc, PDF导出等功能</li>
-<li><a href="https://typora.io/">typora</a> –  从1.0.0开始收费</li>
-</ul>
-<h2 id="markdown文件导出为html、doc、epub、pdf格式"><a href="#markdown文件导出为html、doc、epub、pdf格式" class="headerlink" title="markdown文件导出为html、doc、epub、pdf格式"></a>markdown文件导出为html、doc、epub、pdf格式</h2><ol>
-<li>安装pandoc，<code>brew install pandoc</code></li>
-<li>将markdown转成html: <code>pandoc -f markdown -t html ./test.md</code> </li>
-<li>将markdown转成doc：<code>pandoc -f markdown -t html ./test.md | pandoc -f html -t docx -o test.docx</code></li>
-<li>将markdown转成PDF，需要安装<a href="https://www.latex-project.org/">latex</a>。只要安装basicTex就可以了，大概100M+,安装完后运行：<code>pandoc -f markdown_github test.md -o test.pdf --latex-engine=xelatex -V mainfont=&quot;SimSun&quot;</code> 这个表明使用的是GitHub风格markdown语法</li>
-<li>将markdown转成epub： <code>pandoc -f markdown  ./test.md -o test.epub</code></li>
-</ol>
-<h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>我发文章的几个地方，欢迎大家在朋友圈等地方分享，多多交流。</p>
-<ul>
-<li>微信公众号：诸葛说talk</li>
-<li>知乎：<a href="https://www.zhihu.com/people/richard-zhu/posts">https://www.zhihu.com/people/richard-zhu/posts</a></li>
-<li>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://zh.wikipedia.org/wiki/Markdown">markdown wikipedia</a></li>
-<li><a href="https://github.github.com/gfm/">GitHub Flavored Markdown Spec</a> – github风味markdown规范增加了表格、删除线、自动链接和任务列表功能</li>
-<li><a href="https://pandoc.org/demos.html">pandoc demos</a></li>
-<li><a href="https://geek-docs.com/markdown/markdown-tutorial/markdown-mathematical-formula.html">Markdown数学公式</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>blog</category>
-        <category>tool</category>
-      </categories>
-      <tags>
-        <tag>markdown</tag>
-        <tag>blog</tag>
-        <tag>github</tag>
       </tags>
   </entry>
   <entry>
