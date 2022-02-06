@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>关于</title>
-    <url>/2022/01/03/about/</url>
-    <content><![CDATA[<p>Richard Zhu</p>
-<p>A coder from China, interested in quant, search engine, feed, ads</p>
-<p>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io</a></p>
-<p>知乎：<a href="https://www.zhihu.com/people/richard-zhu">https://www.zhihu.com/people/richard-zhu</a></p>
-<p>公众号: <img src="/images/wechat_channel.png" alt="诸葛说talk"></p>
-]]></content>
-      <tags>
-        <tag>about</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>量化资源--awesome quant中文版发布</title>
     <url>/2022/01/08/awesome-quant-cn/</url>
     <content><![CDATA[<h1 id="awesome-quant-cn"><a href="#awesome-quant-cn" class="headerlink" title="awesome-quant-cn"></a>awesome-quant-cn</h1><p><a href="https://github.com/rchardzhu/awesome-quant-cn">awesome quant中文版</a>，最近会更新比较频繁，欢迎关注github以及加入qq群～</p>
@@ -64,6 +51,181 @@
         <tag>quant</tag>
         <tag>awesome</tag>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于</title>
+    <url>/2022/01/03/about/</url>
+    <content><![CDATA[<p>Richard Zhu</p>
+<p>A coder from China, interested in quant, search engine, feed, ads</p>
+<p>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io</a></p>
+<p>知乎：<a href="https://www.zhihu.com/people/richard-zhu">https://www.zhihu.com/people/richard-zhu</a></p>
+<p>公众号: <img src="/images/wechat_channel.png" alt="诸葛说talk"></p>
+]]></content>
+      <tags>
+        <tag>about</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常用量化回测数据/收益指标的一些说明</title>
+    <url>/2022/02/06/common-invest-indicator-md/</url>
+    <content><![CDATA[<h2 id="常用数据-收益指标"><a href="#常用数据-收益指标" class="headerlink" title="常用数据/收益指标"></a>常用数据/收益指标</h2><ol>
+<li>无风险利率(Risk-Free Rate)[^无风险利率]</li>
+</ol>
+<ul>
+<li>无风险利率表示投资者在一定时间内能够期望从无任何风险的投资中获得的利率。现实中，通常使用伦敦同业拆放利率（London Inter bank Offered Rate，LIBOR）或美国国债利率作为无风险利率。因为一般认为金融机构倒闭的机会很低，财政有问题的银行会被禁止参与同业拆放，因此LIBOR是没有风险的。政府可以发行主权货币应付到期的债务，因此国债不可能违约。不过，此说法并不适用于欧元。欧元区国家无权发行货币，因此发生了欧洲主权债务危机</li>
+</ul>
+<ol start="2">
+<li>Cumulative Return &amp; 复合年均增长率(cagr：Compound Annual Growth Rate) [^cagr]</li>
+</ol>
+<ul>
+<li>Cumulative Return：累计收益= (Ending Value/Beginning Value)</li>
+<li>cagr计算方法为：总增长率百分比的n方根，n相等于有关时期内的年数。CAGR = (Ending Value/Beginning Value)^(1/# of years)－1</li>
+</ul>
+<ol start="3">
+<li>总杠杆(gross leverage)</li>
+</ol>
+<ul>
+<li>总杠杆率是敞口绝对值的总和除以净资产（Net asset value,简称NAV），不考虑多空抵消和对冲。1亿美元标普500股票的长仓和1亿美元的标普500期货空仓总杠杆率为200%。这一指标反映的是总体投资活动水平，是交易对手风险和流动性风险的关注对象之一</li>
+</ul>
+<ol start="4">
+<li>最大回撤(Max Drawdown)</li>
+</ol>
+<ul>
+<li>描述策略可能出现的最糟糕的情况，是指在某一段时期内产品净值从最高点开始回落到最低点的幅度。具体计算方法为：max(1 - 策略当日价值 / 当日之前产品最高净值)</li>
+<li>举例说明：2010年7月20日初始净值1；恰逢2010年10月美国推出QE2全球股市大涨，该基金净值增长到1.8；其后国内股市剧烈震荡，截止2011年4月25，该基金净值为0.98.假设投资者在最高峰时期认购，半年后在最低潮时期赎回，亏损45.5%。这就是最大回撤率给高位追买的投资者的指示意义</li>
+</ul>
+<ol start="5">
+<li>波动率(Volatility)[^波动率]</li>
+</ol>
+<ul>
+<li>是金融资产价格的波动程度，是对资产收益率不确定性的衡量，用于反映金融资产的风险水平。波动率越高，金融资产价格的波动越剧烈，资产收益率的不确定性就越强；波动率越低，金融资产价格的波动越平缓，资产收益率的确定性就越强。具体计算方法为：策略每日收益的年化标准差</li>
+</ul>
+<ol start="6">
+<li>胜率(win rate)</li>
+</ol>
+<ul>
+<li>胜率的定义是赢钱次数除以总买入次数</li>
+<li>举例说明：投入十次，七次盈利，三次亏损，胜率就是70%</li>
+</ul>
+<ol start="7">
+<li>胜负比(win loss ratio)[^胜负比]</li>
+</ol>
+<ul>
+<li>胜负比也称为“成功率”。赢/亏比率是赢的交易总数与输的交易数之比。它不考虑赢或输了多少钱，只考虑输赢次数</li>
+</ul>
+<ol start="8">
+<li>盈亏比(risk return ratio)</li>
+</ol>
+<ul>
+<li>也叫赔率。指的是每次交易的盈利和亏损的比例，代表投资的风险收益比。投资系统的盈亏比=一段时间所有投资盈利单的盈利之和/相同时间段所有亏损单的亏损之和。投资的收益盈亏比是3是指平均来讲赚3块钱，要付出1块的止损。或者说冒一块钱的风险的一项投资获利了3块。长期来看，投资盈亏比，才是直接反映投资者综合水平的的一个量化指标</li>
+<li>长期稳定赚大钱的成功者的系统，都是高盈亏比的系统。只有高盈亏比系统，才能成为成功者，才能算稳定盈利</li>
+<li>举例说明：平均每次盈利30%，平均每次亏损10%，盈亏比就是3倍</li>
+</ul>
+<ol start="9">
+<li>阿尔法（alpha、α值）[^alpha]</li>
+</ol>
+<ul>
+<li>投资者获得与市场波动无关的回报，也叫超额收益。 比如投资者获得了15%的回报，其基准获得了10%的回报，那么Alpha或者价值增值的部分就是5%</li>
+</ul>
+<ol start="10">
+<li>贝塔（beta、β值）[^beta]</li>
+</ol>
+<ul>
+<li>反映了策略对大盘变化的敏感性。例如一个策略的Beta为1.5，则大盘涨1%的时候，策略可能涨1.5%，反之亦然。具体计算方法为：策略每日收益与参考标准每日收益的协方差/参考标准每日收益的方差。</li>
+<li>Beta coefficient = Covariance(R<del>e</del>, R<del>m</del>)/Variance(R<del>m</del>)<br>其中：R<del>e</del>为单一股票的回报， R<del>m</del>为整体市场的回报，Covariance为股票收益相对整体市场收益的变化情况， Variance为市场数据远离平均值的幅度</li>
+</ul>
+<ol start="11">
+<li>夏普比率(sharpe ratio)[^sharpe]</li>
+</ol>
+<ul>
+<li>夏普比率描述了资产收益对投资者所承担风险的补偿程度。当以一个相同基准来比较两种资产之时，夏普比率较高的资产在相同风险下收益更好；或者说，如果收益相同的话，夏普比率较高的资产风险较低。但是，像其他任何数学模型一样，它依赖于数据的正确性</li>
+<li>sharpe ratio = (R<del>p</del> - R<del>f</del>)/$\sigma$<del>p</del><br>其中R<del>p</del>为投资组合的收益，R<del>f</del>为无风险资产的收益，sigma<del>p</del>为投资组合超额收益的标准方差</li>
+</ul>
+<ol start="12">
+<li>信息比例(information Ratio)[^信息比例]</li>
+</ol>
+<ul>
+<li>信息比率与夏普比率相似，主要区别在于夏普比率使用无风险收益(比如美国国债)作为基准，而信息比率使用风险指数作为基准（如标准普尔500指数）</li>
+<li>具体计算方法为：(策略累积收益 - 基准累积收益)/策略与基准每日收益差值的标准差。【意义】：信息比率数值越大，业绩表现越好。它以马克维茨的均异模型为基础，可以衡量基金的均异特性，表示单位主动风险所带来的超额收益</li>
+</ul>
+<ol start="13">
+<li>索提比例（sortino ratio）[^sortino]</li>
+</ol>
+<ul>
+<li>与夏普比率类似，所不同的是它区分了波动的好坏，因此在计算波动率时它所采用的不是标准差，而是下行标准差。这其中的隐含条件是投资组合的上涨（正回报率）符合投资人的需求，不应计入风险调整。具体计算方法为：(策略收益-无风险利率)/策略下行波动率。【适用范围】：因为索提诺比率使用的是下行偏差来考虑风险，那么所有的下行偏差局限性也会出现在索提诺比率中。也就是必须要有足够多的“不良”观测，才能计算一个有效的索提诺比率。sortino 比率数值越大，业绩表现越好。</li>
+</ul>
+<ol start="14">
+<li>卡玛比率(calmar ratio)[^calmar]</li>
+</ol>
+<ul>
+<li>卡玛比率=超额收益/最大回撤(风险)</li>
+<li>卡玛比率和卡玛比率的唯一不同之处就是分母不同，夏普比率使用标准差作为风险，卡玛比率使用最大回撤作为风险，本质上都是衡量基金的风险-回报关系</li>
+</ul>
+<ol start="15">
+<li>Omega比率（omega ratio）</li>
+</ol>
+<ul>
+<li>omega比率实际上考虑了收益的整个分布信息，因此包括了所有高阶矩的信息。在临界收益率等于均值的时候，Omega比率等于1。在相同的临界收益率下，对于不同的投资选择，Omega比率越大越好。适用范围：在收益率不服从正态分布的时候，Omega是非常好的替代。【意义】：Omega比率值越高,投资绩效也就越好</li>
+</ul>
+<ol start="16">
+<li>Tail 比率（tail ratio）</li>
+</ol>
+<ul>
+<li>日收益分布的95分位值/5分位值。【使用范围】：均值回归策略，这类型策略的最大风险在于左侧的尾部风险。单次的大额回撤需要很长的时间才能够恢复。因此 tail_ratio 很适合用来刻画这类策略面临的风险。【意义】：tail 比率越大越好，可以理解成衡量最好情况与最坏情况下的收益表现的指标。例如：tail_ratio = 0.25，5分位的亏损是95分位收益的四倍。 这样的策略在发生大额亏损的情况下很难在短时间内恢复</li>
+</ul>
+<ol start="17">
+<li>Common sense比率（common sense ratio）</li>
+</ol>
+<ul>
+<li>(日收益分布的95分位值/5分位值) *(总盈利/总亏损）。【使用范围】：均值回归策略，趋势追踪策略。【意义】：大于1时，策略盈利；小于1时，策略亏损</li>
+</ul>
+<ol start="18">
+<li>skew值（Skewness）[^skew]</li>
+</ol>
+<ul>
+<li>亦称歪度，在概率论和统计学中衡量实数随机变量概率分布的不对称性。偏度的值可以为正，可以为负或者甚至是无法定义。在数量上，偏度为负（负偏态；左偏）就意味着在概率密度函数左侧的尾部比右侧的长，绝大多数的值（不一定包括中位数在内）位于平均值的右侧。偏度为正（正偏态；右偏）就意味着在概率密度函数右侧的尾部比左侧的长，绝大多数的值（不一定包括中位数）位于平均值的左侧。偏度为零就表示数值相对均匀地分布在平均值的两侧，但不一定意味着其为对称分布</li>
+</ul>
+<ol start="19">
+<li>峰度（kurtosis）</li>
+</ol>
+<ul>
+<li>大于0表示收益的分布与正态分布相比较为陡峭</li>
+</ul>
+<ol start="20">
+<li>决定系数(coefficient of determination, R2)</li>
+</ol>
+<ul>
+<li>累计对数收益对时间t的回归的R^2。【意义】：R平方值是趋势线拟合程度的指标，它的数值大小可以反映趋势线的估计值与对应的实际数据之间的拟合程度，拟合程度越高，趋势线的可靠性就越高。R平方值是取值范围在0～1之间的数值，也称为决定系数，最常用于评价回归模型优劣程度的指标</li>
+</ul>
+<h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>我发文章的几个地方，欢迎大家在朋友圈等地方分享，多多交流。</p>
+<ul>
+<li>微信公众号：诸葛说talk</li>
+<li>知乎：<a href="https://www.zhihu.com/people/richard-zhu/posts">https://www.zhihu.com/people/richard-zhu/posts</a></li>
+<li>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li>无风险利率: <a href="https://zh.wikipedia.org/wiki/%E6%97%A0%E9%A3%8E%E9%99%A9%E5%88%A9%E7%8E%87">wikipedia</a></li>
+<li>cagr: <a href="https://www.investopedia.com/terms/c/cagr.asp">https://www.investopedia.com/terms/c/cagr.asp</a></li>
+<li>波动率: <a href="http://abcexchange.io/terms/v/volatilityquotetrading.asp">http://abcexchange.io/terms/v/volatilityquotetrading.asp</a></li>
+<li>胜负比: <a href="https://www.investopedia.com/terms/w/win-loss-ratio.asp">https://www.investopedia.com/terms/w/win-loss-ratio.asp</a></li>
+<li>alpha: <a href="https://www.investopedia.com/terms/a/alpha.asp">https://www.investopedia.com/terms/a/alpha.asp</a></li>
+<li>beta: <a href="https://www.investopedia.com/terms/b/beta.asp">https://www.investopedia.com/terms/b/beta.asp</a></li>
+<li>sharpe: <a href="https://www.investopedia.com/terms/s/sharperatio.asp">https://www.investopedia.com/terms/s/sharperatio.asp</a></li>
+<li>信息比例: <a href="https://www.investopedia.com/terms/i/informationratio.asp">https://www.investopedia.com/terms/i/informationratio.asp</a></li>
+<li>sortino: <a href="https://www.investopedia.com/terms/s/sortinoratio.asp">https://www.investopedia.com/terms/s/sortinoratio.asp</a></li>
+<li>calmar: <a href="https://www.investopedia.com/terms/c/calmarratio.asp">https://www.investopedia.com/terms/c/calmarratio.asp</a></li>
+<li>skew: <a href="https://www.investopedia.com/terms/s/skewness.asp">https://www.investopedia.com/terms/s/skewness.asp</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>python</category>
+        <category>quant</category>
+      </categories>
+      <tags>
+        <tag>quant</tag>
+        <tag>python</tag>
+        <tag>invest</tag>
       </tags>
   </entry>
   <entry>

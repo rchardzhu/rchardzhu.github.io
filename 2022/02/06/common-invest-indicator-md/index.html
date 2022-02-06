@@ -20,24 +20,22 @@
     var CONFIG = {"hostname":"rchardzhu.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="当所有代码均保持一致的风格时，阅读别人的代码沟通成本最低，特别是在理解大型代码库时效率提升很大。python使用的比较多的代码规范包括2种，分别如下：  pep8 python编码规范 google python编码规范   pep8是python编码规范的事实标准，google python编码规范做了更多的说明，可以作为pep8的补充。这也意味着python社区开源贡献者基本都遵守pep8，但">
+  <meta name="description" content="常用数据&#x2F;收益指标 无风险利率(Risk-Free Rate)[^无风险利率]   无风险利率表示投资者在一定时间内能够期望从无任何风险的投资中获得的利率。现实中，通常使用伦敦同业拆放利率（London Inter bank Offered Rate，LIBOR）或美国国债利率作为无风险利率。因为一般认为金融机构倒闭的机会很低，财政有问题的银行会被禁止参与同业拆放，因此LIBOR是没有风险的。政府">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python代码&#x2F;编码规范--pep8和google的python代码规范">
-<meta property="og:url" content="https://rchardzhu.github.io/2022/02/02/python-coding-style/index.html">
+<meta property="og:title" content="常用量化回测数据&#x2F;收益指标的一些说明">
+<meta property="og:url" content="https://rchardzhu.github.io/2022/02/06/common-invest-indicator-md/index.html">
 <meta property="og:site_name" content="诸葛说">
-<meta property="og:description" content="当所有代码均保持一致的风格时，阅读别人的代码沟通成本最低，特别是在理解大型代码库时效率提升很大。python使用的比较多的代码规范包括2种，分别如下：  pep8 python编码规范 google python编码规范   pep8是python编码规范的事实标准，google python编码规范做了更多的说明，可以作为pep8的补充。这也意味着python社区开源贡献者基本都遵守pep8，但">
+<meta property="og:description" content="常用数据&#x2F;收益指标 无风险利率(Risk-Free Rate)[^无风险利率]   无风险利率表示投资者在一定时间内能够期望从无任何风险的投资中获得的利率。现实中，通常使用伦敦同业拆放利率（London Inter bank Offered Rate，LIBOR）或美国国债利率作为无风险利率。因为一般认为金融机构倒闭的机会很低，财政有问题的银行会被禁止参与同业拆放，因此LIBOR是没有风险的。政府">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pic2.zhimg.com/80/v2-3a4fb851d10c2e8036bb977c861d66d1_720w.jpg">
-<meta property="article:published_time" content="2022-02-02T15:45:28.000Z">
-<meta property="article:modified_time" content="2022-02-03T01:58:44.884Z">
+<meta property="article:published_time" content="2022-02-06T02:37:39.000Z">
+<meta property="article:modified_time" content="2022-02-06T02:48:22.335Z">
 <meta property="article:author" content="Richard Zhu">
+<meta property="article:tag" content="quant">
 <meta property="article:tag" content="python">
-<meta property="article:tag" content="google">
-<meta property="article:tag" content="coding">
+<meta property="article:tag" content="invest">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://pic2.zhimg.com/80/v2-3a4fb851d10c2e8036bb977c861d66d1_720w.jpg">
 
-<link rel="canonical" href="https://rchardzhu.github.io/2022/02/02/python-coding-style/">
+<link rel="canonical" href="https://rchardzhu.github.io/2022/02/06/common-invest-indicator-md/">
 
 
 <script id="page-configurations">
@@ -50,7 +48,7 @@
   };
 </script>
 
-  <title>python代码/编码规范--pep8和google的python代码规范 | 诸葛说</title>
+  <title>常用量化回测数据/收益指标的一些说明 | 诸葛说</title>
   
 
 
@@ -199,7 +197,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rchardzhu.github.io/2022/02/02/python-coding-style/">
+    <link itemprop="mainEntityOfPage" href="https://rchardzhu.github.io/2022/02/06/common-invest-indicator-md/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -212,7 +210,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          python代码/编码规范--pep8和google的python代码规范
+          常用量化回测数据/收益指标的一些说明
         </h1>
 
         <div class="post-meta">
@@ -221,16 +219,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-02-02 23:45:28" itemprop="dateCreated datePublished" datetime="2022-02-02T23:45:28+08:00">2022-02-02</time>
+              <time title="创建时间：2022-02-06 10:37:39 / 修改时间：10:48:22" itemprop="dateCreated datePublished" datetime="2022-02-06T10:37:39+08:00">2022-02-06</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-03 09:58:44" itemprop="dateModified" datetime="2022-02-03T09:58:44+08:00">2022-02-03</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -261,8 +253,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2022/02/02/python-coding-style/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/02/02/python-coding-style/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/02/06/common-invest-indicator-md/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/02/06/common-invest-indicator-md/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -277,98 +269,153 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>当所有代码均保持一致的风格时，阅读别人的代码沟通成本最低，特别是在理解大型代码库时效率提升很大。python使用的比较多的代码规范包括2种，分别如下：</p>
+        <h2 id="常用数据-收益指标"><a href="#常用数据-收益指标" class="headerlink" title="常用数据/收益指标"></a>常用数据/收益指标</h2><ol>
+<li>无风险利率(Risk-Free Rate)[^无风险利率]</li>
+</ol>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0008/">pep8 python编码规范</a></li>
-<li><a target="_blank" rel="noopener" href="https://google.github.io/styleguide/pyguide.html">google python编码规范</a> </li>
+<li>无风险利率表示投资者在一定时间内能够期望从无任何风险的投资中获得的利率。现实中，通常使用伦敦同业拆放利率（London Inter bank Offered Rate，LIBOR）或美国国债利率作为无风险利率。因为一般认为金融机构倒闭的机会很低，财政有问题的银行会被禁止参与同业拆放，因此LIBOR是没有风险的。政府可以发行主权货币应付到期的债务，因此国债不可能违约。不过，此说法并不适用于欧元。欧元区国家无权发行货币，因此发生了欧洲主权债务危机</li>
 </ul>
-<p>pep8是python编码规范的事实标准，google python编码规范做了更多的说明，可以作为pep8的补充。这也意味着python社区开源贡献者基本都遵守pep8，但不一定遵守google的python编码规范。</p>
-<h2 id="pep8的一些规则"><a href="#pep8的一些规则" class="headerlink" title="pep8的一些规则"></a>pep8的一些规则</h2><p>参考pep8的目录，摘取一些重要的规则，具体使用的时候可以通过工具来检测。</p>
-<p>1.1 代码布局</p>
+<ol start="2">
+<li>Cumulative Return &amp; 复合年均增长率(cagr：Compound Annual Growth Rate) [^cagr]</li>
+</ol>
 <ul>
-<li>每个缩进级别使用4个空格；连续行使用垂直对齐或者使用悬挂式缩进(额外的4个空格缩进)</li>
-<li>空格是首选的缩进方法</li>
-<li>每行最多79个字符</li>
-<li>二元运算符前后换行都允许，只要代码保持一致就行。对于新代码建议在二元运算符前进行换行</li>
-<li>空白行：使用两个空白行分隔顶层函数和类定义；类方法定义使用一个空行分隔；使用额外的空白行来分隔相关逻辑功能</li>
-<li>文件应该使用UTF-8编码, 且不应该有编码声明</li>
-<li>导入多个库函数应该分开依次导入；导入总是放在文件的顶部，在任何模块注释和文档字符串之后，在模块全局变量和常量之前；导入应按以下顺序进行：标准库导入、有关的第三方库进口、本地应用程序/库特定的导入，每组导入直接用空行分隔；避免通配符导入（import *）</li>
+<li>Cumulative Return：累计收益= (Ending Value/Beginning Value)</li>
+<li>cagr计算方法为：总增长率百分比的n方根，n相等于有关时期内的年数。CAGR = (Ending Value/Beginning Value)^(1/# of years)－1</li>
 </ul>
-<p>1.2 字符串</p>
+<ol start="3">
+<li>总杠杆(gross leverage)</li>
+</ol>
 <ul>
-<li>单引号字符串和双引号字符串相同，代码保持一致即可</li>
-<li>对于三引号字符串，常用三个双引号作文档字符串，文档字符串常用在模块的开端用以说明模块的基本功能，或紧跟函数定义的后面用以说明函数的基本功能</li>
+<li>总杠杆率是敞口绝对值的总和除以净资产（Net asset value,简称NAV），不考虑多空抵消和对冲。1亿美元标普500股票的长仓和1亿美元的标普500期货空仓总杠杆率为200%。这一指标反映的是总体投资活动水平，是交易对手风险和流动性风险的关注对象之一</li>
 </ul>
-<p>1.3 空格</p>
+<ol start="4">
+<li>最大回撤(Max Drawdown)</li>
+</ol>
 <ul>
-<li>避免使用无关的空格，包括空格内、逗号分号前面等</li>
-<li>避免在行末使用空格</li>
-<li>二元运算符在两侧使用一个空格</li>
-<li>当用于指示关键字参数或默认参数值时，不要在=符号周围使用空格</li>
+<li>描述策略可能出现的最糟糕的情况，是指在某一段时期内产品净值从最高点开始回落到最低点的幅度。具体计算方法为：max(1 - 策略当日价值 / 当日之前产品最高净值)</li>
+<li>举例说明：2010年7月20日初始净值1；恰逢2010年10月美国推出QE2全球股市大涨，该基金净值增长到1.8；其后国内股市剧烈震荡，截止2011年4月25，该基金净值为0.98.假设投资者在最高峰时期认购，半年后在最低潮时期赎回，亏损45.5%。这就是最大回撤率给高位追买的投资者的指示意义</li>
 </ul>
-<p>1.4 使用尾部逗号(trailing commas)</p>
+<ol start="5">
+<li>波动率(Volatility)[^波动率]</li>
+</ol>
 <ul>
-<li>尾部逗号通常可选，除了用来说明是只有一个元素的元组tuple时</li>
-<li>当参数、值等列表期望经常扩展时，通常是每个值一行，再加上一个尾部逗号</li>
+<li>是金融资产价格的波动程度，是对资产收益率不确定性的衡量，用于反映金融资产的风险水平。波动率越高，金融资产价格的波动越剧烈，资产收益率的不确定性就越强；波动率越低，金融资产价格的波动越平缓，资产收益率的确定性就越强。具体计算方法为：策略每日收益的年化标准差</li>
 </ul>
-<p>1.5 注释</p>
+<ol start="6">
+<li>胜率(win rate)</li>
+</ol>
 <ul>
-<li>代码更改时，相应的注释也要随之高优更改</li>
-<li>注释应该是完整的语句，第一个单词应该大写，除非它是特定标识符</li>
-<li>块注释：缩进到与该代码相同的级别。块注释的每一行都以＃和一个空格开始</li>
-<li>行注释：对某一语句行进行注释，注释应该与语句至少隔开两个空格，用＃和一个空格开始</li>
-<li>对于公共的modules, functions, classes, and methods，需要写文档字符串</li>
-<li>注释应该是完整的语句，第一个单词应该大写，除非它是特定标识符 </li>
+<li>胜率的定义是赢钱次数除以总买入次数</li>
+<li>举例说明：投入十次，七次盈利，三次亏损，胜率就是70%</li>
 </ul>
-<p>1.6 命名约定</p>
+<ol start="7">
+<li>胜负比(win loss ratio)[^胜负比]</li>
+</ol>
 <ul>
-<li>python命名规范有点混乱，很难完全保存一致。对于新模块和包，应该遵守这些新的约定，已存在的库内部一致性更重要</li>
-<li>命名应该反应其用途而非实现</li>
-<li>不要将字符’l’（小写字母l），’O’（大写字母o）或’I’（大写字母I）作为单个字符变量名称</li>
-<li>模块名应该使用简短、全小写的名字</li>
-<li>类的命名采用驼峰命名法，即每个单词的首字母大写</li>
-<li>函数名称应该是小写的，为了提高可读性，必须使用由下划线分隔的单词</li>
+<li>胜负比也称为“成功率”。赢/亏比率是赢的交易总数与输的交易数之比。它不考虑赢或输了多少钱，只考虑输赢次数</li>
 </ul>
-<h2 id="google-python编码规范的一些规则"><a href="#google-python编码规范的一些规则" class="headerlink" title="google python编码规范的一些规则"></a>google python编码规范的一些规则</h2><p>相比pep8，google编码规范对怎么写代码的细节要求更多。比如怎么使用异常，文档字符串怎么写，Todo注释的使用等。参考规范目录摘取一些重要的规则说明</p>
-<p>2.1 背景</p>
+<ol start="8">
+<li>盈亏比(risk return ratio)</li>
+</ol>
 <ul>
-<li>可以使用yapf自动格式化工具来格式化代码 </li>
+<li>也叫赔率。指的是每次交易的盈利和亏损的比例，代表投资的风险收益比。投资系统的盈亏比=一段时间所有投资盈利单的盈利之和/相同时间段所有亏损单的亏损之和。投资的收益盈亏比是3是指平均来讲赚3块钱，要付出1块的止损。或者说冒一块钱的风险的一项投资获利了3块。长期来看，投资盈亏比，才是直接反映投资者综合水平的的一个量化指标</li>
+<li>长期稳定赚大钱的成功者的系统，都是高盈亏比的系统。只有高盈亏比系统，才能成为成功者，才能算稳定盈利</li>
+<li>举例说明：平均每次盈利30%，平均每次亏损10%，盈亏比就是3倍</li>
 </ul>
-<p>2.2 python语言规则</p>
+<ol start="9">
+<li>阿尔法（alpha、α值）[^alpha]</li>
+</ol>
 <ul>
-<li>使用google的pylintrc配置文件来允许pylint</li>
-<li>只对包和模块使用import语句，不对单个类或函数使用import</li>
-<li>使用绝对路径导入每个模块</li>
-<li>可以使用异常但必须非常小心。不要使用assert语句来验证api的参数值；最小化try/except代码块</li>
-<li>避免全局变量</li>
+<li>投资者获得与市场波动无关的回报，也叫超额收益。 比如投资者获得了15%的回报，其基准获得了10%的回报，那么Alpha或者价值增值的部分就是5%</li>
 </ul>
-<p>2.3 python风格规则</p>
+<ol start="10">
+<li>贝塔（beta、β值）[^beta]</li>
+</ol>
 <ul>
-<li>不使用分号作为行尾，不使用分号将2个语句放到同一行</li>
-<li>不要在return语句或条件语句使用括号，除非使用括号来表示连续行或元组</li>
-<li>每行最长80个字符，每个缩进级别使用4个空格，空行、空格跟pep8基本一致</li>
-<li>main文件使用#!/usr/bin/env python3 或#!/usr/bin/python3开头，绝大部分文件不需要使用#！开头</li>
-<li>每个文件应该包含一个版权声明</li>
-<li>使用 f-string，%操作符或者format函数来格式化字符串</li>
-<li>使用TODO注释说明临时的、短期的解决方案</li>
+<li>反映了策略对大盘变化的敏感性。例如一个策略的Beta为1.5，则大盘涨1%的时候，策略可能涨1.5%，反之亦然。具体计算方法为：策略每日收益与参考标准每日收益的协方差/参考标准每日收益的方差。</li>
+<li>Beta coefficient = Covariance(R<del>e</del>, R<del>m</del>)/Variance(R<del>m</del>)<br>其中：R<del>e</del>为单一股票的回报， R<del>m</del>为整体市场的回报，Covariance为股票收益相对整体市场收益的变化情况， Variance为市场数据远离平均值的幅度</li>
 </ul>
-<p>2.4 保持一致性</p>
-<h2 id="python编码规范检查工具"><a href="#python编码规范检查工具" class="headerlink" title="python编码规范检查工具"></a>python编码规范检查工具</h2><p>光有规范不行，需要有配套的检查工具，方便团队开发代码时统一遵守</p>
-<p>比如我用pycharm来编写Python代码时，如果有出现不符合PEP 8规范的话，pycharm就会提示我，如图所示。<br><img src="https://pic2.zhimg.com/80/v2-3a4fb851d10c2e8036bb977c861d66d1_720w.jpg" alt="pycharm提示"></p>
-<p>更多工具如下：</p>
+<ol start="11">
+<li>夏普比率(sharpe ratio)[^sharpe]</li>
+</ol>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://pypi.org/project/pycodestyle/">pycodestyle</a> – pycodestyle是一款简单的代码检查工具，之前名字叫pep8，为了减少混淆改名成pycodestyle</li>
-<li><a target="_blank" rel="noopener" href="https://pylint.org/">pylint</a> – pylint是代码检查工具，不能自动修改代码，有对于的配置文件，可以参考<a target="_blank" rel="noopener" href="https://google.github.io/styleguide/pylintrc">google开源的pylintrc配置文件</a></li>
-<li><a target="_blank" rel="noopener" href="https://pypi.org/project/pyflakes/">PyFlakes</a> – 一个简单的python错误检查工具,通过解析源代码而不是import来检测不同的错误，通常只能检查出一些逻辑错误</li>
-<li><a target="_blank" rel="noopener" href="https://pypi.org/project/flake8/">flake8</a> – 针对PEPE8进行代码规范提示，是对PyFlakes，pycodestyle的封装</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/hhatto/autopep8">autopep8</a> – autopep8是一款将python代码自动排版为PEP8风格的工具，它使用 pycodestyle来决定哪部分代码需要格式化</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/google/yapf/">yapf</a>–yapf是google开源的一个用于格式化Python代码的工具，可以一键美化代码，支持两种规范：PEP8和Google Style</li>
+<li>夏普比率描述了资产收益对投资者所承担风险的补偿程度。当以一个相同基准来比较两种资产之时，夏普比率较高的资产在相同风险下收益更好；或者说，如果收益相同的话，夏普比率较高的资产风险较低。但是，像其他任何数学模型一样，它依赖于数据的正确性</li>
+<li>sharpe ratio = (R<del>p</del> - R<del>f</del>)/$\sigma$<del>p</del><br>其中R<del>p</del>为投资组合的收益，R<del>f</del>为无风险资产的收益，sigma<del>p</del>为投资组合超额收益的标准方差</li>
+</ul>
+<ol start="12">
+<li>信息比例(information Ratio)[^信息比例]</li>
+</ol>
+<ul>
+<li>信息比率与夏普比率相似，主要区别在于夏普比率使用无风险收益(比如美国国债)作为基准，而信息比率使用风险指数作为基准（如标准普尔500指数）</li>
+<li>具体计算方法为：(策略累积收益 - 基准累积收益)/策略与基准每日收益差值的标准差。【意义】：信息比率数值越大，业绩表现越好。它以马克维茨的均异模型为基础，可以衡量基金的均异特性，表示单位主动风险所带来的超额收益</li>
+</ul>
+<ol start="13">
+<li>索提比例（sortino ratio）[^sortino]</li>
+</ol>
+<ul>
+<li>与夏普比率类似，所不同的是它区分了波动的好坏，因此在计算波动率时它所采用的不是标准差，而是下行标准差。这其中的隐含条件是投资组合的上涨（正回报率）符合投资人的需求，不应计入风险调整。具体计算方法为：(策略收益-无风险利率)/策略下行波动率。【适用范围】：因为索提诺比率使用的是下行偏差来考虑风险，那么所有的下行偏差局限性也会出现在索提诺比率中。也就是必须要有足够多的“不良”观测，才能计算一个有效的索提诺比率。sortino 比率数值越大，业绩表现越好。</li>
+</ul>
+<ol start="14">
+<li>卡玛比率(calmar ratio)[^calmar]</li>
+</ol>
+<ul>
+<li>卡玛比率=超额收益/最大回撤(风险)</li>
+<li>卡玛比率和卡玛比率的唯一不同之处就是分母不同，夏普比率使用标准差作为风险，卡玛比率使用最大回撤作为风险，本质上都是衡量基金的风险-回报关系</li>
+</ul>
+<ol start="15">
+<li>Omega比率（omega ratio）</li>
+</ol>
+<ul>
+<li>omega比率实际上考虑了收益的整个分布信息，因此包括了所有高阶矩的信息。在临界收益率等于均值的时候，Omega比率等于1。在相同的临界收益率下，对于不同的投资选择，Omega比率越大越好。适用范围：在收益率不服从正态分布的时候，Omega是非常好的替代。【意义】：Omega比率值越高,投资绩效也就越好</li>
+</ul>
+<ol start="16">
+<li>Tail 比率（tail ratio）</li>
+</ol>
+<ul>
+<li>日收益分布的95分位值/5分位值。【使用范围】：均值回归策略，这类型策略的最大风险在于左侧的尾部风险。单次的大额回撤需要很长的时间才能够恢复。因此 tail_ratio 很适合用来刻画这类策略面临的风险。【意义】：tail 比率越大越好，可以理解成衡量最好情况与最坏情况下的收益表现的指标。例如：tail_ratio = 0.25，5分位的亏损是95分位收益的四倍。 这样的策略在发生大额亏损的情况下很难在短时间内恢复</li>
+</ul>
+<ol start="17">
+<li>Common sense比率（common sense ratio）</li>
+</ol>
+<ul>
+<li>(日收益分布的95分位值/5分位值) *(总盈利/总亏损）。【使用范围】：均值回归策略，趋势追踪策略。【意义】：大于1时，策略盈利；小于1时，策略亏损</li>
+</ul>
+<ol start="18">
+<li>skew值（Skewness）[^skew]</li>
+</ol>
+<ul>
+<li>亦称歪度，在概率论和统计学中衡量实数随机变量概率分布的不对称性。偏度的值可以为正，可以为负或者甚至是无法定义。在数量上，偏度为负（负偏态；左偏）就意味着在概率密度函数左侧的尾部比右侧的长，绝大多数的值（不一定包括中位数在内）位于平均值的右侧。偏度为正（正偏态；右偏）就意味着在概率密度函数右侧的尾部比左侧的长，绝大多数的值（不一定包括中位数）位于平均值的左侧。偏度为零就表示数值相对均匀地分布在平均值的两侧，但不一定意味着其为对称分布</li>
+</ul>
+<ol start="19">
+<li>峰度（kurtosis）</li>
+</ol>
+<ul>
+<li>大于0表示收益的分布与正态分布相比较为陡峭</li>
+</ul>
+<ol start="20">
+<li>决定系数(coefficient of determination, R2)</li>
+</ol>
+<ul>
+<li>累计对数收益对时间t的回归的R^2。【意义】：R平方值是趋势线拟合程度的指标，它的数值大小可以反映趋势线的估计值与对应的实际数据之间的拟合程度，拟合程度越高，趋势线的可靠性就越高。R平方值是取值范围在0～1之间的数值，也称为决定系数，最常用于评价回归模型优劣程度的指标</li>
 </ul>
 <h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>我发文章的几个地方，欢迎大家在朋友圈等地方分享，多多交流。</p>
 <ul>
 <li>微信公众号：诸葛说talk</li>
-<li>知乎：<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/richard-zhu/posts">诸葛说</a></li>
+<li>知乎：<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/richard-zhu/posts">https://www.zhihu.com/people/richard-zhu/posts</a></li>
 <li>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li>无风险利率: <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%97%A0%E9%A3%8E%E9%99%A9%E5%88%A9%E7%8E%87">wikipedia</a></li>
+<li>cagr: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/c/cagr.asp">https://www.investopedia.com/terms/c/cagr.asp</a></li>
+<li>波动率: <a target="_blank" rel="noopener" href="http://abcexchange.io/terms/v/volatilityquotetrading.asp">http://abcexchange.io/terms/v/volatilityquotetrading.asp</a></li>
+<li>胜负比: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/w/win-loss-ratio.asp">https://www.investopedia.com/terms/w/win-loss-ratio.asp</a></li>
+<li>alpha: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/a/alpha.asp">https://www.investopedia.com/terms/a/alpha.asp</a></li>
+<li>beta: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/b/beta.asp">https://www.investopedia.com/terms/b/beta.asp</a></li>
+<li>sharpe: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/s/sharperatio.asp">https://www.investopedia.com/terms/s/sharperatio.asp</a></li>
+<li>信息比例: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/i/informationratio.asp">https://www.investopedia.com/terms/i/informationratio.asp</a></li>
+<li>sortino: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/s/sortinoratio.asp">https://www.investopedia.com/terms/s/sortinoratio.asp</a></li>
+<li>calmar: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/c/calmarratio.asp">https://www.investopedia.com/terms/c/calmarratio.asp</a></li>
+<li>skew: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/s/skewness.asp">https://www.investopedia.com/terms/s/skewness.asp</a></li>
 </ul>
 
     </div>
@@ -401,7 +448,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://rchardzhu.github.io/2022/02/02/python-coding-style/" title="python代码&#x2F;编码规范--pep8和google的python代码规范">https://rchardzhu.github.io/2022/02/02/python-coding-style/</a>
+    <a href="https://rchardzhu.github.io/2022/02/06/common-invest-indicator-md/" title="常用量化回测数据&#x2F;收益指标的一些说明">https://rchardzhu.github.io/2022/02/06/common-invest-indicator-md/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -422,9 +469,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/quant/" rel="tag"># quant</a>
               <a href="/tags/python/" rel="tag"># python</a>
-              <a href="/tags/google/" rel="tag"># google</a>
-              <a href="/tags/coding/" rel="tag"># coding</a>
+              <a href="/tags/invest/" rel="tag"># invest</a>
           </div>
 
         
@@ -433,13 +480,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/01/22/using-github-to-start-your-blog/" rel="prev" title="利用github搭建自己的免费博客站点">
-      <i class="fa fa-chevron-left"></i> 利用github搭建自己的免费博客站点
+    <a href="/2022/02/03/markdown-practice-md/" rel="prev" title="markdown实战笔记">
+      <i class="fa fa-chevron-left"></i> markdown实战笔记
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/02/03/markdown-practice-md/" rel="next" title="markdown实战笔记">
-      markdown实战笔记 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -522,7 +566,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pep8%E7%9A%84%E4%B8%80%E4%BA%9B%E8%A7%84%E5%88%99"><span class="nav-number">1.</span> <span class="nav-text">pep8的一些规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#google-python%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83%E7%9A%84%E4%B8%80%E4%BA%9B%E8%A7%84%E5%88%99"><span class="nav-number">2.</span> <span class="nav-text">google python编码规范的一些规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83%E6%A3%80%E6%9F%A5%E5%B7%A5%E5%85%B7"><span class="nav-number">3.</span> <span class="nav-text">python编码规范检查工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E6%B5%81"><span class="nav-number">4.</span> <span class="nav-text">交流</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE-%E6%94%B6%E7%9B%8A%E6%8C%87%E6%A0%87"><span class="nav-number">1.</span> <span class="nav-text">常用数据&#x2F;收益指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E6%B5%81"><span class="nav-number">2.</span> <span class="nav-text">交流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -711,9 +755,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://rchardzhu.github.io/2022/02/02/python-coding-style/";
-    this.page.identifier = "2022/02/02/python-coding-style/";
-    this.page.title = "python代码/编码规范--pep8和google的python代码规范";
+    this.page.url = "https://rchardzhu.github.io/2022/02/06/common-invest-indicator-md/";
+    this.page.identifier = "2022/02/06/common-invest-indicator-md/";
+    this.page.title = "常用量化回测数据/收益指标的一些说明";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
