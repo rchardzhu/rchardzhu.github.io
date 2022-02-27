@@ -449,4 +449,37 @@
         <tag>github</tag>
       </tags>
   </entry>
+  <entry>
+    <title>使用basictex生成简历</title>
+    <url>/2022/02/27/using-latex-generate-resume-md/</url>
+    <content><![CDATA[<p>Latex 是功能非常强大的排版工具，<a href="https://www.tug.org/mactex/mactex-download.html">MacTeX 2021</a>有4Gb 大小，之前装过觉得用处不大，这次决定装一个mini版本<a href="https://www.tug.org/mactex/morepackages.html">BasicTex</a>，不用gui的话，功能也够用了</p>
+<h2 id="安装basictex"><a href="#安装basictex" class="headerlink" title="安装basictex"></a>安装basictex</h2><p>从<a href="https://www.tug.org/mactex/morepackages.html">BasicTex</a> 官网手动下载pkg文件手动安装。或者使用homebrew安装。</p>
+<p>使用 homebrew 安装非常简单，只需一条命令即可。</p>
+<p><code>$brew install basictex</code><br>安装完还不能直接使用，还需要把 texlive 添加到环境变量中，才能找到相关的命令。</p>
+<p><code>$export PATH=/usr/local/texlive/2021basic/bin/universal-darwin/:$PATH</code><br>执行<code>$xelatex</code>不报错的话，说明环境安装成功。<br>然后就是安装相关的包，以及更新包。</p>
+<p><code>sudo tlmgr update --self</code><br>安装包的时候速度慢的话推荐使用<a href="https://mirror.tuna.tsinghua.edu.cn/help/CTAN/">清华的CTAN 镜像</a>。</p>
+<h2 id="使用basictex生成简历"><a href="#使用basictex生成简历" class="headerlink" title="使用basictex生成简历"></a>使用basictex生成简历</h2><p>首先到网上找到喜欢的模板。比如： <a href="https://github.com/billryan/resume">billryan/resume</a> 或<a href="https://github.com/xdanaux/moderncv">xdanaux/moderncv</a>。</p>
+<p>以billryan/resume 为例，git clone下载到本地后，使用git switch zh_CN 切换到中文分支。</p>
+<p>执行： <code>$xelatex resume-zh_CN.tex</code></p>
+<p>编译失败，会提示缺少某些包。使用tlmgr安装对应的包即可。</p>
+<p>比如： <code>$sudo tlmgr install xifthen ifmtarg titlesec enumitem nth</code></p>
+<p>安装完成后，继续xelatex编译即可，会生成resume-zh_CN.pdf 文件。</p>
+<p>如果只是偶尔使用一下xelatex，也可以考虑试下xelatex云编译器 <a href="https://latexonline.cc/">cloud compiler LaTeX to PDF</a></p>
+<h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>我发文章的几个地方，欢迎大家在朋友圈等地方分享，多多交流。</p>
+<ul>
+<li>微信公众号：诸葛说talk</li>
+<li>知乎：<a href="https://www.zhihu.com/people/richard-zhu/posts">https://www.zhihu.com/people/richard-zhu/posts</a></li>
+<li>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>latex</category>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+        <tag>latex</tag>
+        <tag>resume</tag>
+      </tags>
+  </entry>
 </search>
