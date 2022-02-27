@@ -287,6 +287,62 @@
       </tags>
   </entry>
   <entry>
+    <title>利用github搭建自己的免费博客站点</title>
+    <url>/2022/01/22/using-github-to-start-your-blog/</url>
+    <content><![CDATA[<p>欢迎访问我的站点： <a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></p>
+<h2 id="一、在github上创建一个代码库"><a href="#一、在github上创建一个代码库" class="headerlink" title="一、在github上创建一个代码库"></a>一、在github上创建一个代码库</h2><p>在github上创建一个代码库，名字为：xxx.github.io， xxx为你的github账号名</p>
+<p>如我的代码库地址为：<a href="https://github.com/rchardzhu/rchardzhu.github.io">https://github.com/rchardzhu/rchardzhu.github.io</a></p>
+<p>参考：<a href="https://docs.github.com/en/pages/quickstart">Quickstart for GitHub Pages - GitHub Docs</a></p>
+<h2 id="二、安装nodejs和hexo"><a href="#二、安装nodejs和hexo" class="headerlink" title="二、安装nodejs和hexo"></a>二、安装nodejs和hexo</h2><p>由于github只支持静态网页，需要使用hexo。hexo是基于nodejs打造的一个博客框架，用于快速创建项目、页面、编译、部署 Hexo 博客。</p>
+<ul>
+<li>先安装nodejs</li>
+<li><code>npm install hexo</code>， 然后把hexo的目录放到PATH目录下。或者使用-g 安装到全局目录，但需要管理员权限</li>
+</ul>
+<h2 id="三、运行hexo"><a href="#三、运行hexo" class="headerlink" title="三、运行hexo"></a>三、运行hexo</h2><ol>
+<li><p>创建blog项目，<code>$hexo init blog</code><br>blog目录文件夹下就会出现 Hexo 的初始化文件，包括 themes、scaffolds、source 等文件夹</p>
+</li>
+<li><p>进入blog目录，生成静态文件：<code>$ cd blog &amp;&amp; hexo generate</code><br>可以看到输出结果里面包含了 js、css、font 等内容，并发现它们都在项目根目录下的 public 文件夹下面了</p>
+</li>
+<li><p>本地预览查看： <code>$hexo serve</code><br>可以看到一个默认的hello world页面。</p>
+</li>
+<li><p>部署到github： <code>$ hexo deploy</code><br>编辑_config.yml文件，编辑deploy部分，参考如下<img src="https://pic2.zhimg.com/80/v2-1578f3c362f0896c7dbe3b77e3cc94b1_720w.jpg" alt="图片"></p>
+</li>
+</ol>
+<p>在新创建的blog目录下安装hexo-deployer-git，命令如下： <code>$npm install hexo-deployer-git --save</code></p>
+<p>更多信息参考：<a href="https://hexo.io/zh-cn/docs/one-command-deployment.html">部署</a></p>
+<p>如果出现如下错误：”ERROR Deployer not found: git”，表明hexo-deployer-git安装的目录不对，记住需要在新创建的目录下npm install。</p>
+<h2 id="四、写博客"><a href="#四、写博客" class="headerlink" title="四、写博客"></a>四、写博客</h2><ol>
+<li>新建文章 ： <code>$ hexo new &quot;about&quot;</code><br>创建的文章会出现在 source/_posts 文件夹下，是 MarkDown 格式。</li>
+</ol>
+<p>更多信息参考：<a href="https://hexo.io/zh-cn/docs/writing.html">写作</a></p>
+<p>然后正常使用markdown格式去写文章就好了。</p>
+<ol start="2">
+<li>生成静态文件并更新到github上即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$hexo clean</span><br><span class="line">$hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="更多内容"><a href="#更多内容" class="headerlink" title="更多内容"></a>更多内容</h2><ul>
+<li><p><a href="https://zhuanlan.zhihu.com/p/454680697">如何更换博客主题</a></p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/454705927">如何新增标签、分类、关于等页面</a></p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/454840985">如何添加搜索功能?</a></p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/454857343">如何添加留言板功能</a></p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/454865095">本地运行和发布不一致问题解决</a></p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/459178301">添加文章阅读量及网站访问信息</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python代码/编码规范--pep8和google的python代码规范</title>
     <url>/2022/02/02/python-coding-style/</url>
     <content><![CDATA[<p>当所有代码均保持一致的风格时，阅读别人的代码沟通成本最低，特别是在理解大型代码库时效率提升很大。python使用的比较多的代码规范包括2种，分别如下：</p>
@@ -391,62 +447,6 @@
         <tag>python</tag>
         <tag>google</tag>
         <tag>coding</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>利用github搭建自己的免费博客站点</title>
-    <url>/2022/01/22/using-github-to-start-your-blog/</url>
-    <content><![CDATA[<p>欢迎访问我的站点： <a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></p>
-<h2 id="一、在github上创建一个代码库"><a href="#一、在github上创建一个代码库" class="headerlink" title="一、在github上创建一个代码库"></a>一、在github上创建一个代码库</h2><p>在github上创建一个代码库，名字为：xxx.github.io， xxx为你的github账号名</p>
-<p>如我的代码库地址为：<a href="https://github.com/rchardzhu/rchardzhu.github.io">https://github.com/rchardzhu/rchardzhu.github.io</a></p>
-<p>参考：<a href="https://docs.github.com/en/pages/quickstart">Quickstart for GitHub Pages - GitHub Docs</a></p>
-<h2 id="二、安装nodejs和hexo"><a href="#二、安装nodejs和hexo" class="headerlink" title="二、安装nodejs和hexo"></a>二、安装nodejs和hexo</h2><p>由于github只支持静态网页，需要使用hexo。hexo是基于nodejs打造的一个博客框架，用于快速创建项目、页面、编译、部署 Hexo 博客。</p>
-<ul>
-<li>先安装nodejs</li>
-<li><code>npm install hexo</code>， 然后把hexo的目录放到PATH目录下。或者使用-g 安装到全局目录，但需要管理员权限</li>
-</ul>
-<h2 id="三、运行hexo"><a href="#三、运行hexo" class="headerlink" title="三、运行hexo"></a>三、运行hexo</h2><ol>
-<li><p>创建blog项目，<code>$hexo init blog</code><br>blog目录文件夹下就会出现 Hexo 的初始化文件，包括 themes、scaffolds、source 等文件夹</p>
-</li>
-<li><p>进入blog目录，生成静态文件：<code>$ cd blog &amp;&amp; hexo generate</code><br>可以看到输出结果里面包含了 js、css、font 等内容，并发现它们都在项目根目录下的 public 文件夹下面了</p>
-</li>
-<li><p>本地预览查看： <code>$hexo serve</code><br>可以看到一个默认的hello world页面。</p>
-</li>
-<li><p>部署到github： <code>$ hexo deploy</code><br>编辑_config.yml文件，编辑deploy部分，参考如下<img src="https://pic2.zhimg.com/80/v2-1578f3c362f0896c7dbe3b77e3cc94b1_720w.jpg" alt="图片"></p>
-</li>
-</ol>
-<p>在新创建的blog目录下安装hexo-deployer-git，命令如下： <code>$npm install hexo-deployer-git --save</code></p>
-<p>更多信息参考：<a href="https://hexo.io/zh-cn/docs/one-command-deployment.html">部署</a></p>
-<p>如果出现如下错误：”ERROR Deployer not found: git”，表明hexo-deployer-git安装的目录不对，记住需要在新创建的目录下npm install。</p>
-<h2 id="四、写博客"><a href="#四、写博客" class="headerlink" title="四、写博客"></a>四、写博客</h2><ol>
-<li>新建文章 ： <code>$ hexo new &quot;about&quot;</code><br>创建的文章会出现在 source/_posts 文件夹下，是 MarkDown 格式。</li>
-</ol>
-<p>更多信息参考：<a href="https://hexo.io/zh-cn/docs/writing.html">写作</a></p>
-<p>然后正常使用markdown格式去写文章就好了。</p>
-<ol start="2">
-<li>生成静态文件并更新到github上即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$hexo clean</span><br><span class="line">$hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="更多内容"><a href="#更多内容" class="headerlink" title="更多内容"></a>更多内容</h2><ul>
-<li><p><a href="https://zhuanlan.zhihu.com/p/454680697">如何更换博客主题</a></p>
-</li>
-<li><p><a href="https://zhuanlan.zhihu.com/p/454705927">如何新增标签、分类、关于等页面</a></p>
-</li>
-<li><p><a href="https://zhuanlan.zhihu.com/p/454840985">如何添加搜索功能?</a></p>
-</li>
-<li><p><a href="https://zhuanlan.zhihu.com/p/454857343">如何添加留言板功能</a></p>
-</li>
-<li><p><a href="https://zhuanlan.zhihu.com/p/454865095">本地运行和发布不一致问题解决</a></p>
-</li>
-<li><p><a href="https://zhuanlan.zhihu.com/p/459178301">添加文章阅读量及网站访问信息</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>blog</category>
-      </categories>
-      <tags>
-        <tag>blog</tag>
-        <tag>github</tag>
       </tags>
   </entry>
   <entry>
