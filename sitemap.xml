@@ -119,6 +119,13 @@
 
   
   <url>
+    <loc>https://rchardzhu.github.io/tags/about/</loc>
+    <lastmod>2022-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://rchardzhu.github.io/tags/quant/</loc>
     <lastmod>2022-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -204,13 +211,6 @@
   
   <url>
     <loc>https://rchardzhu.github.io/tags/resume/</loc>
-    <lastmod>2022-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://rchardzhu.github.io/tags/about/</loc>
     <lastmod>2022-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>关于</title>
+    <url>/2022/01/03/about/</url>
+    <content><![CDATA[<p>Richard Zhu</p>
+<p>A coder from China, interested in quant, search engine, feed, ads</p>
+<p>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io</a></p>
+<p>知乎：<a href="https://www.zhihu.com/people/richard-zhu">https://www.zhihu.com/people/richard-zhu</a></p>
+<p>公众号: <img src="/images/wechat_channel.png" alt="诸葛说talk"></p>
+]]></content>
+      <tags>
+        <tag>about</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>量化资源--awesome quant中文版发布</title>
     <url>/2022/01/08/awesome-quant-cn/</url>
     <content><![CDATA[<h1 id="awesome-quant-cn"><a href="#awesome-quant-cn" class="headerlink" title="awesome-quant-cn"></a>awesome-quant-cn</h1><p><a href="https://github.com/rchardzhu/awesome-quant-cn">awesome quant中文版</a>，最近会更新比较频繁，欢迎关注github以及加入qq群～</p>
@@ -383,7 +396,7 @@
   <entry>
     <title>python gui与pyside</title>
     <url>/2022/03/13/python-gui-and-pyside-md/</url>
-    <content><![CDATA[<h1 id="python-gui与pyside"><a href="#python-gui与pyside" class="headerlink" title="python gui与pyside"></a>python gui与pyside</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
 <li><a href="https://docs.python.org/3/library/tkinter.html">Tkinter</a> – Tcl/Tk的python接口，python标准库自带不需单独安装。但界面相对简陋，基础组件不全，框架功能相对较弱，使用不多</li>
 <li><a href="https://www.wxpython.org/">wxPython</a> – wxWidgets的python封装接口</li>
 <li><a href="https://github.com/PySimpleGUI/PySimpleGUI">PySimpleGUI</a> – 对tkinter, Qt, WxPython等python gui框架的进一步封装</li>
@@ -604,19 +617,6 @@ or <figure class="highlight plaintext"><table><tr><td class="code"><pre><span cl
         <tag>github</tag>
         <tag>latex</tag>
         <tag>resume</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于</title>
-    <url>/2022/01/03/about/</url>
-    <content><![CDATA[<p>Richard Zhu</p>
-<p>A coder from China, interested in quant, search engine, feed, ads</p>
-<p>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io</a></p>
-<p>知乎：<a href="https://www.zhihu.com/people/richard-zhu">https://www.zhihu.com/people/richard-zhu</a></p>
-<p>公众号: <img src="/images/wechat_channel.png" alt="诸葛说talk"></p>
-]]></content>
-      <tags>
-        <tag>about</tag>
       </tags>
   </entry>
 </search>
