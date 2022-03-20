@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://rchardzhu.github.io/2022/03/20/start-to-learn-vnpy-veighna/</loc>
+    
+    <lastmod>2022-03-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://rchardzhu.github.io/2022/03/13/python-gui-and-pyside-md/</loc>
     
     <lastmod>2022-03-13</lastmod>
@@ -112,7 +121,7 @@
 
   <url>
     <loc>https://rchardzhu.github.io/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -120,98 +129,105 @@
   
   <url>
     <loc>https://rchardzhu.github.io/tags/about/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/tags/quant/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/tags/awesome/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/tags/python/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/tags/invest/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/tags/markdown/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/tags/blog/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/tags/github/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/tags/google/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/tags/coding/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/tags/gui/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/tags/pyside/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://rchardzhu.github.io/tags/vnpy/</loc>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/tags/latex/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/tags/resume/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -220,42 +236,42 @@
   
   <url>
     <loc>https://rchardzhu.github.io/categories/python/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/categories/blog/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/categories/quant/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/categories/gui/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/categories/latex/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://rchardzhu.github.io/categories/tool/</loc>
-    <lastmod>2022-03-13</lastmod>
+    <lastmod>2022-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
