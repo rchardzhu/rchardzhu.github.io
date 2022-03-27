@@ -287,113 +287,6 @@
       </tags>
   </entry>
   <entry>
-    <title>python代码/编码规范--pep8和google的python代码规范</title>
-    <url>/2022/02/02/python-coding-style/</url>
-    <content><![CDATA[<p>当所有代码均保持一致的风格时，阅读别人的代码沟通成本最低，特别是在理解大型代码库时效率提升很大。python使用的比较多的代码规范包括2种，分别如下：</p>
-<ul>
-<li><a href="https://www.python.org/dev/peps/pep-0008/">pep8 python编码规范</a></li>
-<li><a href="https://google.github.io/styleguide/pyguide.html">google python编码规范</a> </li>
-</ul>
-<p>pep8是python编码规范的事实标准，google python编码规范做了更多的说明，可以作为pep8的补充。这也意味着python社区开源贡献者基本都遵守pep8，但不一定遵守google的python编码规范。</p>
-<h2 id="pep8的一些规则"><a href="#pep8的一些规则" class="headerlink" title="pep8的一些规则"></a>pep8的一些规则</h2><p>参考pep8的目录，摘取一些重要的规则，具体使用的时候可以通过工具来检测。</p>
-<p>1.1 代码布局</p>
-<ul>
-<li>每个缩进级别使用4个空格；连续行使用垂直对齐或者使用悬挂式缩进(额外的4个空格缩进)</li>
-<li>空格是首选的缩进方法</li>
-<li>每行最多79个字符</li>
-<li>二元运算符前后换行都允许，只要代码保持一致就行。对于新代码建议在二元运算符前进行换行</li>
-<li>空白行：使用两个空白行分隔顶层函数和类定义；类方法定义使用一个空行分隔；使用额外的空白行来分隔相关逻辑功能</li>
-<li>文件应该使用UTF-8编码, 且不应该有编码声明</li>
-<li>导入多个库函数应该分开依次导入；导入总是放在文件的顶部，在任何模块注释和文档字符串之后，在模块全局变量和常量之前；导入应按以下顺序进行：标准库导入、有关的第三方库进口、本地应用程序/库特定的导入，每组导入直接用空行分隔；避免通配符导入（import *）</li>
-</ul>
-<p>1.2 字符串</p>
-<ul>
-<li>单引号字符串和双引号字符串相同，代码保持一致即可</li>
-<li>对于三引号字符串，常用三个双引号作文档字符串，文档字符串常用在模块的开端用以说明模块的基本功能，或紧跟函数定义的后面用以说明函数的基本功能</li>
-</ul>
-<p>1.3 空格</p>
-<ul>
-<li>避免使用无关的空格，包括空格内、逗号分号前面等</li>
-<li>避免在行末使用空格</li>
-<li>二元运算符在两侧使用一个空格</li>
-<li>当用于指示关键字参数或默认参数值时，不要在=符号周围使用空格</li>
-</ul>
-<p>1.4 使用尾部逗号(trailing commas)</p>
-<ul>
-<li>尾部逗号通常可选，除了用来说明是只有一个元素的元组tuple时</li>
-<li>当参数、值等列表期望经常扩展时，通常是每个值一行，再加上一个尾部逗号</li>
-</ul>
-<p>1.5 注释</p>
-<ul>
-<li>代码更改时，相应的注释也要随之高优更改</li>
-<li>注释应该是完整的语句，第一个单词应该大写，除非它是特定标识符</li>
-<li>块注释：缩进到与该代码相同的级别。块注释的每一行都以＃和一个空格开始</li>
-<li>行注释：对某一语句行进行注释，注释应该与语句至少隔开两个空格，用＃和一个空格开始</li>
-<li>对于公共的modules, functions, classes, and methods，需要写文档字符串</li>
-<li>注释应该是完整的语句，第一个单词应该大写，除非它是特定标识符 </li>
-</ul>
-<p>1.6 命名约定</p>
-<ul>
-<li>python命名规范有点混乱，很难完全保存一致。对于新模块和包，应该遵守这些新的约定，已存在的库内部一致性更重要</li>
-<li>命名应该反应其用途而非实现</li>
-<li>不要将字符’l’（小写字母l），’O’（大写字母o）或’I’（大写字母I）作为单个字符变量名称</li>
-<li>模块名应该使用简短、全小写的名字</li>
-<li>类的命名采用驼峰命名法，即每个单词的首字母大写</li>
-<li>函数名称应该是小写的，为了提高可读性，必须使用由下划线分隔的单词</li>
-</ul>
-<h2 id="google-python编码规范的一些规则"><a href="#google-python编码规范的一些规则" class="headerlink" title="google python编码规范的一些规则"></a>google python编码规范的一些规则</h2><p>相比pep8，google编码规范对怎么写代码的细节要求更多。比如怎么使用异常，文档字符串怎么写，Todo注释的使用等。参考规范目录摘取一些重要的规则说明</p>
-<p>2.1 背景</p>
-<ul>
-<li>可以使用yapf自动格式化工具来格式化代码 </li>
-</ul>
-<p>2.2 python语言规则</p>
-<ul>
-<li>使用google的pylintrc配置文件来允许pylint</li>
-<li>只对包和模块使用import语句，不对单个类或函数使用import</li>
-<li>使用绝对路径导入每个模块</li>
-<li>可以使用异常但必须非常小心。不要使用assert语句来验证api的参数值；最小化try/except代码块</li>
-<li>避免全局变量</li>
-</ul>
-<p>2.3 python风格规则</p>
-<ul>
-<li>不使用分号作为行尾，不使用分号将2个语句放到同一行</li>
-<li>不要在return语句或条件语句使用括号，除非使用括号来表示连续行或元组</li>
-<li>每行最长80个字符，每个缩进级别使用4个空格，空行、空格跟pep8基本一致</li>
-<li>main文件使用#!/usr/bin/env python3 或#!/usr/bin/python3开头，绝大部分文件不需要使用#！开头</li>
-<li>每个文件应该包含一个版权声明</li>
-<li>使用 f-string，%操作符或者format函数来格式化字符串</li>
-<li>使用TODO注释说明临时的、短期的解决方案</li>
-</ul>
-<p>2.4 保持一致性</p>
-<h2 id="python编码规范检查工具"><a href="#python编码规范检查工具" class="headerlink" title="python编码规范检查工具"></a>python编码规范检查工具</h2><p>光有规范不行，需要有配套的检查工具，方便团队开发代码时统一遵守</p>
-<p>比如我用pycharm来编写Python代码时，如果有出现不符合PEP 8规范的话，pycharm就会提示我，如图所示。<br><img src="https://pic2.zhimg.com/80/v2-3a4fb851d10c2e8036bb977c861d66d1_720w.jpg" alt="pycharm提示"></p>
-<p>更多工具如下：</p>
-<ul>
-<li><a href="https://pypi.org/project/pycodestyle/">pycodestyle</a> – pycodestyle是一款简单的代码检查工具，之前名字叫pep8，为了减少混淆改名成pycodestyle</li>
-<li><a href="https://pylint.org/">pylint</a> – pylint是代码检查工具，不能自动修改代码，有对于的配置文件，可以参考<a href="https://google.github.io/styleguide/pylintrc">google开源的pylintrc配置文件</a></li>
-<li><a href="https://pypi.org/project/pyflakes/">PyFlakes</a> – 一个简单的python错误检查工具,通过解析源代码而不是import来检测不同的错误，通常只能检查出一些逻辑错误</li>
-<li><a href="https://pypi.org/project/flake8/">flake8</a> – 针对PEPE8进行代码规范提示，是对PyFlakes，pycodestyle的封装</li>
-<li><a href="https://github.com/hhatto/autopep8">autopep8</a> – autopep8是一款将python代码自动排版为PEP8风格的工具，它使用 pycodestyle来决定哪部分代码需要格式化</li>
-<li><a href="https://github.com/google/yapf/">yapf</a>–yapf是google开源的一个用于格式化Python代码的工具，可以一键美化代码，支持两种规范：PEP8和Google Style</li>
-</ul>
-<h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>我发文章的几个地方，欢迎大家在朋友圈等地方分享，多多交流。</p>
-<ul>
-<li>微信公众号：诸葛说talk</li>
-<li>知乎：<a href="https://www.zhihu.com/people/richard-zhu/posts">诸葛说</a></li>
-<li>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>python</category>
-        <category>quant</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>google</tag>
-        <tag>coding</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python gui与pyside</title>
     <url>/2022/03/13/python-gui-and-pyside-md/</url>
     <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
@@ -529,6 +422,207 @@ or <figure class="highlight plaintext"><table><tr><td class="code"><pre><span cl
         <tag>python</tag>
         <tag>gui</tag>
         <tag>pyside</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python代码/编码规范--pep8和google的python代码规范</title>
+    <url>/2022/02/02/python-coding-style/</url>
+    <content><![CDATA[<p>当所有代码均保持一致的风格时，阅读别人的代码沟通成本最低，特别是在理解大型代码库时效率提升很大。python使用的比较多的代码规范包括2种，分别如下：</p>
+<ul>
+<li><a href="https://www.python.org/dev/peps/pep-0008/">pep8 python编码规范</a></li>
+<li><a href="https://google.github.io/styleguide/pyguide.html">google python编码规范</a> </li>
+</ul>
+<p>pep8是python编码规范的事实标准，google python编码规范做了更多的说明，可以作为pep8的补充。这也意味着python社区开源贡献者基本都遵守pep8，但不一定遵守google的python编码规范。</p>
+<h2 id="pep8的一些规则"><a href="#pep8的一些规则" class="headerlink" title="pep8的一些规则"></a>pep8的一些规则</h2><p>参考pep8的目录，摘取一些重要的规则，具体使用的时候可以通过工具来检测。</p>
+<p>1.1 代码布局</p>
+<ul>
+<li>每个缩进级别使用4个空格；连续行使用垂直对齐或者使用悬挂式缩进(额外的4个空格缩进)</li>
+<li>空格是首选的缩进方法</li>
+<li>每行最多79个字符</li>
+<li>二元运算符前后换行都允许，只要代码保持一致就行。对于新代码建议在二元运算符前进行换行</li>
+<li>空白行：使用两个空白行分隔顶层函数和类定义；类方法定义使用一个空行分隔；使用额外的空白行来分隔相关逻辑功能</li>
+<li>文件应该使用UTF-8编码, 且不应该有编码声明</li>
+<li>导入多个库函数应该分开依次导入；导入总是放在文件的顶部，在任何模块注释和文档字符串之后，在模块全局变量和常量之前；导入应按以下顺序进行：标准库导入、有关的第三方库进口、本地应用程序/库特定的导入，每组导入直接用空行分隔；避免通配符导入（import *）</li>
+</ul>
+<p>1.2 字符串</p>
+<ul>
+<li>单引号字符串和双引号字符串相同，代码保持一致即可</li>
+<li>对于三引号字符串，常用三个双引号作文档字符串，文档字符串常用在模块的开端用以说明模块的基本功能，或紧跟函数定义的后面用以说明函数的基本功能</li>
+</ul>
+<p>1.3 空格</p>
+<ul>
+<li>避免使用无关的空格，包括空格内、逗号分号前面等</li>
+<li>避免在行末使用空格</li>
+<li>二元运算符在两侧使用一个空格</li>
+<li>当用于指示关键字参数或默认参数值时，不要在=符号周围使用空格</li>
+</ul>
+<p>1.4 使用尾部逗号(trailing commas)</p>
+<ul>
+<li>尾部逗号通常可选，除了用来说明是只有一个元素的元组tuple时</li>
+<li>当参数、值等列表期望经常扩展时，通常是每个值一行，再加上一个尾部逗号</li>
+</ul>
+<p>1.5 注释</p>
+<ul>
+<li>代码更改时，相应的注释也要随之高优更改</li>
+<li>注释应该是完整的语句，第一个单词应该大写，除非它是特定标识符</li>
+<li>块注释：缩进到与该代码相同的级别。块注释的每一行都以＃和一个空格开始</li>
+<li>行注释：对某一语句行进行注释，注释应该与语句至少隔开两个空格，用＃和一个空格开始</li>
+<li>对于公共的modules, functions, classes, and methods，需要写文档字符串</li>
+<li>注释应该是完整的语句，第一个单词应该大写，除非它是特定标识符 </li>
+</ul>
+<p>1.6 命名约定</p>
+<ul>
+<li>python命名规范有点混乱，很难完全保存一致。对于新模块和包，应该遵守这些新的约定，已存在的库内部一致性更重要</li>
+<li>命名应该反应其用途而非实现</li>
+<li>不要将字符’l’（小写字母l），’O’（大写字母o）或’I’（大写字母I）作为单个字符变量名称</li>
+<li>模块名应该使用简短、全小写的名字</li>
+<li>类的命名采用驼峰命名法，即每个单词的首字母大写</li>
+<li>函数名称应该是小写的，为了提高可读性，必须使用由下划线分隔的单词</li>
+</ul>
+<h2 id="google-python编码规范的一些规则"><a href="#google-python编码规范的一些规则" class="headerlink" title="google python编码规范的一些规则"></a>google python编码规范的一些规则</h2><p>相比pep8，google编码规范对怎么写代码的细节要求更多。比如怎么使用异常，文档字符串怎么写，Todo注释的使用等。参考规范目录摘取一些重要的规则说明</p>
+<p>2.1 背景</p>
+<ul>
+<li>可以使用yapf自动格式化工具来格式化代码 </li>
+</ul>
+<p>2.2 python语言规则</p>
+<ul>
+<li>使用google的pylintrc配置文件来允许pylint</li>
+<li>只对包和模块使用import语句，不对单个类或函数使用import</li>
+<li>使用绝对路径导入每个模块</li>
+<li>可以使用异常但必须非常小心。不要使用assert语句来验证api的参数值；最小化try/except代码块</li>
+<li>避免全局变量</li>
+</ul>
+<p>2.3 python风格规则</p>
+<ul>
+<li>不使用分号作为行尾，不使用分号将2个语句放到同一行</li>
+<li>不要在return语句或条件语句使用括号，除非使用括号来表示连续行或元组</li>
+<li>每行最长80个字符，每个缩进级别使用4个空格，空行、空格跟pep8基本一致</li>
+<li>main文件使用#!/usr/bin/env python3 或#!/usr/bin/python3开头，绝大部分文件不需要使用#！开头</li>
+<li>每个文件应该包含一个版权声明</li>
+<li>使用 f-string，%操作符或者format函数来格式化字符串</li>
+<li>使用TODO注释说明临时的、短期的解决方案</li>
+</ul>
+<p>2.4 保持一致性</p>
+<h2 id="python编码规范检查工具"><a href="#python编码规范检查工具" class="headerlink" title="python编码规范检查工具"></a>python编码规范检查工具</h2><p>光有规范不行，需要有配套的检查工具，方便团队开发代码时统一遵守</p>
+<p>比如我用pycharm来编写Python代码时，如果有出现不符合PEP 8规范的话，pycharm就会提示我，如图所示。<br><img src="https://pic2.zhimg.com/80/v2-3a4fb851d10c2e8036bb977c861d66d1_720w.jpg" alt="pycharm提示"></p>
+<p>更多工具如下：</p>
+<ul>
+<li><a href="https://pypi.org/project/pycodestyle/">pycodestyle</a> – pycodestyle是一款简单的代码检查工具，之前名字叫pep8，为了减少混淆改名成pycodestyle</li>
+<li><a href="https://pylint.org/">pylint</a> – pylint是代码检查工具，不能自动修改代码，有对于的配置文件，可以参考<a href="https://google.github.io/styleguide/pylintrc">google开源的pylintrc配置文件</a></li>
+<li><a href="https://pypi.org/project/pyflakes/">PyFlakes</a> – 一个简单的python错误检查工具,通过解析源代码而不是import来检测不同的错误，通常只能检查出一些逻辑错误</li>
+<li><a href="https://pypi.org/project/flake8/">flake8</a> – 针对PEPE8进行代码规范提示，是对PyFlakes，pycodestyle的封装</li>
+<li><a href="https://github.com/hhatto/autopep8">autopep8</a> – autopep8是一款将python代码自动排版为PEP8风格的工具，它使用 pycodestyle来决定哪部分代码需要格式化</li>
+<li><a href="https://github.com/google/yapf/">yapf</a>–yapf是google开源的一个用于格式化Python代码的工具，可以一键美化代码，支持两种规范：PEP8和Google Style</li>
+</ul>
+<h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>我发文章的几个地方，欢迎大家在朋友圈等地方分享，多多交流。</p>
+<ul>
+<li>微信公众号：诸葛说talk</li>
+<li>知乎：<a href="https://www.zhihu.com/people/richard-zhu/posts">诸葛说</a></li>
+<li>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>python</category>
+        <category>quant</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>google</tag>
+        <tag>coding</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>rqalpha入门</title>
+    <url>/2022/03/26/start-to-learn-rqalpha/</url>
+    <content><![CDATA[<h2 id="rqalpha简介"><a href="#rqalpha简介" class="headerlink" title="rqalpha简介"></a>rqalpha简介</h2><ul>
+<li><a href="https://github.com/ricequant/rqalpha">rqalpha</a>是<a href="https://www.ricequant.com/welcome/">米筐量化</a>开源的从数据获取、算法交易、回测引擎、实盘模拟、实盘交易到数据分析的程序化交易框架。跟quantopian开源的<a href="https://github.com/quantopian/zipline">zipline</a>从api到本地运行方式都比较类似</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>rqalpha简单易学，能很快上手</li>
+<li>rqalpha具有灵活的配置方式和比较强大的扩展性，可以比较容易地定制</li>
+<li>rqalpha所有的策略都可以直接在 <a href="https://www.ricequant.com/welcome/">Ricequant</a>上进行回测和实盘模拟，并且可以通过微信和邮件实时推送交易信号</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>rqalpha不支持港美股回测&amp;交易，可以自定义支持，但成本不小</li>
+<li>rqalpha仅限非商业使用，如需商业使用，需要联系官方</li>
+<li>Ricequant实盘模拟需要开通企业版</li>
+<li>rqalpha本身支持不同周期的回测和实盘交易，但是目前只免费开放A股市场日线数据，如果用户需要做分钟回测或者更细级别的回测可以在 Ricequant上进行，也通过实现数据层接口函数来使用自己的数据</li>
+</ul>
+<h2 id="rqalpha安装"><a href="#rqalpha安装" class="headerlink" title="rqalpha安装"></a>rqalpha安装</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install rqalpha</span><br></pre></td></tr></table></figure>
+<p>RiceQuant免费提供日级别的股票、常用指数、场内基金和期货数据供回测使用。数据每个月月初更新，可以通过以下命令来下载和更新:<br><code>$ rqalpha download-bundle</code><br>bundle 默认存放在 ~/.rqalpha 下，也可以指定 bundle 的存放位置<br><code>$ rqalpha download-bundle -d target_bundle_path</code><br>如果使用了指定路径来存放 bundle，那么执行程序的时候也同样需要指定对应的 bundle 路径。<br><code>$ rqalpha run -d target_bundle_path .....</code></p>
+<p>如果申请了免费试用（免费试用15天，试用账户进行了每天 50MB 的配额限制，<a href="https://www.ricequant.com/welcome/purchase#1">申请链接</a>）或者付费购买了米筐数据服务，可以使用 RQDatac 在每日盘后即时更新回测数据，更新命令如下：<br><code>$ rqalpha update-bundle</code></p>
+<ul>
+<li><p>运行以下命令，将会在指定目录生成一个examples文件夹，其中包含几个有趣的样例策略:<br><code>$ rqalpha examples -d ./</code></p>
+</li>
+<li><p>运行回测</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cd examples</span><br><span class="line">$ rqalpha run -f rsi.py -s 2020-01-01 -e 2021-01-01 -o result.pkl --plot --progress --account stock 100000</span><br></pre></td></tr></table></figure></li>
+<li><p>绘制回测结果：如果运行完回测后，还需要再次绘制回测结果，可以运行以下命令:<br><code>$ rqalpha plot result.pkl</code></p>
+</li>
+</ul>
+<h2 id="rqalpha使用"><a href="#rqalpha使用" class="headerlink" title="rqalpha使用"></a>rqalpha使用</h2><p>rqalpha抽离了策略框架的所有技术细节，以API的方式提供给策略研发者用于编写策略，从而避免陷入过多的技术细节。</p>
+<p>rqalpha的 API主要分为约定函数、数据查询接口、交易接口等几类。</p>
+<ol>
+<li><p>约定函数: 作为 API 的入口函数，用户必须实现对应的约定函数才可以正确的使用RQAlpha</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">* init() : 初始化方法，会在程序启动的时候执行</span><br><span class="line">* handle_bar(): bar数据更新时会自动触发调用</span><br><span class="line">* before_trading(): 会在每天策略交易开始前调用</span><br><span class="line">* after_trading(): 会在每天交易结束后调用</span><br></pre></td></tr></table></figure>
+<p>示例代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 在这个方法中编写任何的初始化逻辑。context对象将会在你的算法策略的任何方法之间做传递。</span><br><span class="line">def init(context):</span><br><span class="line">    # 在context中保存全局变量</span><br><span class="line">    context.s1 = &quot;000001.XSHE&quot;</span><br><span class="line">    # 实时打印日志</span><br><span class="line">    logger.info(&quot;RunInfo: &#123;&#125;&quot;.format(context.run_info))</span><br><span class="line"></span><br><span class="line"># before_trading此函数会在每天策略交易开始前被调用，当天只会被调用一次</span><br><span class="line">def before_trading(context):</span><br><span class="line">    logger.info(&quot;开盘前执行before_trading函数&quot;)</span><br><span class="line"></span><br><span class="line"># 你选择的证券的数据更新将会触发此段逻辑，例如日或分钟历史数据切片或者是实时数据切片更新</span><br><span class="line">def handle_bar(context, bar_dict):</span><br><span class="line">    logger.info(&quot;每一个Bar执行&quot;)</span><br><span class="line">    logger.info(&quot;打印Bar数据：&quot;)</span><br><span class="line">    logger.info(bar_dict[context.s1])</span><br><span class="line"></span><br><span class="line"># after_trading函数会在每天交易结束后被调用，当天只会被调用一次</span><br><span class="line">def after_trading(context):</span><br><span class="line">    logger.info(&quot;收盘后执行after_trading函数&quot;)</span><br></pre></td></tr></table></figure></li>
+<li><p>数据查询接口<br>需要获取数据，根据数据来确定我们的仓位逻辑，因此会使用到数据查询的 API接口。</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">* all_instruments() : 获取所有合约基础信息数据</span><br><span class="line">* instruments() : 获取合约详细数据</span><br><span class="line">* history_bars() : 获取某一合约的历史数据</span><br><span class="line">* current_snapshot() : 获取当前快照数据</span><br><span class="line">* get_future_contracts() : 获取期货可以交易合约列表</span><br><span class="line">* get_trading_dates(): 获取交易日列表</span><br><span class="line">* get_previous_trading_date() : 获取上一日交易日</span><br><span class="line">* get_next_trading_date() : 获取下一个交易日</span><br><span class="line">* get_yield_curve(): 获取收益率曲线</span><br><span class="line">* is_suspended() : 判断某股票当天是否停牌</span><br><span class="line">* is_st_stock() : 判断某股票是否为 *st</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>交易接口<br>rqalpha提供了多种交易接口，以方便不同的使用需求。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">* order_shares(): 【股票专用】指定股数交易</span><br><span class="line">* order_lots(): 【股票专用】指定手数交易</span><br><span class="line">* order_value(): 【股票专用】指定价值交易</span><br><span class="line">* order_percent():【股票专用】 一定比例下单</span><br><span class="line">* order_target_value(): 【股票专用】按照目标价值下单</span><br><span class="line">* order_target_percent(): 【股票专用】按照目标比例下单</span><br><span class="line">* buy_open(): 【期货专用】买开</span><br><span class="line">* sell_close():【期货专用】 平买仓</span><br><span class="line">* sell_open(): 【期货专用】卖开</span><br><span class="line">* buy_close(): 【期货专用】平卖仓</span><br><span class="line">* cancel_order(): 撤单</span><br><span class="line">* get_open_orders(): 获取未成交订单数据</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>rsi.py示例代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from rqalpha.apis import *</span><br><span class="line"></span><br><span class="line">import talib</span><br><span class="line"></span><br><span class="line"># 在这个方法中编写任何的初始化逻辑。context对象将会在你的算法策略的任何方法之间做传递。</span><br><span class="line">def init(context):</span><br><span class="line"></span><br><span class="line">    # 选择我们感兴趣的股票</span><br><span class="line">    context.s1 = &quot;000001.XSHE&quot;</span><br><span class="line">    context.s2 = &quot;601988.XSHG&quot;</span><br><span class="line">    context.s3 = &quot;000068.XSHE&quot;</span><br><span class="line">    context.stocks = [context.s1, context.s2, context.s3]</span><br><span class="line"></span><br><span class="line">    context.TIME_PERIOD = 14</span><br><span class="line">    context.HIGH_RSI = 85</span><br><span class="line">    context.LOW_RSI = 30</span><br><span class="line">    context.ORDER_PERCENT = 0.3</span><br><span class="line"></span><br><span class="line"># 你选择的证券的数据更新将会触发此段逻辑，例如日或分钟历史数据切片或者是实时数据切片更新</span><br><span class="line">def handle_bar(context, bar_dict):</span><br><span class="line">    # 开始编写你的主要的算法逻辑</span><br><span class="line"></span><br><span class="line">    # bar_dict[order_book_id] 可以拿到某个证券的bar信息</span><br><span class="line">    # context.portfolio 可以拿到现在的投资组合状态信息</span><br><span class="line"></span><br><span class="line">    # 使用order_shares(id_or_ins, amount)方法进行落单</span><br><span class="line"></span><br><span class="line">    # TODO: 开始编写你的算法吧！</span><br><span class="line"></span><br><span class="line">    # 对我们选中的股票集合进行loop，运算每一只股票的RSI数值</span><br><span class="line">    for stock in context.stocks:</span><br><span class="line">        # 读取历史数据</span><br><span class="line">        prices = history_bars(stock, context.TIME_PERIOD+1, &#x27;1d&#x27;, &#x27;close&#x27;)</span><br><span class="line"></span><br><span class="line">        # 用Talib计算RSI值</span><br><span class="line">        rsi_data = talib.RSI(prices, timeperiod=context.TIME_PERIOD)[-1]</span><br><span class="line"></span><br><span class="line">        cur_position = get_position(stock).quantity</span><br><span class="line">        # 用剩余现金的30%来购买新的股票</span><br><span class="line">        target_available_cash = context.portfolio.cash * context.ORDER_PERCENT</span><br><span class="line"></span><br><span class="line">        # 当RSI大于设置的上限阀值，清仓该股票</span><br><span class="line">        if rsi_data &gt; context.HIGH_RSI and cur_position &gt; 0:</span><br><span class="line">            order_target_value(stock, 0)</span><br><span class="line"></span><br><span class="line">        # 当RSI小于设置的下限阀值，用剩余cash的一定比例补仓该股</span><br><span class="line">        if rsi_data &lt; context.LOW_RSI:</span><br><span class="line">            logger.info(&quot;target available cash caled: &quot; + str(target_available_cash))</span><br><span class="line">            # 如果剩余的现金不够一手 - 100shares，那么会被ricequant 的order management system reject掉</span><br><span class="line">            order_value(stock, target_available_cash)</span><br></pre></td></tr></table></figure>
+
+<h2 id="多种方式运行策略"><a href="#多种方式运行策略" class="headerlink" title="多种方式运行策略"></a>多种方式运行策略</h2><ul>
+<li>命令行运行：rqalpha run -f rsi.py -s 2020-01-01 -e 2021-01-01 -o result.pkl –plot –progress –account stock 100000</li>
+<li>使用配置文件运行策略： rqalpha在运行策略时候会在当前目录下寻找 config.yml 或者 config.json 文件作为用户配置文件来读取，可以创建config.yml 配置文件，里面配置项为strategy_file: .buy_and_hold.py</li>
+<li>策略内配置参数信息</li>
+<li>通过引用 rqalpha库在代码中运行策略：使用 run_file、run_code、 run_func函数来运行策略</li>
+</ul>
+<h2 id="创建mod"><a href="#创建mod" class="headerlink" title="创建mod"></a>创建mod</h2><p>rqalpha提供了拓展性较强的Mod Hook接口，这意味着开发者可以比较容易的对接第三方库。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ rqalpha mod list # 查看当前安装的 Mod 列表及状态</span><br><span class="line">$ rqalpha mod enable xxx # 启用</span><br><span class="line">$ rqalpha mod disable xxx # 关闭</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>扩展rqalpha API：如果你想为 rqalpha 创建自己的 API，可以通过 Mod 来注册新的 API。在内建的 mod 中，有一个 FuncatAPIMod，将通达信、同花顺的公式表达能力移植到python中，扩展了 rqalpha的 API</p>
+</li>
+<li><p>扩展rqalpha实现自有数据的读取：rqalpha不限制本地运行的策略调使用哪些库，因此可以直接在策略中读取文件、访问数据库等，但需要关注如下两个注意事项: </p>
+<ul>
+<li>请在 init, before_trading, handle_bar, handle_tick, after_trading 等函数中读取自有数据，而不要在函数外执行数据获取的代码，否则可能会产生异常。</li>
+<li>rqalpha是读取策略代码并执行的，因此实际当前路径是运行 rqalpha 命令的路径，策略使用相对路径容易产生异常。如果您需要根据策略路径来定位相对路径可以通过context.config.base.strategy_file 来获取策略路径，从而获取相对策略文件的其他路径</li>
+</ul>
+</li>
+<li><p>rqalpha采用logbook 作为默认的日志模块，可以通过在 mod 中为 logger添加 handler 实现自定义的日志收集</p>
+</li>
+</ul>
+<p>诸葛说 基于rqalpha文档<a href="https://rqalpha.readthedocs.io/zh_CN/latest/development/data_source.html#tushare">行情数据 - 五十行代码接入 tushare 行情数据</a>完善了tushare mod接口，增加了对tspro接口的支持，参见<a href="https://github.com/rchardzhu/rqalpha_mod_tushare">rqalpha_mod_tushare</a></p>
+<h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>我发文章的几个地方，欢迎大家在朋友圈等地方分享，多多交流。</p>
+<ul>
+<li>微信公众号：诸葛说talk</li>
+<li>知乎：<a href="https://www.zhihu.com/people/richard-zhu/posts">https://www.zhihu.com/people/richard-zhu/posts</a></li>
+<li>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://github.com/ricequant/rqalpha">rqalpha github</a></li>
+<li><a href="https://rqalpha.readthedocs.io/zh_CN/latest/intro/overview.html">rqalpha介绍</a></li>
+<li><a href="https://www.zhihu.com/question/62256540">zipline和rqalpha对比</a></li>
+<li><a href="https://rqalpha.readthedocs.io/zh_CN/latest/development/event_source.html#development-event-source">rqalpha扩展事件源</a></li>
+<li><a href="https://rqalpha.readthedocs.io/zh_CN/latest/development/data_source.html">rqalpha扩展数据源</a></li>
+<li><a href="https://rqalpha.readthedocs.io/zh_CN/latest/intro/examples.html">rqalpha策略示例</a></li>
+<li><a href="https://rqalpha.readthedocs.io/zh_CN/latest/api/base_api.html">rqalpha基础api</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>python</category>
+        <category>quant</category>
+      </categories>
+      <tags>
+        <tag>quant</tag>
+        <tag>python</tag>
+        <tag>rqalpha</tag>
       </tags>
   </entry>
   <entry>
