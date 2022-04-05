@@ -67,6 +67,64 @@
       </tags>
   </entry>
   <entry>
+    <title>markdown实战笔记</title>
+    <url>/2022/02/03/markdown-practice-md/</url>
+    <content><![CDATA[<p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档。Markdown 语言在 2004 由约翰·格鲁伯（英语：John Gruber）创建。Markdown 编写的文档可以导出 HTML 、Word、图像、PDF、Epub 等多种格式的文档。Markdown 编写的文档后缀为 .md, .markdown。</p>
+<h2 id="markdown语法"><a href="#markdown语法" class="headerlink" title="markdown语法"></a>markdown语法</h2><ul>
+<li>使用 # 号可表示 1-6 级标题，一级标题对应一个 # 号，二级标题对应两个 # 号，以此类推</li>
+<li><code>*斜体文本*，**粗体文本**， ***粗斜体文本***</code></li>
+<li>一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西</li>
+<li>文字要添加删除线，只需要在文字的两端加上两个波浪线 ~~即可</li>
+<li>下划线可以通过 HTML 的 <code>&lt;u&gt;&lt;/u&gt;</code> 标签来实现</li>
+<li>换行： 使用html <code>&lt;br&gt;</code>标签</li>
+<li>脚注是对文本的补充说明<code>说明文本[^要注明的文本]</code> 在文末加上<code>[^要注明的文本]: markdown说明</code></li>
+<li>无序列表使用星号(*)、加号(+)或是减号(-)作为列表标记，这些标记后面要加一个空格，然后再填写内容； 有序列表使用数字并加上 . 号来表示</li>
+<li>使用反斜杠转义特殊字符，如*号，可以使用<code>\*</code>来解决</li>
+<li>区块引用是在段落开头使用 &gt; 符号 ，然后后面紧跟一个空格符号。区块是可以嵌套的，一个 &gt; 符号是最外层，两个 &gt; 符号是第一层嵌套，以此类推。如果要在列表项目内放进区块，那么就需要在 &gt; 前添加四个空格的缩进</li>
+<li>函数或片段的代码可以用反引号`把它包起来，可以用 ``` 包裹一段代码，并指定一种语言</li>
+<li>链接：<code>[链接名称](链接地址) or &lt;链接地址&gt;</code></li>
+<li>图片：<code>![alt 属性文本](图片地址) or ![alt 属性文本](图片地址 &quot;可选标题&quot;)</code>，如果想指定图片宽度高度，需要使用html的<code>&lt;img&gt;</code>标签，如<code>&lt;img src=&quot;http://www.xxx.com/xxx.jpg&quot; width=&quot;50%&quot;&gt;</code> </li>
+<li>表格：使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。-: 设置内容和标题栏居右对齐，:- 设置内容和标题栏居左对齐， :-: 设置内容和标题栏居中对齐<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|  表头   | 表头  |</span><br><span class="line">|  ----  | ----  |</span><br><span class="line">| 单元格  | 单元格 |</span><br><span class="line">| 单元格  | 单元格 |， </span><br></pre></td></tr></table></figure></li>
+<li>任务列表：<code>- [ ] foo， - [x] bar</code></li>
+<li>公式： 要显示α，在”\alpha” 前后分别加上$，<code>$\alpha$</code>，上标 <code>$a^b$</code>，下标<code>$a_b$</code>，分数<code>$\frac&#123;3+8a&#125;&#123;5b+6&#125;$</code>， 求和 <code>$\sum&#123;3x^n&#125;$</code> 。其他写法参考<a href="https://rpruim.github.io/s341/S19/from-class/MathinRmd.html">Mathematics in R Markdown</a></li>
+</ul>
+<h2 id="markdown编辑软件"><a href="#markdown编辑软件" class="headerlink" title="markdown编辑软件"></a>markdown编辑软件</h2><ul>
+<li><a href="https://marktext.app/">marktext</a> – 从官网下载，或者使用<code>brew install --cask mark-text</code>安装， 具体见<a href="https://github.com/marktext/marktext/blob/develop/docs/i18n/zh_cn.md#readme">marktext中文说明</a></li>
+<li>visual code插件之Markdown All in One： 包括快捷键、公式等功能</li>
+<li>visual code插件之Markdown Preview Enhanced： 除了实时预览外，还包括了其他许多有用的功能，包括mermaid, PlantUML, pandoc, PDF导出等功能</li>
+<li><a href="https://typora.io/">typora</a> –  从1.0.0开始收费</li>
+</ul>
+<h2 id="markdown文件导出为html、doc、epub、pdf格式"><a href="#markdown文件导出为html、doc、epub、pdf格式" class="headerlink" title="markdown文件导出为html、doc、epub、pdf格式"></a>markdown文件导出为html、doc、epub、pdf格式</h2><ol>
+<li>安装pandoc，<code>brew install pandoc</code></li>
+<li>将markdown转成html: <code>pandoc -f markdown -t html ./test.md</code> </li>
+<li>将markdown转成doc：<code>pandoc -f markdown -t html ./test.md | pandoc -f html -t docx -o test.docx</code></li>
+<li>将markdown转成PDF，需要安装<a href="https://www.latex-project.org/">latex</a>。只要安装basicTex就可以了，大概100M+,安装完后运行：<code>pandoc -f markdown_github test.md -o test.pdf --latex-engine=xelatex -V mainfont=&quot;SimSun&quot;</code> 这个表明使用的是GitHub风格markdown语法</li>
+<li>将markdown转成epub： <code>pandoc -f markdown  ./test.md -o test.epub</code></li>
+</ol>
+<h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>我发文章的几个地方，欢迎大家在朋友圈等地方分享，多多交流。</p>
+<ul>
+<li>微信公众号：诸葛说talk</li>
+<li>知乎：<a href="https://www.zhihu.com/people/richard-zhu/posts">https://www.zhihu.com/people/richard-zhu/posts</a></li>
+<li>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://zh.wikipedia.org/wiki/Markdown">markdown wikipedia</a></li>
+<li><a href="https://github.github.com/gfm/">GitHub Flavored Markdown Spec</a> – github风味markdown规范增加了表格、删除线、自动链接和任务列表功能</li>
+<li><a href="https://pandoc.org/demos.html">pandoc demos</a></li>
+<li><a href="https://geek-docs.com/markdown/markdown-tutorial/markdown-mathematical-formula.html">Markdown数学公式</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>blog</category>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
+        <tag>blog</tag>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>常用量化回测数据/收益指标的一些说明</title>
     <url>/2022/02/06/common-invest-indicator-md/</url>
     <content><![CDATA[<h2 id="常用数据-收益指标"><a href="#常用数据-收益指标" class="headerlink" title="常用数据/收益指标"></a>常用数据/收益指标</h2><ol>
@@ -229,61 +287,110 @@
       </tags>
   </entry>
   <entry>
-    <title>markdown实战笔记</title>
-    <url>/2022/02/03/markdown-practice-md/</url>
-    <content><![CDATA[<p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档。Markdown 语言在 2004 由约翰·格鲁伯（英语：John Gruber）创建。Markdown 编写的文档可以导出 HTML 、Word、图像、PDF、Epub 等多种格式的文档。Markdown 编写的文档后缀为 .md, .markdown。</p>
-<h2 id="markdown语法"><a href="#markdown语法" class="headerlink" title="markdown语法"></a>markdown语法</h2><ul>
-<li>使用 # 号可表示 1-6 级标题，一级标题对应一个 # 号，二级标题对应两个 # 号，以此类推</li>
-<li><code>*斜体文本*，**粗体文本**， ***粗斜体文本***</code></li>
-<li>一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西</li>
-<li>文字要添加删除线，只需要在文字的两端加上两个波浪线 ~~即可</li>
-<li>下划线可以通过 HTML 的 <code>&lt;u&gt;&lt;/u&gt;</code> 标签来实现</li>
-<li>换行： 使用html <code>&lt;br&gt;</code>标签</li>
-<li>脚注是对文本的补充说明<code>说明文本[^要注明的文本]</code> 在文末加上<code>[^要注明的文本]: markdown说明</code></li>
-<li>无序列表使用星号(*)、加号(+)或是减号(-)作为列表标记，这些标记后面要加一个空格，然后再填写内容； 有序列表使用数字并加上 . 号来表示</li>
-<li>使用反斜杠转义特殊字符，如*号，可以使用<code>\*</code>来解决</li>
-<li>区块引用是在段落开头使用 &gt; 符号 ，然后后面紧跟一个空格符号。区块是可以嵌套的，一个 &gt; 符号是最外层，两个 &gt; 符号是第一层嵌套，以此类推。如果要在列表项目内放进区块，那么就需要在 &gt; 前添加四个空格的缩进</li>
-<li>函数或片段的代码可以用反引号`把它包起来，可以用 ``` 包裹一段代码，并指定一种语言</li>
-<li>链接：<code>[链接名称](链接地址) or &lt;链接地址&gt;</code></li>
-<li>图片：<code>![alt 属性文本](图片地址) or ![alt 属性文本](图片地址 &quot;可选标题&quot;)</code>，如果想指定图片宽度高度，需要使用html的<code>&lt;img&gt;</code>标签，如<code>&lt;img src=&quot;http://www.xxx.com/xxx.jpg&quot; width=&quot;50%&quot;&gt;</code> </li>
-<li>表格：使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。-: 设置内容和标题栏居右对齐，:- 设置内容和标题栏居左对齐， :-: 设置内容和标题栏居中对齐<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|  表头   | 表头  |</span><br><span class="line">|  ----  | ----  |</span><br><span class="line">| 单元格  | 单元格 |</span><br><span class="line">| 单元格  | 单元格 |， </span><br></pre></td></tr></table></figure></li>
-<li>任务列表：<code>- [ ] foo， - [x] bar</code></li>
-<li>公式： 要显示α，在”\alpha” 前后分别加上$，<code>$\alpha$</code>，上标 <code>$a^b$</code>，下标<code>$a_b$</code>，分数<code>$\frac&#123;3+8a&#125;&#123;5b+6&#125;$</code>， 求和 <code>$\sum&#123;3x^n&#125;$</code> 。其他写法参考<a href="https://rpruim.github.io/s341/S19/from-class/MathinRmd.html">Mathematics in R Markdown</a></li>
+    <title>python代码/编码规范--pep8和google的python代码规范</title>
+    <url>/2022/02/02/python-coding-style/</url>
+    <content><![CDATA[<p>当所有代码均保持一致的风格时，阅读别人的代码沟通成本最低，特别是在理解大型代码库时效率提升很大。python使用的比较多的代码规范包括2种，分别如下：</p>
+<ul>
+<li><a href="https://www.python.org/dev/peps/pep-0008/">pep8 python编码规范</a></li>
+<li><a href="https://google.github.io/styleguide/pyguide.html">google python编码规范</a> </li>
 </ul>
-<h2 id="markdown编辑软件"><a href="#markdown编辑软件" class="headerlink" title="markdown编辑软件"></a>markdown编辑软件</h2><ul>
-<li><a href="https://marktext.app/">marktext</a> – 从官网下载，或者使用<code>brew install --cask mark-text</code>安装， 具体见<a href="https://github.com/marktext/marktext/blob/develop/docs/i18n/zh_cn.md#readme">marktext中文说明</a></li>
-<li>visual code插件之Markdown All in One： 包括快捷键、公式等功能</li>
-<li>visual code插件之Markdown Preview Enhanced： 除了实时预览外，还包括了其他许多有用的功能，包括mermaid, PlantUML, pandoc, PDF导出等功能</li>
-<li><a href="https://typora.io/">typora</a> –  从1.0.0开始收费</li>
+<p>pep8是python编码规范的事实标准，google python编码规范做了更多的说明，可以作为pep8的补充。这也意味着python社区开源贡献者基本都遵守pep8，但不一定遵守google的python编码规范。</p>
+<h2 id="pep8的一些规则"><a href="#pep8的一些规则" class="headerlink" title="pep8的一些规则"></a>pep8的一些规则</h2><p>参考pep8的目录，摘取一些重要的规则，具体使用的时候可以通过工具来检测。</p>
+<p>1.1 代码布局</p>
+<ul>
+<li>每个缩进级别使用4个空格；连续行使用垂直对齐或者使用悬挂式缩进(额外的4个空格缩进)</li>
+<li>空格是首选的缩进方法</li>
+<li>每行最多79个字符</li>
+<li>二元运算符前后换行都允许，只要代码保持一致就行。对于新代码建议在二元运算符前进行换行</li>
+<li>空白行：使用两个空白行分隔顶层函数和类定义；类方法定义使用一个空行分隔；使用额外的空白行来分隔相关逻辑功能</li>
+<li>文件应该使用UTF-8编码, 且不应该有编码声明</li>
+<li>导入多个库函数应该分开依次导入；导入总是放在文件的顶部，在任何模块注释和文档字符串之后，在模块全局变量和常量之前；导入应按以下顺序进行：标准库导入、有关的第三方库进口、本地应用程序/库特定的导入，每组导入直接用空行分隔；避免通配符导入（import *）</li>
 </ul>
-<h2 id="markdown文件导出为html、doc、epub、pdf格式"><a href="#markdown文件导出为html、doc、epub、pdf格式" class="headerlink" title="markdown文件导出为html、doc、epub、pdf格式"></a>markdown文件导出为html、doc、epub、pdf格式</h2><ol>
-<li>安装pandoc，<code>brew install pandoc</code></li>
-<li>将markdown转成html: <code>pandoc -f markdown -t html ./test.md</code> </li>
-<li>将markdown转成doc：<code>pandoc -f markdown -t html ./test.md | pandoc -f html -t docx -o test.docx</code></li>
-<li>将markdown转成PDF，需要安装<a href="https://www.latex-project.org/">latex</a>。只要安装basicTex就可以了，大概100M+,安装完后运行：<code>pandoc -f markdown_github test.md -o test.pdf --latex-engine=xelatex -V mainfont=&quot;SimSun&quot;</code> 这个表明使用的是GitHub风格markdown语法</li>
-<li>将markdown转成epub： <code>pandoc -f markdown  ./test.md -o test.epub</code></li>
-</ol>
+<p>1.2 字符串</p>
+<ul>
+<li>单引号字符串和双引号字符串相同，代码保持一致即可</li>
+<li>对于三引号字符串，常用三个双引号作文档字符串，文档字符串常用在模块的开端用以说明模块的基本功能，或紧跟函数定义的后面用以说明函数的基本功能</li>
+</ul>
+<p>1.3 空格</p>
+<ul>
+<li>避免使用无关的空格，包括空格内、逗号分号前面等</li>
+<li>避免在行末使用空格</li>
+<li>二元运算符在两侧使用一个空格</li>
+<li>当用于指示关键字参数或默认参数值时，不要在=符号周围使用空格</li>
+</ul>
+<p>1.4 使用尾部逗号(trailing commas)</p>
+<ul>
+<li>尾部逗号通常可选，除了用来说明是只有一个元素的元组tuple时</li>
+<li>当参数、值等列表期望经常扩展时，通常是每个值一行，再加上一个尾部逗号</li>
+</ul>
+<p>1.5 注释</p>
+<ul>
+<li>代码更改时，相应的注释也要随之高优更改</li>
+<li>注释应该是完整的语句，第一个单词应该大写，除非它是特定标识符</li>
+<li>块注释：缩进到与该代码相同的级别。块注释的每一行都以＃和一个空格开始</li>
+<li>行注释：对某一语句行进行注释，注释应该与语句至少隔开两个空格，用＃和一个空格开始</li>
+<li>对于公共的modules, functions, classes, and methods，需要写文档字符串</li>
+<li>注释应该是完整的语句，第一个单词应该大写，除非它是特定标识符 </li>
+</ul>
+<p>1.6 命名约定</p>
+<ul>
+<li>python命名规范有点混乱，很难完全保存一致。对于新模块和包，应该遵守这些新的约定，已存在的库内部一致性更重要</li>
+<li>命名应该反应其用途而非实现</li>
+<li>不要将字符’l’（小写字母l），’O’（大写字母o）或’I’（大写字母I）作为单个字符变量名称</li>
+<li>模块名应该使用简短、全小写的名字</li>
+<li>类的命名采用驼峰命名法，即每个单词的首字母大写</li>
+<li>函数名称应该是小写的，为了提高可读性，必须使用由下划线分隔的单词</li>
+</ul>
+<h2 id="google-python编码规范的一些规则"><a href="#google-python编码规范的一些规则" class="headerlink" title="google python编码规范的一些规则"></a>google python编码规范的一些规则</h2><p>相比pep8，google编码规范对怎么写代码的细节要求更多。比如怎么使用异常，文档字符串怎么写，Todo注释的使用等。参考规范目录摘取一些重要的规则说明</p>
+<p>2.1 背景</p>
+<ul>
+<li>可以使用yapf自动格式化工具来格式化代码 </li>
+</ul>
+<p>2.2 python语言规则</p>
+<ul>
+<li>使用google的pylintrc配置文件来允许pylint</li>
+<li>只对包和模块使用import语句，不对单个类或函数使用import</li>
+<li>使用绝对路径导入每个模块</li>
+<li>可以使用异常但必须非常小心。不要使用assert语句来验证api的参数值；最小化try/except代码块</li>
+<li>避免全局变量</li>
+</ul>
+<p>2.3 python风格规则</p>
+<ul>
+<li>不使用分号作为行尾，不使用分号将2个语句放到同一行</li>
+<li>不要在return语句或条件语句使用括号，除非使用括号来表示连续行或元组</li>
+<li>每行最长80个字符，每个缩进级别使用4个空格，空行、空格跟pep8基本一致</li>
+<li>main文件使用#!/usr/bin/env python3 或#!/usr/bin/python3开头，绝大部分文件不需要使用#！开头</li>
+<li>每个文件应该包含一个版权声明</li>
+<li>使用 f-string，%操作符或者format函数来格式化字符串</li>
+<li>使用TODO注释说明临时的、短期的解决方案</li>
+</ul>
+<p>2.4 保持一致性</p>
+<h2 id="python编码规范检查工具"><a href="#python编码规范检查工具" class="headerlink" title="python编码规范检查工具"></a>python编码规范检查工具</h2><p>光有规范不行，需要有配套的检查工具，方便团队开发代码时统一遵守</p>
+<p>比如我用pycharm来编写Python代码时，如果有出现不符合PEP 8规范的话，pycharm就会提示我，如图所示。<br><img src="https://pic2.zhimg.com/80/v2-3a4fb851d10c2e8036bb977c861d66d1_720w.jpg" alt="pycharm提示"></p>
+<p>更多工具如下：</p>
+<ul>
+<li><a href="https://pypi.org/project/pycodestyle/">pycodestyle</a> – pycodestyle是一款简单的代码检查工具，之前名字叫pep8，为了减少混淆改名成pycodestyle</li>
+<li><a href="https://pylint.org/">pylint</a> – pylint是代码检查工具，不能自动修改代码，有对于的配置文件，可以参考<a href="https://google.github.io/styleguide/pylintrc">google开源的pylintrc配置文件</a></li>
+<li><a href="https://pypi.org/project/pyflakes/">PyFlakes</a> – 一个简单的python错误检查工具,通过解析源代码而不是import来检测不同的错误，通常只能检查出一些逻辑错误</li>
+<li><a href="https://pypi.org/project/flake8/">flake8</a> – 针对PEPE8进行代码规范提示，是对PyFlakes，pycodestyle的封装</li>
+<li><a href="https://github.com/hhatto/autopep8">autopep8</a> – autopep8是一款将python代码自动排版为PEP8风格的工具，它使用 pycodestyle来决定哪部分代码需要格式化</li>
+<li><a href="https://github.com/google/yapf/">yapf</a>–yapf是google开源的一个用于格式化Python代码的工具，可以一键美化代码，支持两种规范：PEP8和Google Style</li>
+</ul>
 <h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>我发文章的几个地方，欢迎大家在朋友圈等地方分享，多多交流。</p>
 <ul>
 <li>微信公众号：诸葛说talk</li>
-<li>知乎：<a href="https://www.zhihu.com/people/richard-zhu/posts">https://www.zhihu.com/people/richard-zhu/posts</a></li>
+<li>知乎：<a href="https://www.zhihu.com/people/richard-zhu/posts">诸葛说</a></li>
 <li>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://zh.wikipedia.org/wiki/Markdown">markdown wikipedia</a></li>
-<li><a href="https://github.github.com/gfm/">GitHub Flavored Markdown Spec</a> – github风味markdown规范增加了表格、删除线、自动链接和任务列表功能</li>
-<li><a href="https://pandoc.org/demos.html">pandoc demos</a></li>
-<li><a href="https://geek-docs.com/markdown/markdown-tutorial/markdown-mathematical-formula.html">Markdown数学公式</a></li>
 </ul>
 ]]></content>
       <categories>
-        <category>blog</category>
-        <category>tool</category>
+        <category>python</category>
+        <category>quant</category>
       </categories>
       <tags>
-        <tag>markdown</tag>
-        <tag>blog</tag>
-        <tag>github</tag>
+        <tag>python</tag>
+        <tag>google</tag>
+        <tag>coding</tag>
       </tags>
   </entry>
   <entry>
@@ -425,113 +532,6 @@ or <figure class="highlight plaintext"><table><tr><td class="code"><pre><span cl
       </tags>
   </entry>
   <entry>
-    <title>python代码/编码规范--pep8和google的python代码规范</title>
-    <url>/2022/02/02/python-coding-style/</url>
-    <content><![CDATA[<p>当所有代码均保持一致的风格时，阅读别人的代码沟通成本最低，特别是在理解大型代码库时效率提升很大。python使用的比较多的代码规范包括2种，分别如下：</p>
-<ul>
-<li><a href="https://www.python.org/dev/peps/pep-0008/">pep8 python编码规范</a></li>
-<li><a href="https://google.github.io/styleguide/pyguide.html">google python编码规范</a> </li>
-</ul>
-<p>pep8是python编码规范的事实标准，google python编码规范做了更多的说明，可以作为pep8的补充。这也意味着python社区开源贡献者基本都遵守pep8，但不一定遵守google的python编码规范。</p>
-<h2 id="pep8的一些规则"><a href="#pep8的一些规则" class="headerlink" title="pep8的一些规则"></a>pep8的一些规则</h2><p>参考pep8的目录，摘取一些重要的规则，具体使用的时候可以通过工具来检测。</p>
-<p>1.1 代码布局</p>
-<ul>
-<li>每个缩进级别使用4个空格；连续行使用垂直对齐或者使用悬挂式缩进(额外的4个空格缩进)</li>
-<li>空格是首选的缩进方法</li>
-<li>每行最多79个字符</li>
-<li>二元运算符前后换行都允许，只要代码保持一致就行。对于新代码建议在二元运算符前进行换行</li>
-<li>空白行：使用两个空白行分隔顶层函数和类定义；类方法定义使用一个空行分隔；使用额外的空白行来分隔相关逻辑功能</li>
-<li>文件应该使用UTF-8编码, 且不应该有编码声明</li>
-<li>导入多个库函数应该分开依次导入；导入总是放在文件的顶部，在任何模块注释和文档字符串之后，在模块全局变量和常量之前；导入应按以下顺序进行：标准库导入、有关的第三方库进口、本地应用程序/库特定的导入，每组导入直接用空行分隔；避免通配符导入（import *）</li>
-</ul>
-<p>1.2 字符串</p>
-<ul>
-<li>单引号字符串和双引号字符串相同，代码保持一致即可</li>
-<li>对于三引号字符串，常用三个双引号作文档字符串，文档字符串常用在模块的开端用以说明模块的基本功能，或紧跟函数定义的后面用以说明函数的基本功能</li>
-</ul>
-<p>1.3 空格</p>
-<ul>
-<li>避免使用无关的空格，包括空格内、逗号分号前面等</li>
-<li>避免在行末使用空格</li>
-<li>二元运算符在两侧使用一个空格</li>
-<li>当用于指示关键字参数或默认参数值时，不要在=符号周围使用空格</li>
-</ul>
-<p>1.4 使用尾部逗号(trailing commas)</p>
-<ul>
-<li>尾部逗号通常可选，除了用来说明是只有一个元素的元组tuple时</li>
-<li>当参数、值等列表期望经常扩展时，通常是每个值一行，再加上一个尾部逗号</li>
-</ul>
-<p>1.5 注释</p>
-<ul>
-<li>代码更改时，相应的注释也要随之高优更改</li>
-<li>注释应该是完整的语句，第一个单词应该大写，除非它是特定标识符</li>
-<li>块注释：缩进到与该代码相同的级别。块注释的每一行都以＃和一个空格开始</li>
-<li>行注释：对某一语句行进行注释，注释应该与语句至少隔开两个空格，用＃和一个空格开始</li>
-<li>对于公共的modules, functions, classes, and methods，需要写文档字符串</li>
-<li>注释应该是完整的语句，第一个单词应该大写，除非它是特定标识符 </li>
-</ul>
-<p>1.6 命名约定</p>
-<ul>
-<li>python命名规范有点混乱，很难完全保存一致。对于新模块和包，应该遵守这些新的约定，已存在的库内部一致性更重要</li>
-<li>命名应该反应其用途而非实现</li>
-<li>不要将字符’l’（小写字母l），’O’（大写字母o）或’I’（大写字母I）作为单个字符变量名称</li>
-<li>模块名应该使用简短、全小写的名字</li>
-<li>类的命名采用驼峰命名法，即每个单词的首字母大写</li>
-<li>函数名称应该是小写的，为了提高可读性，必须使用由下划线分隔的单词</li>
-</ul>
-<h2 id="google-python编码规范的一些规则"><a href="#google-python编码规范的一些规则" class="headerlink" title="google python编码规范的一些规则"></a>google python编码规范的一些规则</h2><p>相比pep8，google编码规范对怎么写代码的细节要求更多。比如怎么使用异常，文档字符串怎么写，Todo注释的使用等。参考规范目录摘取一些重要的规则说明</p>
-<p>2.1 背景</p>
-<ul>
-<li>可以使用yapf自动格式化工具来格式化代码 </li>
-</ul>
-<p>2.2 python语言规则</p>
-<ul>
-<li>使用google的pylintrc配置文件来允许pylint</li>
-<li>只对包和模块使用import语句，不对单个类或函数使用import</li>
-<li>使用绝对路径导入每个模块</li>
-<li>可以使用异常但必须非常小心。不要使用assert语句来验证api的参数值；最小化try/except代码块</li>
-<li>避免全局变量</li>
-</ul>
-<p>2.3 python风格规则</p>
-<ul>
-<li>不使用分号作为行尾，不使用分号将2个语句放到同一行</li>
-<li>不要在return语句或条件语句使用括号，除非使用括号来表示连续行或元组</li>
-<li>每行最长80个字符，每个缩进级别使用4个空格，空行、空格跟pep8基本一致</li>
-<li>main文件使用#!/usr/bin/env python3 或#!/usr/bin/python3开头，绝大部分文件不需要使用#！开头</li>
-<li>每个文件应该包含一个版权声明</li>
-<li>使用 f-string，%操作符或者format函数来格式化字符串</li>
-<li>使用TODO注释说明临时的、短期的解决方案</li>
-</ul>
-<p>2.4 保持一致性</p>
-<h2 id="python编码规范检查工具"><a href="#python编码规范检查工具" class="headerlink" title="python编码规范检查工具"></a>python编码规范检查工具</h2><p>光有规范不行，需要有配套的检查工具，方便团队开发代码时统一遵守</p>
-<p>比如我用pycharm来编写Python代码时，如果有出现不符合PEP 8规范的话，pycharm就会提示我，如图所示。<br><img src="https://pic2.zhimg.com/80/v2-3a4fb851d10c2e8036bb977c861d66d1_720w.jpg" alt="pycharm提示"></p>
-<p>更多工具如下：</p>
-<ul>
-<li><a href="https://pypi.org/project/pycodestyle/">pycodestyle</a> – pycodestyle是一款简单的代码检查工具，之前名字叫pep8，为了减少混淆改名成pycodestyle</li>
-<li><a href="https://pylint.org/">pylint</a> – pylint是代码检查工具，不能自动修改代码，有对于的配置文件，可以参考<a href="https://google.github.io/styleguide/pylintrc">google开源的pylintrc配置文件</a></li>
-<li><a href="https://pypi.org/project/pyflakes/">PyFlakes</a> – 一个简单的python错误检查工具,通过解析源代码而不是import来检测不同的错误，通常只能检查出一些逻辑错误</li>
-<li><a href="https://pypi.org/project/flake8/">flake8</a> – 针对PEPE8进行代码规范提示，是对PyFlakes，pycodestyle的封装</li>
-<li><a href="https://github.com/hhatto/autopep8">autopep8</a> – autopep8是一款将python代码自动排版为PEP8风格的工具，它使用 pycodestyle来决定哪部分代码需要格式化</li>
-<li><a href="https://github.com/google/yapf/">yapf</a>–yapf是google开源的一个用于格式化Python代码的工具，可以一键美化代码，支持两种规范：PEP8和Google Style</li>
-</ul>
-<h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>我发文章的几个地方，欢迎大家在朋友圈等地方分享，多多交流。</p>
-<ul>
-<li>微信公众号：诸葛说talk</li>
-<li>知乎：<a href="https://www.zhihu.com/people/richard-zhu/posts">诸葛说</a></li>
-<li>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>python</category>
-        <category>quant</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>google</tag>
-        <tag>coding</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>rqalpha入门</title>
     <url>/2022/03/26/start-to-learn-rqalpha/</url>
     <content><![CDATA[<h2 id="rqalpha简介"><a href="#rqalpha简介" class="headerlink" title="rqalpha简介"></a>rqalpha简介</h2><ul>
@@ -623,6 +623,75 @@ or <figure class="highlight plaintext"><table><tr><td class="code"><pre><span cl
         <tag>quant</tag>
         <tag>python</tag>
         <tag>rqalpha</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>backtrader入门</title>
+    <url>/2022/04/03/start-to-learn-backtrader/</url>
+    <content><![CDATA[<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><p><a href="https://www.backtrader.com/">backtrader</a> 是一个用于回测和交易的python框架，它功能丰富，可以让你聚焦在设计可重用的交易策略、指标和分析上，而不用花大量时间在构建基础框架上面。</p>
+<p>优点：</p>
+<ul>
+<li>github开源，策略编写简单快速</li>
+<li>安装方便，除了matplotlib外，不依赖其他外部lib</li>
+<li>支持ib等券商实时交易</li>
+<li>数据来源支持csv文件，在线数据源或pandas格式，同时支持多数据来源、多策略</li>
+<li>支持TA-lib指标，方便支持自定义指标的开发，集成pyfolio分析模块等</li>
+<li>支持品种多，运行速度快：pandas 矢量运算、多策略并行运算</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>gpl 3.0授权，更改框架需要开源</li>
+<li>画图界面风格比较老旧</li>
+<li>框架代码抽象比较多，使用了大量的元编程，学习比较费劲</li>
+</ul>
+<h2 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install backtrader</span><br><span class="line">git clone https://github.com/mementum/backtrader.git</span><br><span class="line">cd samples/commission-schemes</span><br><span class="line">python commission-schemes.py --plot</span><br></pre></td></tr></table></figure>
+<p>出现如下提示&amp;图形，表明安装正常。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2006-03-09, BUY CREATE, 3757.59</span><br><span class="line">2006-03-10, BUY EXECUTED, Price: 3754.13, Cost: 2000.00, Comm 2.00</span><br><span class="line">2006-04-11, SELL CREATE, 3788.81</span><br><span class="line">2006-04-12, SELL EXECUTED, Price: 3786.93, Cost: 2000.00, Comm 2.00</span><br><span class="line">2006-04-12, TRADE PROFIT, GROSS 328.00, NET 324.00</span><br><span class="line">2006-04-20, BUY CREATE, 3860.00</span><br><span class="line">2006-04-21, BUY EXECUTED, Price: 3863.57, Cost: 2000.00, Comm 2.00</span><br><span class="line">.......</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic3.zhimg.com/80/v2-f4bf28c51047d506cf68cc4f4cb7491e_720w.jpg" alt="图形"><br>如果出现如下错误，说明matplotlib安装不对，<code>ImportError: cannot import name &#39;warnings&#39; from &#39;matplotlib.dates&#39;</code><br>解决办法：<code>pip install matplotlib==3.2.2  -i https://pypi.tuna.tsinghua.edu.cn/simple</code></p>
+<h2 id="3-代码框架介绍"><a href="#3-代码框架介绍" class="headerlink" title="3. 代码框架介绍"></a>3. 代码框架介绍</h2><p>backtrader代码运行主要包括以下组成部分：</p>
+<ol>
+<li>Strategy交易策略模块：需要设计交易策略，根据信号进行买入/卖出</li>
+</ol>
+<ul>
+<li>设计策略中用于生成交易信号的指标</li>
+<li>编写买入、卖出的交易逻辑</li>
+<li>按需打印交易信息</li>
+</ul>
+<ol start="2">
+<li>DataFeeds数据模块: 将目标金融数据加载到回测框架中</li>
+<li>Cerebro回测框架设置：根据需要设置初始资金，佣金，数据来源，交易策略，交易头寸大小。通过Broker经纪商模块设置</li>
+<li>运行回测：运行Cerebro回测并打印出所有已执行的交易</li>
+<li>按需添加策略分析指标Analyzers或观测器Observers评估效果： 以图形和风险收益等指标对交易策略的回测结果进行评价</li>
+</ol>
+<p>Lines说明：Lines是backtrader回测的数据，由一系列的点组成，通常包括以下类别的数据：Open（开盘价）, High（最高价）, Low（最低价）, Close（收盘价）, Volume（成交量）, OpenInterest（未平仓量，没有的话设置为0）。Data Feeds（数据加载）、Indicators（技术指标）和Strategies（策略）都会生成 Lines。价格数据中的所有”Open” (开盘价)按时间组成一条 Line。所以，一组含有以上6个类别的价格数据，共有6条 Lines。如果算上“DateTime”（时间，可以看作是一组数据的主键），一共有7条 Lines。当访问一条 Line 的数据时，会默认指向下标为 0 的数据，用于访问当前时刻。backtrader会将”0”一直指向当前值，下标 -1 来访问上一个值。比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.dataclose[0] # 当日的收盘价</span><br><span class="line">self.dataclose[-1] # 昨天的收盘价</span><br><span class="line">self.dataclose[-2] # 前天的收盘价</span><br></pre></td></tr></table></figure>
+
+<p>其他说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.sma5 = bt.indicators.SimpleMovingAverage(</span><br><span class="line">            self.datas[0], period=5)    # 返回MA5的相关数据</span><br><span class="line">            </span><br><span class="line">cerebro.broker.setcash(100000.0)    # 设定初始资金    </span><br><span class="line">cerebro.broker.setcommission(0.005) # 每次交易都需要支付一定的佣金</span><br><span class="line">cerebro.broker.getvalue() # 目前的资金</span><br><span class="line">cerebro.addsizer(bt.sizers.FixedSize, stake=100) # 设定每次交易买入的股数</span><br></pre></td></tr></table></figure>
+
+<p>以commission-schemes.py为例进行说明，代码如下，对应位置加上了注释说明。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import argparse </span><br><span class="line">import datetime</span><br><span class="line"></span><br><span class="line"># 导入backtrader相关包</span><br><span class="line">import backtrader as bt</span><br><span class="line">import backtrader.feeds as btfeeds</span><br><span class="line">import backtrader.indicators as btind</span><br><span class="line"></span><br><span class="line"># 交易策略</span><br><span class="line">class SMACrossOver(bt.Strategy):  </span><br><span class="line">    params = (</span><br><span class="line">        (&#x27;stake&#x27;, 1),    # 交易股数</span><br><span class="line">        (&#x27;period&#x27;, 30),  # 周期长度</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    def log(self, txt, dt=None):</span><br><span class="line">        &#x27;&#x27;&#x27; Logging function fot this strategy&#x27;&#x27;&#x27;</span><br><span class="line">        dt = dt or self.datas[0].datetime.date(0)</span><br><span class="line">        print(&#x27;%s, %s&#x27; % (dt.isoformat(), txt))</span><br><span class="line"></span><br><span class="line">    # 打印订单信息，可选</span><br><span class="line">    def notify_order(self, order):</span><br><span class="line">        if order.status in [order.Submitted, order.Accepted]:</span><br><span class="line">            # Buy/Sell order submitted/accepted to/by broker - Nothing to do</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        # Check if an order has been completed</span><br><span class="line">        # Attention: broker could reject order if not enougth cash</span><br><span class="line">        if order.status in [order.Completed, order.Canceled, order.Margin]:</span><br><span class="line">            if order.isbuy():</span><br><span class="line">                self.log(</span><br><span class="line">                    &#x27;BUY EXECUTED, Price: %.2f, Cost: %.2f, Comm %.2f&#x27; %</span><br><span class="line">                    (order.executed.price,</span><br><span class="line">                     order.executed.value,</span><br><span class="line">                     order.executed.comm))</span><br><span class="line">            else:  # Sell</span><br><span class="line">                self.log(&#x27;SELL EXECUTED, Price: %.2f, Cost: %.2f, Comm %.2f&#x27; %</span><br><span class="line">                         (order.executed.price,</span><br><span class="line">                          order.executed.value,</span><br><span class="line">                          order.executed.comm))</span><br><span class="line">    </span><br><span class="line">    # 打印交易信息，可选</span><br><span class="line">    def notify_trade(self, trade):</span><br><span class="line">        if trade.isclosed:</span><br><span class="line">            self.log(&#x27;TRADE PROFIT, GROSS %.2f, NET %.2f&#x27; %</span><br><span class="line">                     (trade.pnl, trade.pnlcomm))</span><br><span class="line"></span><br><span class="line">    # 初始化策略属性、指标，必须</span><br><span class="line">    def __init__(self):</span><br><span class="line">        sma = btind.SMA(self.data, period=self.p.period)</span><br><span class="line">        # &gt; 0 crossing up / &lt; 0 crossing down</span><br><span class="line">        self.buysell_sig = btind.CrossOver(self.data, sma)</span><br><span class="line"></span><br><span class="line">    # 交易逻辑实现，必须</span><br><span class="line">    def next(self):</span><br><span class="line">        if self.buysell_sig &gt; 0:</span><br><span class="line">            self.log(&#x27;BUY CREATE, %.2f&#x27; % self.data.close[0])</span><br><span class="line">            self.buy(size=self.p.stake)  # keep order ref to avoid 2nd orders</span><br><span class="line"></span><br><span class="line">        elif self.position and self.buysell_sig &lt; 0:</span><br><span class="line">            self.log(&#x27;SELL CREATE, %.2f&#x27; % self.data.close[0])</span><br><span class="line">            self.sell(size=self.p.stake)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def runstrategy():</span><br><span class="line">    args = parse_args()</span><br><span class="line"></span><br><span class="line">    # 实例化cerebro</span><br><span class="line">    cerebro = bt.Cerebro()</span><br><span class="line"></span><br><span class="line">    # Get the dates from the args</span><br><span class="line">    fromdate = datetime.datetime.strptime(args.fromdate, &#x27;%Y-%m-%d&#x27;)</span><br><span class="line">    todate = datetime.datetime.strptime(args.todate, &#x27;%Y-%m-%d&#x27;)</span><br><span class="line"></span><br><span class="line">    # 从csv文件读取数据</span><br><span class="line">    data = btfeeds.BacktraderCSVData(</span><br><span class="line">        dataname=args.data,</span><br><span class="line">        fromdate=fromdate,</span><br><span class="line">        todate=todate)</span><br><span class="line"></span><br><span class="line">    # 将数据传给cerebro</span><br><span class="line">    cerebro.adddata(data)</span><br><span class="line"></span><br><span class="line">    # 添加策略</span><br><span class="line">    cerebro.addstrategy(SMACrossOver, period=args.period, stake=args.stake)</span><br><span class="line"></span><br><span class="line">    # 设置初始资金</span><br><span class="line">    cerebro.broker.setcash(args.cash)</span><br><span class="line"></span><br><span class="line">    commtypes = dict(</span><br><span class="line">        none=None,</span><br><span class="line">        perc=bt.CommInfoBase.COMM_PERC,</span><br><span class="line">        fixed=bt.CommInfoBase.COMM_FIXED)</span><br><span class="line"></span><br><span class="line">    # 设置交易佣金</span><br><span class="line">    cerebro.broker.setcommission(commission=args.comm,</span><br><span class="line">                                 mult=args.mult,</span><br><span class="line">                                 margin=args.margin,</span><br><span class="line">                                 percabs=not args.percrel,</span><br><span class="line">                                 commtype=commtypes[args.commtype],</span><br><span class="line">                                 stocklike=args.stocklike)</span><br><span class="line"></span><br><span class="line">    # 启动回测</span><br><span class="line">    cerebro.run()</span><br><span class="line"></span><br><span class="line">    # 绘图</span><br><span class="line">    if args.plot:</span><br><span class="line">        cerebro.plot(numfigs=args.numfigs, volume=False)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 从命令行解析参数</span><br><span class="line">def parse_args():</span><br><span class="line">    parser = argparse.ArgumentParser(</span><br><span class="line">        description=&#x27;Commission schemes&#x27;,</span><br><span class="line">        formatter_class=argparse.ArgumentDefaultsHelpFormatter,)</span><br><span class="line"></span><br><span class="line">    parser.add_argument(&#x27;--data&#x27;, &#x27;-d&#x27;,</span><br><span class="line">                        default=&#x27;../../datas/2006-day-001.txt&#x27;,</span><br><span class="line">                        help=&#x27;data to add to the system&#x27;)</span><br><span class="line"></span><br><span class="line">    parser.add_argument(&#x27;--fromdate&#x27;, &#x27;-f&#x27;,</span><br><span class="line">                        default=&#x27;2006-01-01&#x27;,</span><br><span class="line">                        help=&#x27;Starting date in YYYY-MM-DD format&#x27;)</span><br><span class="line"></span><br><span class="line">    parser.add_argument(&#x27;--todate&#x27;, &#x27;-t&#x27;,</span><br><span class="line">                        default=&#x27;2006-12-31&#x27;,</span><br><span class="line">                        help=&#x27;Starting date in YYYY-MM-DD format&#x27;)</span><br><span class="line"></span><br><span class="line">    parser.add_argument(&#x27;--stake&#x27;, default=1, type=int,</span><br><span class="line">                        help=&#x27;Stake to apply in each operation&#x27;)</span><br><span class="line"></span><br><span class="line">    parser.add_argument(&#x27;--period&#x27;, default=30, type=int,</span><br><span class="line">                        help=&#x27;Period to apply to the Simple Moving Average&#x27;)</span><br><span class="line"></span><br><span class="line">    parser.add_argument(&#x27;--cash&#x27;, default=10000.0, type=float,</span><br><span class="line">                        help=&#x27;Starting Cash&#x27;)</span><br><span class="line"></span><br><span class="line">    parser.add_argument(&#x27;--comm&#x27;, default=2.0, type=float,</span><br><span class="line">                        help=(&#x27;Commission factor for operation, either a&#x27;</span><br><span class="line">                              &#x27;percentage or a per stake unit absolute value&#x27;))</span><br><span class="line"></span><br><span class="line">    parser.add_argument(&#x27;--mult&#x27;, default=10, type=int,</span><br><span class="line">                        help=&#x27;Multiplier for operations calculation&#x27;)</span><br><span class="line"></span><br><span class="line">    parser.add_argument(&#x27;--margin&#x27;, default=2000.0, type=float,</span><br><span class="line">                        help=&#x27;Margin for futures-like operations&#x27;)</span><br><span class="line"></span><br><span class="line">    parser.add_argument(&#x27;--commtype&#x27;, required=False, default=&#x27;none&#x27;,</span><br><span class="line">                        choices=[&#x27;none&#x27;, &#x27;perc&#x27;, &#x27;fixed&#x27;],</span><br><span class="line">                        help=(&#x27;Commission - choose none for the old&#x27;</span><br><span class="line">                              &#x27; CommissionInfo behavior&#x27;))</span><br><span class="line"></span><br><span class="line">    parser.add_argument(&#x27;--stocklike&#x27;, required=False, action=&#x27;store_true&#x27;,</span><br><span class="line">                        help=(&#x27;If the operation is for stock-like assets or&#x27;</span><br><span class="line">                              &#x27;future-like assets&#x27;))</span><br><span class="line"></span><br><span class="line">    parser.add_argument(&#x27;--percrel&#x27;, required=False, action=&#x27;store_true&#x27;,</span><br><span class="line">                        help=(&#x27;If perc is expressed in relative xx% rather&#x27;</span><br><span class="line">                              &#x27;than absolute value 0.xx&#x27;))</span><br><span class="line"></span><br><span class="line">    # -p或--plot 需要画图</span><br><span class="line">    parser.add_argument(&#x27;--plot&#x27;, &#x27;-p&#x27;, action=&#x27;store_true&#x27;,</span><br><span class="line">                        help=&#x27;Plot the read data&#x27;)</span><br><span class="line"></span><br><span class="line">    parser.add_argument(&#x27;--numfigs&#x27;, &#x27;-n&#x27;, default=1,</span><br><span class="line">                        help=&#x27;Plot using numfigs figures&#x27;)</span><br><span class="line"></span><br><span class="line">    return parser.parse_args()</span><br><span class="line"></span><br><span class="line"># 主函数</span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    runstrategy()</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>以下是发文章的几个地方。欢迎关注微信公众号，最新的文章会优先发布在微信公众号上。</p>
+<ul>
+<li>微信公众号：诸葛说talk</li>
+<li>知乎：<a href="https://www.zhihu.com/people/richard-zhu/posts">https://www.zhihu.com/people/richard-zhu/posts</a></li>
+<li>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://github.com/mementum/backtrader">backtrader github</a></li>
+<li><a href="https://www.backtrader.com/docu/">backtrader官方文档</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>python</category>
+        <category>quant</category>
+      </categories>
+      <tags>
+        <tag>quant</tag>
+        <tag>python</tag>
+        <tag>backtrader</tag>
       </tags>
   </entry>
   <entry>
@@ -836,8 +905,8 @@ BacktesterEngine 封装了BacktestingEngine，还有init_rqdata。ib有query_his
 </ul>
 ]]></content>
       <categories>
-        <category>latex</category>
         <category>tool</category>
+        <category>latex</category>
       </categories>
       <tags>
         <tag>github</tag>
