@@ -6,7 +6,7 @@
   <link href="https://rchardzhu.github.io/atom.xml" rel="self"/>
   
   <link href="https://rchardzhu.github.io/"/>
-  <updated>2022-04-05T05:36:46.383Z</updated>
+  <updated>2022-04-09T03:49:23.709Z</updated>
   <id>https://rchardzhu.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一文读懂ios归因框架SKAdNetwork</title>
+    <link href="https://rchardzhu.github.io/2022/04/09/about-ios-skadnetwork/"/>
+    <id>https://rchardzhu.github.io/2022/04/09/about-ios-skadnetwork/</id>
+    <published>2022-04-09T03:45:03.000Z</published>
+    <updated>2022-04-09T03:49:23.709Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近很多人在咨询 SKA 框架的情况，整理了一些资料，欢迎交流沟通~</p><h2 id="1-什么是SKAdNetwork？"><a href="#1-什么是SKAdNetwork？" class="headerlink" title="1. 什么是SKAdNetwork？"></a>1. 什么是<strong>SKAdNetwork</strong>？</h2><p>SKAdNetwork 是 Apple于2018年5月推出 的归因框架，可以在保护用户隐私的同时进行APP归因，但之前由于idfa 获取不需每个 app 单独授权，SKAdNetwork并没有得到广泛使用。 直至2020年6月22日举行的WWDC（全球开发者大会）上，苹果宣布了在 iOS 14 系统中，App 在获取 IDFA 时需要明确请求用户的许可。这就意味着如果未经过用户允许将获取不到 idfa，这让过去通过 IDFA 来实现的广告归因和效果衡量变得接近无效或者效果损失很大。 我们在广告系统中确实遇到了 cvr 大幅下降的问题，随着 ios 14.5之后的 ios 版本覆盖越来越多，归因问题越来越严重。SKN 框架也得到了越来越多人的重视。</p><h2 id="2-SkAdNetwork的优点和缺点是什么？"><a href="#2-SkAdNetwork的优点和缺点是什么？" class="headerlink" title="2. SkAdNetwork的优点和缺点是什么？"></a>2. SkAdNetwork的优点和缺点是什么？</h2><p>SKAdNetwork的优势是确定性归因，其能提供几乎 100% 精确的归因。有数据表明，与 IDFA 精确归因相比，SKAdNetwork 的准确性只差了 2%。需要说明的是，如果某个推广活动之前通过 IDFA 归因获得了 1000 次安装归因，SKAdNetwork 可能会归因 900 次安装和 100 次重装。这是因为 SKAdNetwork 只会为每个 iTunes 账户归因一次安装。因此，为了与 ATT (AppTrackingTransparency授权弹窗)执行前的情况保持一致，分析安装和重装的总量非常重要。</p><p>SKAdNetwork 的缺点是无法像 IDFA 一样实时将转化跟点击精确关联起来。 具体如下：</p><ul><li>无法精确归因到点击，原因是无法将点击标记和转化精确关联起来。</li><li>无法实时归因，SKA框架最少 24 至 48 小时的转化数据延迟回传。</li><li>SKAdNetwork 框架下每个渠道仅显示 100 个不同的推广活动，且能提供的数据信号非常有限，这对于稍微大点的客户来说经常不够用。 按照当前的计划，SKAdNetwork 会提供长度为 6 比特的下游指标，且有 24 小时的时间限制。每次用户触发应用内事件，该 6 比特指标就会发生变化，成为应用指定的全新 6 比特事件识别码，而时间限制也会延长 24 小时。事件窗口过期后，第二个 24 小时归因窗口就会开始计时。SKAdNetwork 会在这 24 小时窗口内随机返回归因数据。</li><li>未涵盖所有的归因链路，比如移动网页端就无法归因</li><li>由于无法实时精确归因，导致归因流程中作弊风险大幅加大。同时数据由广告平台所有并提供报告，会导致不信任感加大，当然这块 ios 也在升级解决中。</li></ul><h2 id="3-SkAdNetwork怎么用？"><a href="#3-SkAdNetwork怎么用？" class="headerlink" title="3. SkAdNetwork怎么用？"></a>3. SkAdNetwork怎么用？</h2><p><img src="https://docs-assets.developer.apple.com/published/e3e8f2b5fc/StoreKit-AdNetwork_overview@2x.png" alt="Diagram showing a user tapping an ad for app B inside of app A, then installing and launching app B, which triggers a conversion notification after app B calls one of two methods, and after the timer expires. The ad network receives the postback which it must verify."><br>SKA框架流程如上图所示，看了上面的说明，基本能知道每个步骤是在干啥了，不展开说明了。下面说明下各个参与方都需要做什么。</p><h3 id="3-1-广告平台-广告网络需要做什么？"><a href="#3-1-广告平台-广告网络需要做什么？" class="headerlink" title="3.1 广告平台/广告网络需要做什么？"></a>3.1 广告平台/广告网络需要做什么？</h3><p>这里的广告平台包括腾讯、阿里、字节、百度等头部媒体，也包括appsflyer、adjust、热云等第三方平台。</p><p>a) 在Apple 上注册Network ID，用于在广告活动时使用归因验证的各种API。</p><p>b) 为流量媒体侧App（Source App）提供已签名的广告应用。广告平台（Ad Network）在收到媒体端的广告请求时为广告应用进行签名（可以理解为生成一个广告的追踪ID）。</p><p>c) 通过注册的回包网址（Postback URL）接收来自广告主回传的激活和转化信息；</p><p>d) 确认已接收广告主回传的信息。</p><h3 id="3-2-媒体需要做什么？"><a href="#3-2-媒体需要做什么？" class="headerlink" title="3.2 媒体需要做什么？"></a>3.2 媒体需要做什么？</h3><ol><li>需要在媒体应用的Info.plist 上添加广告网络的ID；</li><li>展示已签名的广告。 在广告即将曝光前，调用系统的loadProduct(withParameters:completionBlock) 函数，用于预加载一个App Store的web端或者客户端的广告展示落地页。这样可以提升广告展示的速度，同时，将广告的应用相关签名信息和广告网络ID（Ad network ID）等信息传给App Store。</li></ol><h3 id="3-3-广告主-开发者需要做什么？"><a href="#3-3-广告主-开发者需要做什么？" class="headerlink" title="3.3 广告主/开发者需要做什么？"></a>3.3 广告主/开发者需要做什么？</h3><ol><li>在应用安装激活后，应用调用系统的API registerAppForAdNetworkAttribution或updateConversionValue函数发送激活或其他转化信息</li><li>如果此次安装有归因数据，那么应用首次调用函数registerAppForAdNetworkAttribution 会生成通知，并且启动一个 24 小时计时器，再次调用该函数没有反应。但是可以调用 updateConversionValue函数提供转化数值并且重启计时器。在计时器结束后的 0-24 小时内设备会将安装通知发送给广告网络，广告网络在收到通知后必须进行验证</li><li>updateConversionValue函数的参数为conversionValue，类型为无符号的 6 bit 整数（0-63）。由广告主应用和广告网络决定此值的含义，默认值为0。开发者可以在 24小时的循环周期内反复调用 updateConversionValue函数来更新转化数值。转化数值是由广告网络或者广告主定义的 6 bit 值。App在计时器结束前可以随意调用。每次调用，只要这个值比上一次大，计时器就会重新计时。当计时器结束，最后的数值将生效。之后继续调用 updateConversionValue 无任何作用。在计时器结束后的 0-24 小时内设备将安装通知发送给广告网络。</li><li>SKAdNetwork 系统分享的数据都采取聚合形式，不提供用户层级上的精细数据，事件识别码只能向上叠进。只要这个值比上一次大，计时器就会重新计时。要解决这个问题，开发者需要为排列组合中所有的可能性分配不同的比特值，而不是为每种事件分配比特值。</li></ol><h2 id="4-归因的时间窗口是多少？"><a href="#4-归因的时间窗口是多少？" class="headerlink" title="4. 归因的时间窗口是多少？"></a>4. 归因的时间窗口是多少？</h2><p>从广告曝光到广告网络接收到安装验证的消息最小延迟是24-48小时，测试的时候可以缩小到5-10分钟，具体可以参考<a href="https://developer.apple.com/documentation/storekit/skadnetwork/testing_ad_attributions_with_a_downloaded_profile">Testing Ad Attributions with a Downloaded Profile</a>. 各个事件有最长归因时间窗口，超过该窗口发生的转化无法归因到对应的事件上，具体如下。</p><table><thead><tr><th align="left">事件</th><th align="left">时间窗口</th></tr></thead><tbody><tr><td align="left">广告网络展示了一个StoreKit渲染的广告</td><td align="left">用户有30天的时间窗口来安装 app</td></tr><tr><td align="left">广告网链展示了一个浏览广告</td><td align="left">用户有24小时窗口来安装 app</td></tr><tr><td align="left">用户安装了 app</td><td align="left">用户有60天窗口来启动 app</td></tr><tr><td align="left">用户启动 app 且 app 调用了 <a href="https://developer.apple.com/documentation/storekit/skadnetwork/2943654-registerappforadnetworkattributi"><code>registerAppForAdNetworkAttribution()</code></a>函数</td><td align="left">设备在24小时定时器到期后在0-24小时内随机发送安装-验证回传信号</td></tr><tr><td align="left">用户启动 app 且 app 调用了<a href="https://developer.apple.com/documentation/storekit/skadnetwork/3566697-updateconversionvalue">updateConversionValue</a>函数</td><td align="left">设备在最后一次调用updateConversionValue函数的24小时定时器到期后在0-24小时内随机发送安装-验证回传信号</td></tr></tbody></table><h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2><ul><li>IDFV - Identifier For Vendor（应用开发商标识符）</li><li>IDFA - Identifier For Advertising（广告标识符）</li><li>mmp - mobile measure partner (移动成效衡量合作伙伴)</li></ul><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://developer.apple.com/documentation/storekit/skadnetwork">SKAdNetwork类说明</a></li><li><a href="https://developer.apple.com/documentation/storekit/skadnetwork/2943654-registerappforadnetworkattributi?language=objc">registerAppForAdNetworkAttribution函数说明</a></li><li><a href="https://developer.apple.com/documentation/storekit/skadnetwork/3566697-updateconversionvalue?language=objc">updateConversionValue函数说明</a></li><li><a href="https://developer.apple.com/documentation/storekit/skadnetwork/receiving_ad_attributions_and_postbacks">接收广告归因</a></li><li><a href="https://developer.apple.com/documentation/storekit/skstoreproductparameteradnetworkcampaignidentifier">SKStoreProductParameterAdNetworkCampaignIdentifier</a> – 广告网络计划标记符</li><li><a href="https://zhuanlan.zhihu.com/p/358829987">匹配式归因，链路式归因以及IOS SKAdNetwork归因说明</a></li><li>appsflyer公众号</li></ul><h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>我发文章的几个地方，欢迎大家在朋友圈等地方分享，多多交流。</p><ul><li>微信公众号：诸葛说talk</li><li>知乎：<a href="https://www.zhihu.com/people/richard-zhu/posts">https://www.zhihu.com/people/richard-zhu/posts</a></li><li>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;最近很多人在咨询 SKA 框架的情况，整理了一些资料，欢迎交流沟通~&lt;/p&gt;
+&lt;h2 id=&quot;1-什么是SKAdNetwork？&quot;&gt;&lt;a href=&quot;#1-什么是SKAdNetwork？&quot; class=&quot;headerlink&quot; title=&quot;1. 什么是SKAdNetwor</summary>
+      
+    
+    
+    
+    <category term="ads" scheme="https://rchardzhu.github.io/categories/ads/"/>
+    
+    
+    <category term="ios" scheme="https://rchardzhu.github.io/tags/ios/"/>
+    
+    <category term="skadnetwork" scheme="https://rchardzhu.github.io/tags/skadnetwork/"/>
+    
+    <category term="ads" scheme="https://rchardzhu.github.io/tags/ads/"/>
+    
+  </entry>
   
   <entry>
     <title>backtrader入门</title>
