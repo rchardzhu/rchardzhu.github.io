@@ -1059,13 +1059,58 @@ BacktesterEngine 封装了BacktestingEngine，还有init_rqdata。ib有query_his
 </ul>
 ]]></content>
       <categories>
-        <category>tool</category>
         <category>latex</category>
+        <category>tool</category>
       </categories>
       <tags>
         <tag>github</tag>
         <tag>latex</tag>
         <tag>resume</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用markdown写书</title>
+    <url>/2022/04/10/write-book-with-markdown/</url>
+    <content><![CDATA[<p>最近使用markdown写文档越来越多了，有些成体系的文章希望逐步整理成小册子或者小文档，不排除后面有时间了整理成书籍。<br>于是调研了下专门用于制作电子书类文档的工具，之前听说比较多的是gitbook和Read the Docs。不过gitbook的开源版本2018年末就不更新了，尝试折腾了挺久都不好使。于是网上找到了几个候选：mdbook、bookdown、mkdocs、gohugo、和peach。mdbook则是用rust语言实现的， 只有一个单独的命令行程序，能够实时渲染，最近开发迭代还比较多。<br>bookdown是r语言实现的，依赖于RStudio集成环境制作；mkdocs是python实现的，gohugo和peach是go语言实现的。由于mdbook尝试了下能够比较好的满足我的需求，其他就没有深入去尝试了，感兴趣的读者可以自己去试试。</p>
+<h2 id="mdbook介绍"><a href="#mdbook介绍" class="headerlink" title="mdbook介绍"></a>mdbook介绍</h2><p>mdbook是一个用markdown来创建书籍的命令行工具，非常适合用来创建产品、api文档、手册、课程材料等。<br>特点：</p>
+<ul>
+<li>轻量级markdown语法</li>
+<li>集成了搜索功能</li>
+<li>代码块语法高亮支持</li>
+<li>多个主题支持</li>
+<li>快速、安全、简单</li>
+<li>书籍The Rust Programming Language book也在使用mdbook来编写</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>手动下载安装<br>去github 下载，点<a href="https://github.com/rust-lang/mdBook/releases">下载链接</a>，支持windows, mac, linux。<br>下载解压后，将mdbook放到/usr/local/bin下即可使用</p>
+</li>
+<li><p>mac可以使用brew安装，安装的版本可能不是最新，但比较方便</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew install  mdbook</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir my-quant-book</span><br><span class="line">cd my-quant-book</span><br><span class="line">mdbook init # 会提示输入文档标题</span><br><span class="line">mdbook serve</span><br></pre></td></tr></table></figure>
+<p>浏览器输入<a href="http://localhost:3000/">http://localhost:3000/</a>  就可以看到书籍了。<br>在my-quant-book下生成了book和src两个文件夹和book.toml一个配置文件。<br>在src目录下自动生成了SUMMARY.md和chapter_1.md 2个markdown文件。chapter_1.md和普通markdown文件一样，SUMMARY.md比较特殊，用来表示文档包含那些文件以及他们的顺序是咋样的。</p>
+<p>mdbook服务默认启动端口是3000，如果需要更改端口，可以使用-p参数，如<code>mdbook serve -p 3001</code> 将端口改为3001。</p>
+<p>其他跟markdown一样正常编辑就好了。不知道markdown语法的可以参考我的另外一篇《markdown实战》文章。</p>
+<h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>欢迎关注微信公众号交流～</p>
+<ul>
+<li>微信公众号：诸葛说talk</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://rust-lang.github.io/mdBook/">mdbook使用说明</a></li>
+<li><a href="https://rust-lang.github.io/mdBook/format/summary.html">mdbook summary文件说明</a></li>
+<li><a href="https://www.math.pku.edu.cn/teachers/lidf/docs/Rbook/html/_Rbook/bookdown.html">用bookdown制作图书</a></li>
+<li><a href="https://www.mkdocs.org/">mkdocs</a></li>
+<li><a href="https://blog.csdn.net/bigwhite20xx/article/details/107011017">gohugo、mdbook和peach比拼</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>blog</category>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
+        <tag>blog</tag>
+        <tag>mdbook</tag>
       </tags>
   </entry>
 </search>

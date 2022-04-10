@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://rchardzhu.github.io/2022/04/10/write-book-with-markdown/</loc>
+    
+    <lastmod>2022-04-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://rchardzhu.github.io/2022/04/10/about-talib/</loc>
     
     <lastmod>2022-04-10</lastmod>
@@ -310,6 +319,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://rchardzhu.github.io/tags/mdbook/</loc>
+    <lastmod>2022-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -348,14 +364,14 @@
   </url>
   
   <url>
-    <loc>https://rchardzhu.github.io/categories/tool/</loc>
+    <loc>https://rchardzhu.github.io/categories/latex/</loc>
     <lastmod>2022-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://rchardzhu.github.io/categories/latex/</loc>
+    <loc>https://rchardzhu.github.io/categories/tool/</loc>
     <lastmod>2022-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
