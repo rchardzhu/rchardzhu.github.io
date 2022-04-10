@@ -6,7 +6,7 @@
   <link href="https://rchardzhu.github.io/atom.xml" rel="self"/>
   
   <link href="https://rchardzhu.github.io/"/>
-  <updated>2022-04-09T03:49:23.709Z</updated>
+  <updated>2022-04-10T04:23:55.333Z</updated>
   <id>https://rchardzhu.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TA-Lib介绍及在backtrader框架中使用</title>
+    <link href="https://rchardzhu.github.io/2022/04/10/about-talib/"/>
+    <id>https://rchardzhu.github.io/2022/04/10/about-talib/</id>
+    <published>2022-04-10T04:00:00.000Z</published>
+    <updated>2022-04-10T04:23:55.333Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一、TA-Lib介绍"><a href="#一、TA-Lib介绍" class="headerlink" title="一、TA-Lib介绍"></a>一、TA-Lib介绍</h2><ul><li><a href="https://ta-lib.org/">TA-Lib</a> – 交易软件开发广泛使用的技术分析lib，包括了200多个技术指标，如MACD, RSI等</li><li><a href="https://mrjbq7.github.io/ta-lib/">ta-lib for python</a> – python封装的ta-lib。python封装的ta-lib，使用Cython和Numpy高效实现，比使用SWIG接口的原始版本快2-4倍</li></ul><h2 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h2><p>mac安装方法如下所示：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew install ta-lib</span><br><span class="line">$ pip install TA-Lib</span><br></pre></td></tr></table></figure><p>如果没用brew安装ta-lib，会报如下错误</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func.c:256:28: fatal error: ta-lib/ta_libc.h: No such file or directory</span><br><span class="line">compilation terminated.</span><br><span class="line">If you get build errors like this, it typically means that it can&#x27;t find the underlying TA-Lib library and needs to be installed:</span><br></pre></td></tr></table></figure><p>windows、linux参考：<a href="https://mrjbq7.github.io/ta-lib/install.html">https://mrjbq7.github.io/ta-lib/install.html</a></p><p>进python使用<code>import talib</code>没有报错的话，表明安装成功。</p><h2 id="三、常用指标使用"><a href="#三、常用指标使用" class="headerlink" title="三、常用指标使用"></a>三、常用指标使用</h2><ol><li>SMA：简单移动平均线(Simple Moving Average)<br>talib.SMA() 要求数据是numpy.ndarray格式<br>talib.abstract.SMA() 要求数据是Numpy数组的字典格式</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import talib</span><br><span class="line"></span><br><span class="line">close = np.random.random(100)</span><br><span class="line">output = talib.SMA(close) # 默认是SMA30</span><br><span class="line">output = talib.SMA(close, timeperiod=5) # SMA5</span><br><span class="line"></span><br><span class="line">inputs = &#123;</span><br><span class="line">    &#x27;open&#x27;: np.random.random(100),</span><br><span class="line">    &#x27;high&#x27;: np.random.random(100),</span><br><span class="line">    &#x27;low&#x27;: np.random.random(100),</span><br><span class="line">    &#x27;close&#x27;: np.random.random(100),</span><br><span class="line">    &#x27;volume&#x27;: np.random.random(100)</span><br><span class="line">&#125;</span><br><span class="line">from talib.abstract import *</span><br><span class="line">output = SMA(input_arrays, timeperiod=25) # 默认对close价格计算</span><br><span class="line">output = SMA(input_arrays, timeperiod=25, price=&#x27;open&#x27;) # 对open价格计算</span><br></pre></td></tr></table></figure><ol start="2"><li><p>EMA：指数移动平均线(Exponential Moving Average)</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">talib.EMA(close)</span><br><span class="line">talib.abstract.EMA(inputs)</span><br></pre></td></tr></table></figure></li><li><p>MACD：平滑异同移动平均线(Moving Average Convergence / Divergence)<br>通过三种数据的信号（均线的组合 ）可以判断趋势的力量和方向并确定趋势的转折点</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">talib.MACD(close)</span><br><span class="line">talib.abstract.MACD(inputs)</span><br></pre></td></tr></table></figure></li><li><p>支持的指标列表</p></li></ol><ul><li>均线指标，如EMA、SMA、WMA等</li><li>动量指标，如MACD、MOM、RSI等</li><li>成交量指标，如AD、OBV等</li><li>易变指标，如ATR、NATR等</li><li>价格变换，如AVGPRICE、MEDPRICE等</li><li>循环指标，如HT_DCPERIOD、HT_SINE等</li><li>模式识别，如CDL2CROWS、CDLHAMMER等</li><li>统计函数，如VAR,STDDEV, LINEARREG等</li><li>数学变换，如ACOS、ASIN、CEIL、COS、EXP、LN、SQRT等</li><li>数学操作，如ADD、DIV、MAX、MULT、SUM等</li></ul><p>支持的功能及函数列表如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import talib</span><br><span class="line">talib.get_functions()</span><br><span class="line">print(len(talib.get_functions()))</span><br><span class="line">talib.get_function_groups()</span><br><span class="line">print(len(talib.get_function_groups()))</span><br></pre></td></tr></table></figure><h2 id="四、在backtrader中调用TA-Lib库"><a href="#四、在backtrader中调用TA-Lib库" class="headerlink" title="四、在backtrader中调用TA-Lib库"></a>四、在backtrader中调用TA-Lib库</h2><p>为了满足大家的使用习惯，Backtrader也接入了 TA-Lib 技术指标库，具体信息可以查阅<a href="https://www.backtrader.com/docu/talibindautoref/">官方 document</a>，文档中对各个函数的输入、输出，以及在 Backtrader 中特有的绘图参数、返回的 lines 属性等信息都做了介绍和说明。TA-Lib 指标函数的调用形式为 bt.talib.xxx，跟直接使用ta-lib区别不大 ：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class TALibStrategy(bt.Strategy):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        # 计算 5 日均线</span><br><span class="line">        bt.talib.SMA(self.data.close, timeperiod=5)</span><br><span class="line">        bt.indicators.SMA(self.data, period=5)</span><br><span class="line">        # 计算布林带</span><br><span class="line">        bt.talib.BBANDS(self.data, timeperiod=25)</span><br><span class="line">        bt.indicators.BollingerBands(self.data, period=25)</span><br></pre></td></tr></table></figure><h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>欢迎关注微信公众号交流，最新的文章会优先发布在微信公众号上。</p><ul><li>微信公众号：诸葛说talk</li></ul><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://ta-lib.org/">TA-Lib官网</a></li><li><a href="https://ta-lib.org/function.html">Ta-lib函数列表</a></li><li><a href="https://mrjbq7.github.io/ta-lib/">ta-lib for python</a></li><li><a href="https://mrjbq7.github.io/ta-lib/install.html">ta-lib python安装</a></li><li><a href="https://www.backtrader.com/docu/talibindautoref/">backtrader ta-lib技术指标api</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;一、TA-Lib介绍&quot;&gt;&lt;a href=&quot;#一、TA-Lib介绍&quot; class=&quot;headerlink&quot; title=&quot;一、TA-Lib介绍&quot;&gt;&lt;/a&gt;一、TA-Lib介绍&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://ta-lib.org/&quot;&gt;TA</summary>
+      
+    
+    
+    
+    <category term="quant" scheme="https://rchardzhu.github.io/categories/quant/"/>
+    
+    
+    <category term="quant" scheme="https://rchardzhu.github.io/tags/quant/"/>
+    
+    <category term="talib" scheme="https://rchardzhu.github.io/tags/talib/"/>
+    
+    <category term="backtrader" scheme="https://rchardzhu.github.io/tags/backtrader/"/>
+    
+  </entry>
   
   <entry>
     <title>一文读懂ios归因框架SKAdNetwork</title>
@@ -62,16 +91,16 @@
     
     
     
-    <category term="python" scheme="https://rchardzhu.github.io/categories/python/"/>
-    
     <category term="quant" scheme="https://rchardzhu.github.io/categories/quant/"/>
+    
+    <category term="python" scheme="https://rchardzhu.github.io/categories/python/"/>
     
     
     <category term="quant" scheme="https://rchardzhu.github.io/tags/quant/"/>
     
-    <category term="python" scheme="https://rchardzhu.github.io/tags/python/"/>
-    
     <category term="backtrader" scheme="https://rchardzhu.github.io/tags/backtrader/"/>
+    
+    <category term="python" scheme="https://rchardzhu.github.io/tags/python/"/>
     
   </entry>
   
@@ -93,9 +122,9 @@
     
     
     
-    <category term="python" scheme="https://rchardzhu.github.io/categories/python/"/>
-    
     <category term="quant" scheme="https://rchardzhu.github.io/categories/quant/"/>
+    
+    <category term="python" scheme="https://rchardzhu.github.io/categories/python/"/>
     
     
     <category term="quant" scheme="https://rchardzhu.github.io/tags/quant/"/>
@@ -124,9 +153,9 @@
     
     
     
-    <category term="python" scheme="https://rchardzhu.github.io/categories/python/"/>
-    
     <category term="quant" scheme="https://rchardzhu.github.io/categories/quant/"/>
+    
+    <category term="python" scheme="https://rchardzhu.github.io/categories/python/"/>
     
     
     <category term="quant" scheme="https://rchardzhu.github.io/tags/quant/"/>
@@ -218,9 +247,9 @@
     
     
     
-    <category term="python" scheme="https://rchardzhu.github.io/categories/python/"/>
-    
     <category term="quant" scheme="https://rchardzhu.github.io/categories/quant/"/>
+    
+    <category term="python" scheme="https://rchardzhu.github.io/categories/python/"/>
     
     
     <category term="quant" scheme="https://rchardzhu.github.io/tags/quant/"/>
@@ -280,9 +309,9 @@
     
     
     
-    <category term="python" scheme="https://rchardzhu.github.io/categories/python/"/>
-    
     <category term="quant" scheme="https://rchardzhu.github.io/categories/quant/"/>
+    
+    <category term="python" scheme="https://rchardzhu.github.io/categories/python/"/>
     
     
     <category term="python" scheme="https://rchardzhu.github.io/tags/python/"/>
@@ -337,9 +366,9 @@
     
     
     
-    <category term="python" scheme="https://rchardzhu.github.io/categories/python/"/>
-    
     <category term="quant" scheme="https://rchardzhu.github.io/categories/quant/"/>
+    
+    <category term="python" scheme="https://rchardzhu.github.io/categories/python/"/>
     
     
     <category term="quant" scheme="https://rchardzhu.github.io/tags/quant/"/>
