@@ -197,6 +197,163 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://rchardzhu.github.io/2022/04/23/about-empyrical-pyfolio-and-using-in-backtrader/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Richard Zhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="诸葛说">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/23/about-empyrical-pyfolio-and-using-in-backtrader/" class="post-title-link" itemprop="url">empyrical、pyfolio工具介绍及在backtrader量化框架中使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-23 19:45:03 / 修改时间：19:47:14" itemprop="dateCreated datePublished" datetime="2022-04-23T19:45:03+08:00">2022-04-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/quant/" itemprop="url" rel="index"><span itemprop="name">quant</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/04/23/about-empyrical-pyfolio-and-using-in-backtrader/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/23/about-empyrical-pyfolio-and-using-in-backtrader/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/quantopian/empyrical">empyrical</a> – Quantopian开源的常见金融风险指标lib库，会调用pandas_datareader从yahoo或google获取股票数据</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/quantopian/pyfolio">pyfolio</a> – Quantopian开源的用图形表示的金融投资组合性能和风险分析的Python库，基于empyrical获取数据和计算基础指标，由各种各样的独立图组成，这些图提供了交易策略表现的综合图像。图形示例可以参考<a target="_blank" rel="noopener" href="https://github.com/quantopian/pyfolio/blob/master/pyfolio/examples/full_tear_sheet_example.ipynb">full_tear_sheet_example.ipynb</a></li>
+</ul>
+<h2 id="empyrical安装-amp-使用"><a href="#empyrical安装-amp-使用" class="headerlink" title="empyrical安装&amp;使用"></a>empyrical安装&amp;使用</h2><ul>
+<li>安装：<code>pip install empyrical</code></li>
+<li>使用方法：<br>以计算最大回撤和alpha、beta为例，代码如下。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> empyrical <span class="keyword">import</span> max_drawdown, alpha_beta</span><br><span class="line">returns = np.array([<span class="number">.01</span>, <span class="number">.02</span>, <span class="number">.03</span>, -<span class="number">.4</span>, -<span class="number">.06</span>, -<span class="number">.02</span>])</span><br><span class="line">benchmark_returns = np.array([<span class="number">.02</span>, <span class="number">.02</span>, <span class="number">.03</span>, -<span class="number">.35</span>, -<span class="number">.05</span>, -<span class="number">.01</span>])</span><br><span class="line">max_drawdown(returns) <span class="comment"># 计算最大回撤</span></span><br><span class="line">alpha, beta = alpha_beta(returns, benchmark_returns) <span class="comment"># 计算alpha和beta</span></span><br><span class="line">returns = pd.Series([<span class="number">.01</span>, <span class="number">.02</span>, <span class="number">.03</span>, -<span class="number">.4</span>, -<span class="number">.06</span>, -<span class="number">.02</span>]) <span class="comment">#支持pd.Series()</span></span><br><span class="line">max_drawdown(returns)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>查看empyrical支持的api列表，如下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> empyrical</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">dir</span>(empyrical))</span><br></pre></td></tr></table></figure>
+
+<p>结果是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;DAILY&#x27;, &#x27;MONTHLY&#x27;, &#x27;QUARTERLY&#x27;, &#x27;WEEKLY&#x27;, &#x27;YEARLY&#x27;, &#x27;__builtins__&#x27;, &#x27;__cached__&#x27;, &#x27;__doc__&#x27;, &#x27;__file__&#x27;, &#x27;__loader__&#x27;, &#x27;__name__&#x27;, &#x27;__package__&#x27;, &#x27;__path__&#x27;, &#x27;__spec__&#x27;, &#x27;__version__&#x27;, &#x27;_version&#x27;, &#x27;aggregate_returns&#x27;, &#x27;alpha&#x27;, &#x27;alpha_aligned&#x27;, &#x27;alpha_beta&#x27;, &#x27;alpha_beta_aligned&#x27;, &#x27;annual_return&#x27;, &#x27;annual_volatility&#x27;, &#x27;beta&#x27;, &#x27;beta_aligned&#x27;, &#x27;beta_fragility_heuristic&#x27;, &#x27;beta_fragility_heuristic_aligned&#x27;, &#x27;cagr&#x27;, &#x27;calmar_ratio&#x27;, &#x27;capture&#x27;, &#x27;compute_exposures&#x27;, &#x27;conditional_value_at_risk&#x27;, &#x27;cum_returns&#x27;, &#x27;cum_returns_final&#x27;, &#x27;deprecate&#x27;, &#x27;down_alpha_beta&#x27;, &#x27;down_capture&#x27;, &#x27;downside_risk&#x27;, &#x27;excess_sharpe&#x27;, &#x27;gpd_risk_estimates&#x27;, &#x27;gpd_risk_estimates_aligned&#x27;, &#x27;max_drawdown&#x27;, &#x27;omega_ratio&#x27;, &#x27;perf_attrib&#x27;, &#x27;periods&#x27;, &#x27;roll_alpha&#x27;, &#x27;roll_alpha_aligned&#x27;, &#x27;roll_alpha_beta&#x27;, &#x27;roll_alpha_beta_aligned&#x27;, &#x27;roll_annual_volatility&#x27;, &#x27;roll_beta&#x27;, &#x27;roll_beta_aligned&#x27;, &#x27;roll_down_capture&#x27;, &#x27;roll_max_drawdown&#x27;, &#x27;roll_sharpe_ratio&#x27;, &#x27;roll_sortino_ratio&#x27;, &#x27;roll_up_capture&#x27;, &#x27;roll_up_down_capture&#x27;, &#x27;sharpe_ratio&#x27;, &#x27;simple_returns&#x27;, &#x27;sortino_ratio&#x27;, &#x27;stability_of_timeseries&#x27;, &#x27;stats&#x27;, &#x27;tail_ratio&#x27;, &#x27;up_alpha_beta&#x27;, &#x27;up_capture&#x27;, &#x27;up_down_capture&#x27;, &#x27;utils&#x27;, &#x27;value_at_risk&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>顺便说明下，empyrical官方api手册不全，看api文档使用help来看比较方便，如<code>help(empyrical.excess_sharpe)</code>。</p>
+<h2 id="pyfolio安装-amp-使用"><a href="#pyfolio安装-amp-使用" class="headerlink" title="pyfolio安装&amp;使用"></a>pyfolio安装&amp;使用</h2><p>pyfolio只能在jupyter notebook环境下完整绘图，在命令行环境或py文件下可以单独画图，但不能显示表格数据。</p>
+<p>通常的误区是：pyfolio只能在jupyter下使用。正确的说法是pyfolio对jupyter环境下支持的最好。</p>
+<ul>
+<li>安装：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install git+https://github.com/quantopian/pyfolio</span><br></pre></td></tr></table></figure>
+
+<p>使用pip install pyfolio，在使用的时候会报错，下面会说明。</p>
+<ul>
+<li>使用方法：</li>
+</ul>
+<ol>
+<li>构造数据<br>产出如下数据，格式为pd.series。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.head()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Date</span><br><span class="line">2017-04-25 00:00:00+00:00    0.018699</span><br><span class="line">2017-04-26 00:00:00+00:00   -0.011536</span><br><span class="line">2017-04-27 00:00:00+00:00   -0.004965</span><br><span class="line">2017-04-28 00:00:00+00:00    0.017626</span><br><span class="line">2017-05-01 00:00:00+00:00    0.027892</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>使用pyfolio</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pyfolio <span class="keyword">as</span> pf</span><br><span class="line">pf.create_returns_tear_sheet(data)</span><br><span class="line">pf.plot_drawdown_periods(data)</span><br></pre></td></tr></table></figure>
+
+<p>在jupyter中运行，结果如下：<br><a href="/wp-content/uploads/2022/04/2022042311075489.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042311075489.png"></a><br><a href="/wp-content/uploads/2022/04/2022042311084092.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042311084092.png"></a><br><a href="/wp-content/uploads/2022/04/2022042311084143.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042311084143.png"></a><br><a href="/wp-content/uploads/2022/04/2022042311084282.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042311084282.png"></a><br><a href="/wp-content/uploads/2022/04/2022042311093652.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042311093652.png"></a></p>
+<p> 在ipython运行，结果如下：<br><a href="/wp-content/uploads/2022/04/2022042311093711.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042311093711.png"></a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">8</span>]: pf.create_returns_tear_sheet(data)</span><br><span class="line">&lt;IPython.core.display.HTML <span class="built_in">object</span>&gt;</span><br><span class="line">&lt;IPython.core.display.HTML <span class="built_in">object</span>&gt;</span><br><span class="line"></span><br><span class="line">In [<span class="number">9</span>]: ret = pf.create_returns_tear_sheet(data)</span><br><span class="line">&lt;IPython.core.display.HTML <span class="built_in">object</span>&gt;</span><br><span class="line">&lt;IPython.core.display.HTML <span class="built_in">object</span>&gt;</span><br><span class="line"></span><br><span class="line">pf.plot_drawdown_periods(data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042311103615.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042311103615.png"></a></p>
+<ul>
+<li>查看支持的函数：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">dir</span>(pf))</span><br></pre></td></tr></table></figure>
+
+<p><code>[&#39;APPROX_BDAYS_PER_MONTH&#39;, &#39;FACTOR_PARTITIONS&#39;, &#39;FigureCanvasAgg&#39;, &#39;FuncFormatter&#39;, &#39;MM_DISPLAY_UNIT&#39;, &#39;Markdown&#39;, &#39;OrderedDict&#39;, &#39;STAT_FUNCS_PCT&#39;, &#39;__all__&#39;, &#39;__builtins__&#39;, &#39;__cached__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__path__&#39;, &#39;__spec__&#39;, &#39;__version__&#39;, &#39;_seaborn&#39;, &#39;_version&#39;, &#39;axes_style&#39;, &#39;capacity&#39;, &#39;create_capacity_tear_sheet&#39;, &#39;create_full_tear_sheet&#39;, &#39;create_interesting_times_tear_sheet&#39;, &#39;create_perf_attrib_tear_sheet&#39;, &#39;create_position_tear_sheet&#39;, &#39;create_returns_tear_sheet&#39;, &#39;create_round_trip_tear_sheet&#39;, &#39;create_simple_tear_sheet&#39;, &#39;create_txn_tear_sheet&#39;, &#39;customize&#39;, &#39;datetime&#39;, &#39;deprecate&#39;, &#39;display&#39;, &#39;division&#39;, &#39;ep&#39;, &#39;figure&#39;, &#39;gridspec&#39;, &#39;interesting_periods&#39;, &#39;matplotlib&#39;, &#39;np&#39;, &#39;patches&#39;, &#39;pd&#39;, &#39;perf_attrib&#39;, &#39;plot_annual_returns&#39;, &#39;plot_capacity_sweep&#39;, &#39;plot_cones&#39;, &#39;plot_daily_turnover_hist&#39;, &#39;plot_daily_volume&#39;, &#39;plot_drawdown_periods&#39;, &#39;plot_drawdown_underwater&#39;, &#39;plot_exposures&#39;, &#39;plot_gross_leverage&#39;, &#39;plot_holdings&#39;, &#39;plot_long_short_holdings&#39;, &#39;plot_max_median_position_concentration&#39;, &#39;plot_monthly_returns_dist&#39;, &#39;plot_monthly_returns_heatmap&#39;, &#39;plot_monthly_returns_timeseries&#39;, &#39;plot_perf_stats&#39;, &#39;plot_prob_profit_trade&#39;, &#39;plot_return_quantiles&#39;, &#39;plot_returns&#39;, &#39;plot_rolling_beta&#39;, &#39;plot_rolling_returns&#39;, &#39;plot_rolling_sharpe&#39;, &#39;plot_rolling_volatility&#39;, &#39;plot_round_trip_lifetimes&#39;, &#39;plot_sector_allocations&#39;, &#39;plot_slippage_sensitivity&#39;, &#39;plot_slippage_sweep&#39;, &#39;plot_turnover&#39;, &#39;plot_txn_time_hist&#39;, &#39;plotting&#39;, &#39;plotting_context&#39;, &#39;plt&#39;, &#39;pos&#39;, &#39;pytz&#39;, &#39;round_trips&#39;, &#39;show_and_plot_top_positions&#39;, &#39;show_perf_stats&#39;, &#39;show_profit_attribution&#39;, &#39;show_worst_drawdown_periods&#39;, &#39;sns&#39;, &#39;sp&#39;, &#39;tears&#39;, &#39;time&#39;, &#39;timer&#39;, &#39;timeseries&#39;, &#39;txn&#39;, &#39;utils&#39;, &#39;warnings&#39;, &#39;wraps&#39;]</code></p>
+<ul>
+<li>常见错误</li>
+</ul>
+<ol>
+<li>报错：<strong>ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all()</strong></li>
+</ol>
+<p>解决办法：pf.create_returns_tear_sheet()的参数是pd.series，不能是pd.dataframe</p>
+<ol>
+<li>报错：<strong>AttributeError: ‘numpy.int64’ object has no attribute ‘to_pydatetime’</strong></li>
+</ol>
+<p>解决办法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install git+https://github.com/quantopian/pyfolio</span><br></pre></td></tr></table></figure>
+
+<h2 id="在backtrader中使用PyFolio"><a href="#在backtrader中使用PyFolio" class="headerlink" title="在backtrader中使用PyFolio"></a>在backtrader中使用PyFolio</h2><p>pyfolio改变过api接口，<code>create_full_tear_sheet()函数后面没有了gross_lev</code>参数，使用backtrade网站的示例代码会报错。 参考pyfolio官方的使用文档即可。</p>
+<p>backtrader使用pyfolio示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cerebro.addanalyzer(bt.analyzers.PyFolio, _name=<span class="string">&#x27;pyfolio&#x27;</span>)</span><br><span class="line">strats = cerebro.run()</span><br><span class="line">strat0 = strats[<span class="number">0</span>]</span><br><span class="line">pyfolio = strats.analyzers.getbyname(<span class="string">&#x27;pyfolio&#x27;</span>)</span><br><span class="line">returns, positions, transactions, gross_lev = pyfoliozer.get_pf_items()</span><br><span class="line"><span class="keyword">import</span> pyfolio <span class="keyword">as</span> pf</span><br><span class="line">pf.create_full_tear_sheet(returns)</span><br></pre></td></tr></table></figure>
+
+<h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>欢迎大家留言，关注微信公众号多多交流，最新的文章会优先发布在微信公众号上。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/quantopian/empyrical">empyrical github</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/quantopian/empyrical/blob/master/empyrical/__init__.py">empyrical API列表</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/quantopian/pyfolio">pyfolio github</a></li>
+<li><a target="_blank" rel="noopener" href="https://quantopian.github.io/pyfolio/">pyfolio文档</a></li>
+<li><strong><strong><a target="_blank" rel="noopener" href="https://nbviewer.org/format/slides/github/quantopian/pyfolio/blob/master/pyfolio/examples/pyfolio_talk_slides.ipynb#/">Portfolio and Risk Analytics in Python with pyfolio</a></strong></strong></li>
+<li><a target="_blank" rel="noopener" href="https://www.backtrader.com/docu/analyzers/pyfolio/">backtrader pyfolio分析器介绍</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://rchardzhu.github.io/2022/04/10/write-book-with-markdown/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1664,135 +1821,6 @@ or <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span 
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rchardzhu.github.io/2022/02/03/markdown-practice-md/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Richard Zhu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="诸葛说">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/03/markdown-practice-md/" class="post-title-link" itemprop="url">markdown实战笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-02-03 21:22:35 / 修改时间：21:45:17" itemprop="dateCreated datePublished" datetime="2022-02-03T21:22:35+08:00">2022-02-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/blog/" itemprop="url" rel="index"><span itemprop="name">blog</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tool/" itemprop="url" rel="index"><span itemprop="name">tool</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/02/03/markdown-practice-md/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/02/03/markdown-practice-md/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档。Markdown 语言在 2004 由约翰·格鲁伯（英语：John Gruber）创建。Markdown 编写的文档可以导出 HTML 、Word、图像、PDF、Epub 等多种格式的文档。Markdown 编写的文档后缀为 .md, .markdown。</p>
-<h2 id="markdown语法"><a href="#markdown语法" class="headerlink" title="markdown语法"></a>markdown语法</h2><ul>
-<li>使用 # 号可表示 1-6 级标题，一级标题对应一个 # 号，二级标题对应两个 # 号，以此类推</li>
-<li><code>*斜体文本*，**粗体文本**， ***粗斜体文本***</code></li>
-<li>一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西</li>
-<li>文字要添加删除线，只需要在文字的两端加上两个波浪线 ~~即可</li>
-<li>下划线可以通过 HTML 的 <code>&lt;u&gt;&lt;/u&gt;</code> 标签来实现</li>
-<li>换行： 使用html <code>&lt;br&gt;</code>标签</li>
-<li>脚注是对文本的补充说明<code>说明文本[^要注明的文本]</code> 在文末加上<code>[^要注明的文本]: markdown说明</code></li>
-<li>无序列表使用星号(*)、加号(+)或是减号(-)作为列表标记，这些标记后面要加一个空格，然后再填写内容； 有序列表使用数字并加上 . 号来表示</li>
-<li>使用反斜杠转义特殊字符，如*号，可以使用<code>\*</code>来解决</li>
-<li>区块引用是在段落开头使用 &gt; 符号 ，然后后面紧跟一个空格符号。区块是可以嵌套的，一个 &gt; 符号是最外层，两个 &gt; 符号是第一层嵌套，以此类推。如果要在列表项目内放进区块，那么就需要在 &gt; 前添加四个空格的缩进</li>
-<li>函数或片段的代码可以用反引号`把它包起来，可以用 ``` 包裹一段代码，并指定一种语言</li>
-<li>链接：<code>[链接名称](链接地址) or &lt;链接地址&gt;</code></li>
-<li>图片：<code>![alt 属性文本](图片地址) or ![alt 属性文本](图片地址 &quot;可选标题&quot;)</code>，如果想指定图片宽度高度，需要使用html的<code>&lt;img&gt;</code>标签，如<code>&lt;img src=&quot;http://www.xxx.com/xxx.jpg&quot; width=&quot;50%&quot;&gt;</code> </li>
-<li>表格：使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。-: 设置内容和标题栏居右对齐，:- 设置内容和标题栏居左对齐， :-: 设置内容和标题栏居中对齐<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">|  表头   | 表头  |</span><br><span class="line">|  ----  | ----  |</span><br><span class="line">| 单元格  | 单元格 |</span><br><span class="line">| 单元格  | 单元格 |， </span><br></pre></td></tr></table></figure></li>
-<li>任务列表：<code>- [ ] foo， - [x] bar</code></li>
-<li>公式： 要显示α，在”\alpha” 前后分别加上$，<code>$\alpha$</code>，上标 <code>$a^b$</code>，下标<code>$a_b$</code>，分数<code>$\frac&#123;3+8a&#125;&#123;5b+6&#125;$</code>， 求和 <code>$\sum&#123;3x^n&#125;$</code> 。其他写法参考<a target="_blank" rel="noopener" href="https://rpruim.github.io/s341/S19/from-class/MathinRmd.html">Mathematics in R Markdown</a></li>
-</ul>
-<h2 id="markdown编辑软件"><a href="#markdown编辑软件" class="headerlink" title="markdown编辑软件"></a>markdown编辑软件</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://marktext.app/">marktext</a> – 从官网下载，或者使用<code>brew install --cask mark-text</code>安装， 具体见<a target="_blank" rel="noopener" href="https://github.com/marktext/marktext/blob/develop/docs/i18n/zh_cn.md#readme">marktext中文说明</a></li>
-<li>visual code插件之Markdown All in One： 包括快捷键、公式等功能</li>
-<li>visual code插件之Markdown Preview Enhanced： 除了实时预览外，还包括了其他许多有用的功能，包括mermaid, PlantUML, pandoc, PDF导出等功能</li>
-<li><a target="_blank" rel="noopener" href="https://typora.io/">typora</a> –  从1.0.0开始收费</li>
-</ul>
-<h2 id="markdown文件导出为html、doc、epub、pdf格式"><a href="#markdown文件导出为html、doc、epub、pdf格式" class="headerlink" title="markdown文件导出为html、doc、epub、pdf格式"></a>markdown文件导出为html、doc、epub、pdf格式</h2><ol>
-<li>安装pandoc，<code>brew install pandoc</code></li>
-<li>将markdown转成html: <code>pandoc -f markdown -t html ./test.md</code> </li>
-<li>将markdown转成doc：<code>pandoc -f markdown -t html ./test.md | pandoc -f html -t docx -o test.docx</code></li>
-<li>将markdown转成PDF，需要安装<a target="_blank" rel="noopener" href="https://www.latex-project.org/">latex</a>。只要安装basicTex就可以了，大概100M+,安装完后运行：<code>pandoc -f markdown_github test.md -o test.pdf --latex-engine=xelatex -V mainfont=&quot;SimSun&quot;</code> 这个表明使用的是GitHub风格markdown语法</li>
-<li>将markdown转成epub： <code>pandoc -f markdown  ./test.md -o test.epub</code></li>
-</ol>
-<h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>我发文章的几个地方，欢迎大家在朋友圈等地方分享，多多交流。</p>
-<ul>
-<li>微信公众号：诸葛说talk</li>
-<li>知乎：<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/richard-zhu/posts">https://www.zhihu.com/people/richard-zhu/posts</a></li>
-<li>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Markdown">markdown wikipedia</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.github.com/gfm/">GitHub Flavored Markdown Spec</a> – github风味markdown规范增加了表格、删除线、自动链接和任务列表功能</li>
-<li><a target="_blank" rel="noopener" href="https://pandoc.org/demos.html">pandoc demos</a></li>
-<li><a target="_blank" rel="noopener" href="https://geek-docs.com/markdown/markdown-tutorial/markdown-mathematical-formula.html">Markdown数学公式</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1862,7 +1890,7 @@ or <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span 
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1875,7 +1903,7 @@ or <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span 
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1918,7 +1946,7 @@ or <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span 
 	<div class="widget-wrap">
 	    <div id="myCanvasContainer" class="widget tagcloud">
 	        <canvas width="250" height="250" id="resCanvas" style="width=100%">
-	            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/about/" rel="tag">about</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ads/" rel="tag">ads</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awesome/" rel="tag">awesome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backtrader/" rel="tag">backtrader</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coding/" rel="tag">coding</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/" rel="tag">gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/invest/" rel="tag">invest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/" rel="tag">ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/latex/" rel="tag">latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mdbook/" rel="tag">mdbook</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyside/" rel="tag">pyside</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/quant/" rel="tag">quant</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resume/" rel="tag">resume</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rqalpha/" rel="tag">rqalpha</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/skadnetwork/" rel="tag">skadnetwork</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/talib/" rel="tag">talib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vnpy/" rel="tag">vnpy</a><span class="tag-list-count">1</span></li></ul>
+	            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/about/" rel="tag">about</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ads/" rel="tag">ads</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awesome/" rel="tag">awesome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backtrader/" rel="tag">backtrader</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coding/" rel="tag">coding</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/empyrical/" rel="tag">empyrical</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/" rel="tag">gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/invest/" rel="tag">invest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/" rel="tag">ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/latex/" rel="tag">latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mdbook/" rel="tag">mdbook</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyfolio/" rel="tag">pyfolio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyside/" rel="tag">pyside</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/quant/" rel="tag">quant</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resume/" rel="tag">resume</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rqalpha/" rel="tag">rqalpha</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/skadnetwork/" rel="tag">skadnetwork</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/talib/" rel="tag">talib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vnpy/" rel="tag">vnpy</a><span class="tag-list-count">1</span></li></ul>
 	        </canvas>
 	    </div>
 	</div>

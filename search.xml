@@ -1,6 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>empyrical、pyfolio工具介绍及在backtrader量化框架中使用</title>
+    <url>/2022/04/23/about-empyrical-pyfolio-and-using-in-backtrader/</url>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li><a href="https://github.com/quantopian/empyrical">empyrical</a> – Quantopian开源的常见金融风险指标lib库，会调用pandas_datareader从yahoo或google获取股票数据</li>
+<li><a href="https://github.com/quantopian/pyfolio">pyfolio</a> – Quantopian开源的用图形表示的金融投资组合性能和风险分析的Python库，基于empyrical获取数据和计算基础指标，由各种各样的独立图组成，这些图提供了交易策略表现的综合图像。图形示例可以参考<a href="https://github.com/quantopian/pyfolio/blob/master/pyfolio/examples/full_tear_sheet_example.ipynb">full_tear_sheet_example.ipynb</a></li>
+</ul>
+<h2 id="empyrical安装-amp-使用"><a href="#empyrical安装-amp-使用" class="headerlink" title="empyrical安装&amp;使用"></a>empyrical安装&amp;使用</h2><ul>
+<li>安装：<code>pip install empyrical</code></li>
+<li>使用方法：<br>以计算最大回撤和alpha、beta为例，代码如下。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> empyrical <span class="keyword">import</span> max_drawdown, alpha_beta</span><br><span class="line">returns = np.array([<span class="number">.01</span>, <span class="number">.02</span>, <span class="number">.03</span>, -<span class="number">.4</span>, -<span class="number">.06</span>, -<span class="number">.02</span>])</span><br><span class="line">benchmark_returns = np.array([<span class="number">.02</span>, <span class="number">.02</span>, <span class="number">.03</span>, -<span class="number">.35</span>, -<span class="number">.05</span>, -<span class="number">.01</span>])</span><br><span class="line">max_drawdown(returns) <span class="comment"># 计算最大回撤</span></span><br><span class="line">alpha, beta = alpha_beta(returns, benchmark_returns) <span class="comment"># 计算alpha和beta</span></span><br><span class="line">returns = pd.Series([<span class="number">.01</span>, <span class="number">.02</span>, <span class="number">.03</span>, -<span class="number">.4</span>, -<span class="number">.06</span>, -<span class="number">.02</span>]) <span class="comment">#支持pd.Series()</span></span><br><span class="line">max_drawdown(returns)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>查看empyrical支持的api列表，如下。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> empyrical</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">dir</span>(empyrical))</span><br></pre></td></tr></table></figure>
+
+<p>结果是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&#x27;DAILY&#x27;, &#x27;MONTHLY&#x27;, &#x27;QUARTERLY&#x27;, &#x27;WEEKLY&#x27;, &#x27;YEARLY&#x27;, &#x27;__builtins__&#x27;, &#x27;__cached__&#x27;, &#x27;__doc__&#x27;, &#x27;__file__&#x27;, &#x27;__loader__&#x27;, &#x27;__name__&#x27;, &#x27;__package__&#x27;, &#x27;__path__&#x27;, &#x27;__spec__&#x27;, &#x27;__version__&#x27;, &#x27;_version&#x27;, &#x27;aggregate_returns&#x27;, &#x27;alpha&#x27;, &#x27;alpha_aligned&#x27;, &#x27;alpha_beta&#x27;, &#x27;alpha_beta_aligned&#x27;, &#x27;annual_return&#x27;, &#x27;annual_volatility&#x27;, &#x27;beta&#x27;, &#x27;beta_aligned&#x27;, &#x27;beta_fragility_heuristic&#x27;, &#x27;beta_fragility_heuristic_aligned&#x27;, &#x27;cagr&#x27;, &#x27;calmar_ratio&#x27;, &#x27;capture&#x27;, &#x27;compute_exposures&#x27;, &#x27;conditional_value_at_risk&#x27;, &#x27;cum_returns&#x27;, &#x27;cum_returns_final&#x27;, &#x27;deprecate&#x27;, &#x27;down_alpha_beta&#x27;, &#x27;down_capture&#x27;, &#x27;downside_risk&#x27;, &#x27;excess_sharpe&#x27;, &#x27;gpd_risk_estimates&#x27;, &#x27;gpd_risk_estimates_aligned&#x27;, &#x27;max_drawdown&#x27;, &#x27;omega_ratio&#x27;, &#x27;perf_attrib&#x27;, &#x27;periods&#x27;, &#x27;roll_alpha&#x27;, &#x27;roll_alpha_aligned&#x27;, &#x27;roll_alpha_beta&#x27;, &#x27;roll_alpha_beta_aligned&#x27;, &#x27;roll_annual_volatility&#x27;, &#x27;roll_beta&#x27;, &#x27;roll_beta_aligned&#x27;, &#x27;roll_down_capture&#x27;, &#x27;roll_max_drawdown&#x27;, &#x27;roll_sharpe_ratio&#x27;, &#x27;roll_sortino_ratio&#x27;, &#x27;roll_up_capture&#x27;, &#x27;roll_up_down_capture&#x27;, &#x27;sharpe_ratio&#x27;, &#x27;simple_returns&#x27;, &#x27;sortino_ratio&#x27;, &#x27;stability_of_timeseries&#x27;, &#x27;stats&#x27;, &#x27;tail_ratio&#x27;, &#x27;up_alpha_beta&#x27;, &#x27;up_capture&#x27;, &#x27;up_down_capture&#x27;, &#x27;utils&#x27;, &#x27;value_at_risk&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>顺便说明下，empyrical官方api手册不全，看api文档使用help来看比较方便，如<code>help(empyrical.excess_sharpe)</code>。</p>
+<h2 id="pyfolio安装-amp-使用"><a href="#pyfolio安装-amp-使用" class="headerlink" title="pyfolio安装&amp;使用"></a>pyfolio安装&amp;使用</h2><p>pyfolio只能在jupyter notebook环境下完整绘图，在命令行环境或py文件下可以单独画图，但不能显示表格数据。</p>
+<p>通常的误区是：pyfolio只能在jupyter下使用。正确的说法是pyfolio对jupyter环境下支持的最好。</p>
+<ul>
+<li>安装：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install git+https://github.com/quantopian/pyfolio</span><br></pre></td></tr></table></figure>
+
+<p>使用pip install pyfolio，在使用的时候会报错，下面会说明。</p>
+<ul>
+<li>使用方法：</li>
+</ul>
+<ol>
+<li>构造数据<br>产出如下数据，格式为pd.series。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.head()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Date</span><br><span class="line">2017-04-25 00:00:00+00:00    0.018699</span><br><span class="line">2017-04-26 00:00:00+00:00   -0.011536</span><br><span class="line">2017-04-27 00:00:00+00:00   -0.004965</span><br><span class="line">2017-04-28 00:00:00+00:00    0.017626</span><br><span class="line">2017-05-01 00:00:00+00:00    0.027892</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>使用pyfolio</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pyfolio <span class="keyword">as</span> pf</span><br><span class="line">pf.create_returns_tear_sheet(data)</span><br><span class="line">pf.plot_drawdown_periods(data)</span><br></pre></td></tr></table></figure>
+
+<p>在jupyter中运行，结果如下：<br><a href="/wp-content/uploads/2022/04/2022042311075489.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042311075489.png"></a><br><a href="/wp-content/uploads/2022/04/2022042311084092.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042311084092.png"></a><br><a href="/wp-content/uploads/2022/04/2022042311084143.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042311084143.png"></a><br><a href="/wp-content/uploads/2022/04/2022042311084282.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042311084282.png"></a><br><a href="/wp-content/uploads/2022/04/2022042311093652.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042311093652.png"></a></p>
+<p> 在ipython运行，结果如下：<br><a href="/wp-content/uploads/2022/04/2022042311093711.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042311093711.png"></a></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">In [<span class="number">8</span>]: pf.create_returns_tear_sheet(data)</span><br><span class="line">&lt;IPython.core.display.HTML <span class="built_in">object</span>&gt;</span><br><span class="line">&lt;IPython.core.display.HTML <span class="built_in">object</span>&gt;</span><br><span class="line"></span><br><span class="line">In [<span class="number">9</span>]: ret = pf.create_returns_tear_sheet(data)</span><br><span class="line">&lt;IPython.core.display.HTML <span class="built_in">object</span>&gt;</span><br><span class="line">&lt;IPython.core.display.HTML <span class="built_in">object</span>&gt;</span><br><span class="line"></span><br><span class="line">pf.plot_drawdown_periods(data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042311103615.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042311103615.png"></a></p>
+<ul>
+<li>查看支持的函数：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">dir</span>(pf))</span><br></pre></td></tr></table></figure>
+
+<p><code>[&#39;APPROX_BDAYS_PER_MONTH&#39;, &#39;FACTOR_PARTITIONS&#39;, &#39;FigureCanvasAgg&#39;, &#39;FuncFormatter&#39;, &#39;MM_DISPLAY_UNIT&#39;, &#39;Markdown&#39;, &#39;OrderedDict&#39;, &#39;STAT_FUNCS_PCT&#39;, &#39;__all__&#39;, &#39;__builtins__&#39;, &#39;__cached__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__path__&#39;, &#39;__spec__&#39;, &#39;__version__&#39;, &#39;_seaborn&#39;, &#39;_version&#39;, &#39;axes_style&#39;, &#39;capacity&#39;, &#39;create_capacity_tear_sheet&#39;, &#39;create_full_tear_sheet&#39;, &#39;create_interesting_times_tear_sheet&#39;, &#39;create_perf_attrib_tear_sheet&#39;, &#39;create_position_tear_sheet&#39;, &#39;create_returns_tear_sheet&#39;, &#39;create_round_trip_tear_sheet&#39;, &#39;create_simple_tear_sheet&#39;, &#39;create_txn_tear_sheet&#39;, &#39;customize&#39;, &#39;datetime&#39;, &#39;deprecate&#39;, &#39;display&#39;, &#39;division&#39;, &#39;ep&#39;, &#39;figure&#39;, &#39;gridspec&#39;, &#39;interesting_periods&#39;, &#39;matplotlib&#39;, &#39;np&#39;, &#39;patches&#39;, &#39;pd&#39;, &#39;perf_attrib&#39;, &#39;plot_annual_returns&#39;, &#39;plot_capacity_sweep&#39;, &#39;plot_cones&#39;, &#39;plot_daily_turnover_hist&#39;, &#39;plot_daily_volume&#39;, &#39;plot_drawdown_periods&#39;, &#39;plot_drawdown_underwater&#39;, &#39;plot_exposures&#39;, &#39;plot_gross_leverage&#39;, &#39;plot_holdings&#39;, &#39;plot_long_short_holdings&#39;, &#39;plot_max_median_position_concentration&#39;, &#39;plot_monthly_returns_dist&#39;, &#39;plot_monthly_returns_heatmap&#39;, &#39;plot_monthly_returns_timeseries&#39;, &#39;plot_perf_stats&#39;, &#39;plot_prob_profit_trade&#39;, &#39;plot_return_quantiles&#39;, &#39;plot_returns&#39;, &#39;plot_rolling_beta&#39;, &#39;plot_rolling_returns&#39;, &#39;plot_rolling_sharpe&#39;, &#39;plot_rolling_volatility&#39;, &#39;plot_round_trip_lifetimes&#39;, &#39;plot_sector_allocations&#39;, &#39;plot_slippage_sensitivity&#39;, &#39;plot_slippage_sweep&#39;, &#39;plot_turnover&#39;, &#39;plot_txn_time_hist&#39;, &#39;plotting&#39;, &#39;plotting_context&#39;, &#39;plt&#39;, &#39;pos&#39;, &#39;pytz&#39;, &#39;round_trips&#39;, &#39;show_and_plot_top_positions&#39;, &#39;show_perf_stats&#39;, &#39;show_profit_attribution&#39;, &#39;show_worst_drawdown_periods&#39;, &#39;sns&#39;, &#39;sp&#39;, &#39;tears&#39;, &#39;time&#39;, &#39;timer&#39;, &#39;timeseries&#39;, &#39;txn&#39;, &#39;utils&#39;, &#39;warnings&#39;, &#39;wraps&#39;]</code></p>
+<ul>
+<li>常见错误</li>
+</ul>
+<ol>
+<li>报错：<strong>ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all()</strong></li>
+</ol>
+<p>解决办法：pf.create_returns_tear_sheet()的参数是pd.series，不能是pd.dataframe</p>
+<ol>
+<li>报错：<strong>AttributeError: ‘numpy.int64’ object has no attribute ‘to_pydatetime’</strong></li>
+</ol>
+<p>解决办法：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install git+https://github.com/quantopian/pyfolio</span><br></pre></td></tr></table></figure>
+
+<h2 id="在backtrader中使用PyFolio"><a href="#在backtrader中使用PyFolio" class="headerlink" title="在backtrader中使用PyFolio"></a>在backtrader中使用PyFolio</h2><p>pyfolio改变过api接口，<code>create_full_tear_sheet()函数后面没有了gross_lev</code>参数，使用backtrade网站的示例代码会报错。 参考pyfolio官方的使用文档即可。</p>
+<p>backtrader使用pyfolio示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cerebro.addanalyzer(bt.analyzers.PyFolio, _name=<span class="string">&#x27;pyfolio&#x27;</span>)</span><br><span class="line">strats = cerebro.run()</span><br><span class="line">strat0 = strats[<span class="number">0</span>]</span><br><span class="line">pyfolio = strats.analyzers.getbyname(<span class="string">&#x27;pyfolio&#x27;</span>)</span><br><span class="line">returns, positions, transactions, gross_lev = pyfoliozer.get_pf_items()</span><br><span class="line"><span class="keyword">import</span> pyfolio <span class="keyword">as</span> pf</span><br><span class="line">pf.create_full_tear_sheet(returns)</span><br></pre></td></tr></table></figure>
+
+<h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>欢迎大家留言，关注微信公众号多多交流，最新的文章会优先发布在微信公众号上。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://github.com/quantopian/empyrical">empyrical github</a></li>
+<li><a href="https://github.com/quantopian/empyrical/blob/master/empyrical/__init__.py">empyrical API列表</a></li>
+<li><a href="https://github.com/quantopian/pyfolio">pyfolio github</a></li>
+<li><a href="https://quantopian.github.io/pyfolio/">pyfolio文档</a></li>
+<li><strong><strong><a href="https://nbviewer.org/format/slides/github/quantopian/pyfolio/blob/master/pyfolio/examples/pyfolio_talk_slides.ipynb#/">Portfolio and Risk Analytics in Python with pyfolio</a></strong></strong></li>
+<li><a href="https://www.backtrader.com/docu/analyzers/pyfolio/">backtrader pyfolio分析器介绍</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>quant</category>
+      </categories>
+      <tags>
+        <tag>quant</tag>
+        <tag>backtrader</tag>
+        <tag>empyrical</tag>
+        <tag>pyfolio</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>一文读懂ios归因框架SKAdNetwork</title>
     <url>/2022/04/09/about-ios-skadnetwork/</url>
     <content><![CDATA[<p>最近很多人在咨询 SKA 框架的情况，整理了一些资料，欢迎交流沟通~</p>
@@ -150,8 +240,8 @@
       </categories>
       <tags>
         <tag>quant</tag>
-        <tag>talib</tag>
         <tag>backtrader</tag>
+        <tag>talib</tag>
       </tags>
   </entry>
   <entry>
