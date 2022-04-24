@@ -197,6 +197,144 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://rchardzhu.github.io/2022/04/24/using-quantstats-in-invest/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Richard Zhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="诸葛说">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/24/using-quantstats-in-invest/" class="post-title-link" itemprop="url">量化投资分析工具quantstats使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-24 14:08:59 / 修改时间：14:12:03" itemprop="dateCreated datePublished" datetime="2022-04-24T14:08:59+08:00">2022-04-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/quant/" itemprop="url" rel="index"><span itemprop="name">quant</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/04/24/using-quantstats-in-invest/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/24/using-quantstats-in-invest/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><a target="_blank" rel="noopener" href="https://github.com/ranaroussi/quantstats">quantstats</a> – 衡量策略绩效指标的python lib库，用于投资组合分析。主要由3部分组成：</p>
+<ul>
+<li>quantstats.stats：用于计算多种性能指标，如夏普比率、胜率等</li>
+<li>quantstats.plots：用于性能、下降趋势、月度回报等绩效指标的可视化</li>
+<li>quantstats.reports：用于生成度量报告，可保存为html文件</li>
+</ul>
+<h2 id="安装-amp-使用"><a href="#安装-amp-使用" class="headerlink" title="安装&amp;使用"></a>安装&amp;使用</h2><ul>
+<li>安装：<code>pip install</code> quantstats</li>
+<li>使用方法：</li>
+</ul>
+<ol>
+<li>使用quantstats.stats计算多种性能指标，如夏普比率、胜率等</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> quantstats <span class="keyword">as</span> qs</span><br><span class="line">qs.extend_pandas()</span><br><span class="line">stock = qs.utils.download_returns(<span class="string">&#x27;TSLA&#x27;</span>)</span><br><span class="line">stock</span><br><span class="line">Date</span><br><span class="line"><span class="number">2010</span>-06-<span class="number">29</span>         NaN</span><br><span class="line"><span class="number">2010</span>-06-<span class="number">30</span>   -<span class="number">0.002512</span></span><br><span class="line"><span class="number">2010</span>-07-01   -<span class="number">0.078472</span></span><br><span class="line"><span class="number">2010</span>-07-02   -<span class="number">0.125683</span></span><br><span class="line"><span class="number">2010</span>-07-06   -<span class="number">0.160938</span></span><br><span class="line">                ...   </span><br><span class="line"><span class="number">2022</span>-04-<span class="number">18</span>    <span class="number">0.019584</span></span><br><span class="line"><span class="number">2022</span>-04-<span class="number">19</span>    <span class="number">0.023758</span></span><br><span class="line"><span class="number">2022</span>-04-<span class="number">20</span>   -<span class="number">0.049555</span></span><br><span class="line"><span class="number">2022</span>-04-<span class="number">21</span>    <span class="number">0.032317</span></span><br><span class="line"><span class="number">2022</span>-04-<span class="number">22</span>   -<span class="number">0.003698</span></span><br><span class="line">Name: Close, Length: <span class="number">2976</span>, dtype: float64</span><br><span class="line">qs.stats.sharpe(stock)</span><br><span class="line"><span class="number">1.0828146689088534</span></span><br><span class="line">stock.sharpe()</span><br><span class="line"><span class="number">1.0828146689088534</span></span><br></pre></td></tr></table></figure>
+
+<p>支持的完整指标：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[f <span class="keyword">for</span> f <span class="keyword">in</span> <span class="built_in">dir</span>(qs.stats) <span class="keyword">if</span> f[<span class="number">0</span>] != <span class="string">&#x27;_&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;adjusted_sortino&#x27;,</span><br><span class="line"> &#x27;autocorr_penalty&#x27;,</span><br><span class="line"> &#x27;avg_loss&#x27;,</span><br><span class="line"> &#x27;avg_return&#x27;,</span><br><span class="line"> &#x27;avg_win&#x27;,</span><br><span class="line"> &#x27;best&#x27;,</span><br><span class="line"> &#x27;cagr&#x27;,</span><br><span class="line"> &#x27;calmar&#x27;,</span><br><span class="line"> &#x27;common_sense_ratio&#x27;,</span><br><span class="line"> &#x27;comp&#x27;,</span><br><span class="line"> &#x27;compare&#x27;,</span><br><span class="line"> &#x27;compsum&#x27;,</span><br><span class="line"> &#x27;conditional_value_at_risk&#x27;,</span><br><span class="line"> &#x27;consecutive_losses&#x27;,</span><br><span class="line"> &#x27;consecutive_wins&#x27;,</span><br><span class="line"> &#x27;cpc_index&#x27;,</span><br><span class="line"> &#x27;cvar&#x27;,</span><br><span class="line"> &#x27;distribution&#x27;,</span><br><span class="line"> &#x27;drawdown_details&#x27;,</span><br><span class="line"> &#x27;expected_return&#x27;,</span><br><span class="line"> &#x27;expected_shortfall&#x27;,</span><br><span class="line"> &#x27;exposure&#x27;,</span><br><span class="line"> &#x27;gain_to_pain_ratio&#x27;,</span><br><span class="line"> &#x27;geometric_mean&#x27;,</span><br><span class="line"> &#x27;ghpr&#x27;,</span><br><span class="line"> &#x27;greeks&#x27;,</span><br><span class="line"> &#x27;implied_volatility&#x27;,</span><br><span class="line"> &#x27;information_ratio&#x27;,</span><br><span class="line"> &#x27;kelly_criterion&#x27;,</span><br><span class="line"> &#x27;kurtosis&#x27;,</span><br><span class="line"> &#x27;max_drawdown&#x27;,</span><br><span class="line"> &#x27;monthly_returns&#x27;,</span><br><span class="line"> &#x27;omega&#x27;,</span><br><span class="line"> &#x27;outlier_loss_ratio&#x27;,</span><br><span class="line"> &#x27;outlier_win_ratio&#x27;,</span><br><span class="line"> &#x27;outliers&#x27;,</span><br><span class="line"> &#x27;payoff_ratio&#x27;,</span><br><span class="line"> &#x27;pct_rank&#x27;,</span><br><span class="line"> &#x27;profit_factor&#x27;,</span><br><span class="line"> &#x27;profit_ratio&#x27;,</span><br><span class="line"> &#x27;r2&#x27;,</span><br><span class="line"> &#x27;r_squared&#x27;,</span><br><span class="line"> &#x27;rar&#x27;,</span><br><span class="line"> &#x27;recovery_factor&#x27;,</span><br><span class="line"> &#x27;remove_outliers&#x27;,</span><br><span class="line"> &#x27;risk_of_ruin&#x27;,</span><br><span class="line"> &#x27;risk_return_ratio&#x27;,</span><br><span class="line"> &#x27;rolling_greeks&#x27;,</span><br><span class="line"> &#x27;rolling_sharpe&#x27;,</span><br><span class="line"> &#x27;rolling_sortino&#x27;,</span><br><span class="line"> &#x27;rolling_volatility&#x27;,</span><br><span class="line"> &#x27;ror&#x27;,</span><br><span class="line"> &#x27;serenity_index&#x27;,</span><br><span class="line"> &#x27;sharpe&#x27;,</span><br><span class="line"> &#x27;skew&#x27;,</span><br><span class="line"> &#x27;smart_sharpe&#x27;,</span><br><span class="line"> &#x27;smart_sortino&#x27;,</span><br><span class="line"> &#x27;sortino&#x27;,</span><br><span class="line"> &#x27;tail_ratio&#x27;,</span><br><span class="line"> &#x27;to_drawdown_series&#x27;,</span><br><span class="line"> &#x27;ulcer_index&#x27;,</span><br><span class="line"> &#x27;ulcer_performance_index&#x27;,</span><br><span class="line"> &#x27;upi&#x27;,</span><br><span class="line"> &#x27;value_at_risk&#x27;,</span><br><span class="line"> &#x27;var&#x27;,</span><br><span class="line"> &#x27;volatility&#x27;,</span><br><span class="line"> &#x27;warn&#x27;,</span><br><span class="line"> &#x27;win_loss_ratio&#x27;,</span><br><span class="line"> &#x27;win_rate&#x27;,</span><br><span class="line"> &#x27;worst&#x27;]</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>使用quantstats.plots以图形的形式输出绩效指标</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qs.plots.snapshot(stock, title=<span class="string">&quot;TSLA Performance&#x27;)</span></span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042406013612.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042406013612.png"></a></p>
+<p>支持的全部绘图函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[f <span class="keyword">for</span> f <span class="keyword">in</span> <span class="built_in">dir</span>(qs.plots) <span class="keyword">if</span> f[<span class="number">0</span>] != <span class="string">&#x27;_&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;daily_returns&#x27;,</span><br><span class="line"> &#x27;distribution&#x27;,</span><br><span class="line"> &#x27;drawdown&#x27;,</span><br><span class="line"> &#x27;drawdowns_periods&#x27;,</span><br><span class="line"> &#x27;earnings&#x27;,</span><br><span class="line"> &#x27;histogram&#x27;,</span><br><span class="line"> &#x27;log_returns&#x27;,</span><br><span class="line"> &#x27;monthly_heatmap&#x27;,</span><br><span class="line"> &#x27;monthly_returns&#x27;,</span><br><span class="line"> &#x27;plotly&#x27;,</span><br><span class="line"> &#x27;returns&#x27;,</span><br><span class="line"> &#x27;rolling_beta&#x27;,</span><br><span class="line"> &#x27;rolling_sharpe&#x27;,</span><br><span class="line"> &#x27;rolling_sortino&#x27;,</span><br><span class="line"> &#x27;rolling_volatility&#x27;,</span><br><span class="line"> &#x27;snapshot&#x27;,</span><br><span class="line"> &#x27;to_plotly&#x27;,</span><br><span class="line"> &#x27;warnings&#x27;,</span><br><span class="line"> &#x27;yearly_returns&#x27;]</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>使用quantstats.reports生成综合报表，可保存为html文件</li>
+</ol>
+<p><code>qs.reports.html(stock, &quot;SPY&quot;)</code></p>
+<p>支持输出7种不同的报告:</p>
+<ol>
+<li><code>qs.reports.metrics(mode=&#39;basic|full&quot;, ...)</code> - 展现基础/所有指标</li>
+<li><code>qs.reports.plots(mode=&#39;basic|full&quot;, ...)</code> - 展现基础/所有绘图</li>
+<li><code>qs.reports.basic(...)</code> - 展现基础指标和绘图</li>
+<li><code>qs.reports.full(...)</code> - 展现所有指标和绘图</li>
+<li><code>qs.reports.html(...)</code> - 生成html完整报告</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[f <span class="keyword">for</span> f <span class="keyword">in</span> <span class="built_in">dir</span>(qs.reports) <span class="keyword">if</span> f[<span class="number">0</span>] != <span class="string">&#x27;_&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p><code>[&#39;basic&#39;, &#39;full&#39;, &#39;html&#39;, &#39;iDisplay&#39;, &#39;iHTML&#39;, &#39;metrics&#39;, &#39;plots&#39;]</code></p>
+<p>quantstats输出的html报表如下，可以看到左边是可视化绩效指标，右边是文字绩效指标。<br><a target="_blank" rel="noopener" href="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042406020463.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042406020463.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042406020589.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042406020589.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042406020677.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042406020677.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042406020688.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/2022042406020688.png"></a><br><a target="_blank" rel="noopener" href="https://www.zhugetalk.cn/wp-content/uploads/2022/04/202204240602079.png"><img src="https://www.zhugetalk.cn/wp-content/uploads/2022/04/202204240602079.png"></a></p>
+<h2 id="在backtrader中使用quantstats"><a href="#在backtrader中使用quantstats" class="headerlink" title="在backtrader中使用quantstats"></a>在backtrader中使用quantstats</h2><p>策略绩效评价是量化交易很重要的一环，backtrader提供多种分析者对象analyzer，可以输出各项策略绩效指标，但输出结果是字典方式的数据，没有可视化的绩效报表，而且还缺少一些重要指标，比如索提诺比率（sortino ratio），使用起来不友好。quantstats可以输出html报表，包括各项绩效指标和图表，且可以非常方便地与backtrader集成。</p>
+<p>backtrader使用quantstats示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cerebro.addanalyzer(bt.analyzers.PyFolio, _name=<span class="string">&#x27;pyfolio&#x27;</span>)</span><br><span class="line">strats = cerebro.run()</span><br><span class="line">strat0 = strats[<span class="number">0</span>]</span><br><span class="line">pyfolio = strats.analyzers.getbyname(<span class="string">&#x27;pyfolio&#x27;</span>)</span><br><span class="line">returns, positions, transactions, gross_lev = pyfoliozer.get_pf_items()</span><br><span class="line"><span class="built_in">print</span>(returns)</span><br><span class="line">returns.index = returns.index.tz_convert(<span class="literal">None</span>)</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> quantstats</span><br><span class="line">quantstats.reports.html(returns, output=<span class="string">&#x27;stats.html&#x27;</span>, title=<span class="string">&#x27;Stock Sentiment&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>欢迎大家留言，关注微信公众号多多交流，最新的文章会优先发布在微信公众号上。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ranaroussi/quantstats">quantstats github</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://rchardzhu.github.io/2022/04/23/about-empyrical-pyfolio-and-using-in-backtrader/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1588,239 +1726,6 @@ or <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span 
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rchardzhu.github.io/2022/02/06/common-invest-indicator-md/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Richard Zhu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="诸葛说">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/06/common-invest-indicator-md/" class="post-title-link" itemprop="url">常用量化回测数据/收益指标的一些说明</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-02-06 10:37:39 / 修改时间：10:53:27" itemprop="dateCreated datePublished" datetime="2022-02-06T10:37:39+08:00">2022-02-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/quant/" itemprop="url" rel="index"><span itemprop="name">quant</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/02/06/common-invest-indicator-md/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/02/06/common-invest-indicator-md/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="常用数据-收益指标"><a href="#常用数据-收益指标" class="headerlink" title="常用数据/收益指标"></a>常用数据/收益指标</h2><ol>
-<li>无风险利率(Risk-Free Rate)</li>
-</ol>
-<ul>
-<li>无风险利率表示投资者在一定时间内能够期望从无任何风险的投资中获得的利率。现实中，通常使用伦敦同业拆放利率（London Inter bank Offered Rate，LIBOR）或美国国债利率作为无风险利率。因为一般认为金融机构倒闭的机会很低，财政有问题的银行会被禁止参与同业拆放，因此LIBOR是没有风险的。政府可以发行主权货币应付到期的债务，因此国债不可能违约。不过，此说法并不适用于欧元。欧元区国家无权发行货币，因此发生了欧洲主权债务危机</li>
-</ul>
-<ol start="2">
-<li>Cumulative Return &amp; 复合年均增长率(cagr：Compound Annual Growth Rate)</li>
-</ol>
-<ul>
-<li>Cumulative Return：累计收益= (Ending Value/Beginning Value)</li>
-<li>cagr计算方法为：总增长率百分比的n方根，n相等于有关时期内的年数。CAGR = (Ending Value/Beginning Value)^(1/# of years)－1</li>
-</ul>
-<ol start="3">
-<li>总杠杆(gross leverage)</li>
-</ol>
-<ul>
-<li>总杠杆率是敞口绝对值的总和除以净资产（Net asset value,简称NAV），不考虑多空抵消和对冲。1亿美元标普500股票的长仓和1亿美元的标普500期货空仓总杠杆率为200%。这一指标反映的是总体投资活动水平，是交易对手风险和流动性风险的关注对象之一</li>
-</ul>
-<ol start="4">
-<li>最大回撤(Max Drawdown)</li>
-</ol>
-<ul>
-<li>描述策略可能出现的最糟糕的情况，是指在某一段时期内产品净值从最高点开始回落到最低点的幅度。具体计算方法为：max(1 - 策略当日价值 / 当日之前产品最高净值)</li>
-<li>举例说明：2010年7月20日初始净值1；恰逢2010年10月美国推出QE2全球股市大涨，该基金净值增长到1.8；其后国内股市剧烈震荡，截止2011年4月25，该基金净值为0.98.假设投资者在最高峰时期认购，半年后在最低潮时期赎回，亏损45.5%。这就是最大回撤率给高位追买的投资者的指示意义</li>
-</ul>
-<ol start="5">
-<li>波动率(Volatility)</li>
-</ol>
-<ul>
-<li>是金融资产价格的波动程度，是对资产收益率不确定性的衡量，用于反映金融资产的风险水平。波动率越高，金融资产价格的波动越剧烈，资产收益率的不确定性就越强；波动率越低，金融资产价格的波动越平缓，资产收益率的确定性就越强。具体计算方法为：策略每日收益的年化标准差</li>
-</ul>
-<ol start="6">
-<li>胜率(win rate)</li>
-</ol>
-<ul>
-<li>胜率的定义是赢钱次数除以总买入次数</li>
-<li>举例说明：投入十次，七次盈利，三次亏损，胜率就是70%</li>
-</ul>
-<ol start="7">
-<li>胜负比(win loss ratio)</li>
-</ol>
-<ul>
-<li>胜负比也称为“成功率”。赢/亏比率是赢的交易总数与输的交易数之比。它不考虑赢或输了多少钱，只考虑输赢次数</li>
-</ul>
-<ol start="8">
-<li>盈亏比(risk return ratio)</li>
-</ol>
-<ul>
-<li>也叫赔率。指的是每次交易的盈利和亏损的比例，代表投资的风险收益比。投资系统的盈亏比=一段时间所有投资盈利单的盈利之和/相同时间段所有亏损单的亏损之和。投资的收益盈亏比是3是指平均来讲赚3块钱，要付出1块的止损。或者说冒一块钱的风险的一项投资获利了3块。长期来看，投资盈亏比，才是直接反映投资者综合水平的的一个量化指标</li>
-<li>长期稳定赚大钱的成功者的系统，都是高盈亏比的系统。只有高盈亏比系统，才能成为成功者，才能算稳定盈利</li>
-<li>举例说明：平均每次盈利30%，平均每次亏损10%，盈亏比就是3倍</li>
-</ul>
-<ol start="9">
-<li>阿尔法（alpha、α值）</li>
-</ol>
-<ul>
-<li>投资者获得与市场波动无关的回报，也叫超额收益。 比如投资者获得了15%的回报，其基准获得了10%的回报，那么Alpha或者价值增值的部分就是5%</li>
-</ul>
-<ol start="10">
-<li>贝塔（beta、β值）</li>
-</ol>
-<ul>
-<li>反映了策略对大盘变化的敏感性。例如一个策略的Beta为1.5，则大盘涨1%的时候，策略可能涨1.5%，反之亦然。具体计算方法为：策略每日收益与参考标准每日收益的协方差/参考标准每日收益的方差。</li>
-<li>Beta coefficient = Covariance(R<del>e</del>, R<del>m</del>)/Variance(R<del>m</del>)<br>其中：R<del>e</del>为单一股票的回报， R<del>m</del>为整体市场的回报，Covariance为股票收益相对整体市场收益的变化情况， Variance为市场数据远离平均值的幅度</li>
-</ul>
-<ol start="11">
-<li>夏普比率(sharpe ratio)</li>
-</ol>
-<ul>
-<li>夏普比率描述了资产收益对投资者所承担风险的补偿程度。当以一个相同基准来比较两种资产之时，夏普比率较高的资产在相同风险下收益更好；或者说，如果收益相同的话，夏普比率较高的资产风险较低。但是，像其他任何数学模型一样，它依赖于数据的正确性</li>
-<li>sharpe ratio = (R<del>p</del> - R<del>f</del>)/$\sigma$<del>p</del><br>其中R<del>p</del>为投资组合的收益，R<del>f</del>为无风险资产的收益，sigma<del>p</del>为投资组合超额收益的标准方差</li>
-</ul>
-<ol start="12">
-<li>信息比例(information Ratio)</li>
-</ol>
-<ul>
-<li>信息比率与夏普比率相似，主要区别在于夏普比率使用无风险收益(比如美国国债)作为基准，而信息比率使用风险指数作为基准（如标准普尔500指数）</li>
-<li>具体计算方法为：(策略累积收益 - 基准累积收益)/策略与基准每日收益差值的标准差。【意义】：信息比率数值越大，业绩表现越好。它以马克维茨的均异模型为基础，可以衡量基金的均异特性，表示单位主动风险所带来的超额收益</li>
-</ul>
-<ol start="13">
-<li>索提比例（sortino ratio）</li>
-</ol>
-<ul>
-<li>与夏普比率类似，所不同的是它区分了波动的好坏，因此在计算波动率时它所采用的不是标准差，而是下行标准差。这其中的隐含条件是投资组合的上涨（正回报率）符合投资人的需求，不应计入风险调整。具体计算方法为：(策略收益-无风险利率)/策略下行波动率。【适用范围】：因为索提诺比率使用的是下行偏差来考虑风险，那么所有的下行偏差局限性也会出现在索提诺比率中。也就是必须要有足够多的“不良”观测，才能计算一个有效的索提诺比率。sortino 比率数值越大，业绩表现越好。</li>
-</ul>
-<ol start="14">
-<li>卡玛比率(calmar ratio)</li>
-</ol>
-<ul>
-<li>卡玛比率=超额收益/最大回撤(风险)</li>
-<li>卡玛比率和卡玛比率的唯一不同之处就是分母不同，夏普比率使用标准差作为风险，卡玛比率使用最大回撤作为风险，本质上都是衡量基金的风险-回报关系</li>
-</ul>
-<ol start="15">
-<li>Omega比率（omega ratio）</li>
-</ol>
-<ul>
-<li>omega比率实际上考虑了收益的整个分布信息，因此包括了所有高阶矩的信息。在临界收益率等于均值的时候，Omega比率等于1。在相同的临界收益率下，对于不同的投资选择，Omega比率越大越好。适用范围：在收益率不服从正态分布的时候，Omega是非常好的替代。【意义】：Omega比率值越高,投资绩效也就越好</li>
-</ul>
-<ol start="16">
-<li>Tail 比率（tail ratio）</li>
-</ol>
-<ul>
-<li>日收益分布的95分位值/5分位值。【使用范围】：均值回归策略，这类型策略的最大风险在于左侧的尾部风险。单次的大额回撤需要很长的时间才能够恢复。因此 tail_ratio 很适合用来刻画这类策略面临的风险。【意义】：tail 比率越大越好，可以理解成衡量最好情况与最坏情况下的收益表现的指标。例如：tail_ratio = 0.25，5分位的亏损是95分位收益的四倍。 这样的策略在发生大额亏损的情况下很难在短时间内恢复</li>
-</ul>
-<ol start="17">
-<li>Common sense比率（common sense ratio）</li>
-</ol>
-<ul>
-<li>(日收益分布的95分位值/5分位值) *(总盈利/总亏损）。【使用范围】：均值回归策略，趋势追踪策略。【意义】：大于1时，策略盈利；小于1时，策略亏损</li>
-</ul>
-<ol start="18">
-<li>skew值（Skewness）</li>
-</ol>
-<ul>
-<li>亦称歪度，在概率论和统计学中衡量实数随机变量概率分布的不对称性。偏度的值可以为正，可以为负或者甚至是无法定义。在数量上，偏度为负（负偏态；左偏）就意味着在概率密度函数左侧的尾部比右侧的长，绝大多数的值（不一定包括中位数在内）位于平均值的右侧。偏度为正（正偏态；右偏）就意味着在概率密度函数右侧的尾部比左侧的长，绝大多数的值（不一定包括中位数）位于平均值的左侧。偏度为零就表示数值相对均匀地分布在平均值的两侧，但不一定意味着其为对称分布</li>
-</ul>
-<ol start="19">
-<li>峰度（kurtosis）</li>
-</ol>
-<ul>
-<li>大于0表示收益的分布与正态分布相比较为陡峭</li>
-</ul>
-<ol start="20">
-<li>决定系数(coefficient of determination, R2)</li>
-</ol>
-<ul>
-<li>累计对数收益对时间t的回归的R^2。【意义】：R平方值是趋势线拟合程度的指标，它的数值大小可以反映趋势线的估计值与对应的实际数据之间的拟合程度，拟合程度越高，趋势线的可靠性就越高。R平方值是取值范围在0～1之间的数值，也称为决定系数，最常用于评价回归模型优劣程度的指标</li>
-</ul>
-<h2 id="交流"><a href="#交流" class="headerlink" title="交流"></a>交流</h2><p>我发文章的几个地方，欢迎大家在朋友圈等地方分享，多多交流。</p>
-<ul>
-<li>微信公众号：诸葛说talk</li>
-<li>知乎：<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/richard-zhu/posts">https://www.zhihu.com/people/richard-zhu/posts</a></li>
-<li>博客：<a href="https://rchardzhu.github.io/">https://rchardzhu.github.io/</a></li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li>无风险利率: <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%97%A0%E9%A3%8E%E9%99%A9%E5%88%A9%E7%8E%87">wikipedia</a></li>
-<li>cagr: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/c/cagr.asp">https://www.investopedia.com/terms/c/cagr.asp</a></li>
-<li>波动率: <a target="_blank" rel="noopener" href="http://abcexchange.io/terms/v/volatilityquotetrading.asp">http://abcexchange.io/terms/v/volatilityquotetrading.asp</a></li>
-<li>胜负比: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/w/win-loss-ratio.asp">https://www.investopedia.com/terms/w/win-loss-ratio.asp</a></li>
-<li>alpha: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/a/alpha.asp">https://www.investopedia.com/terms/a/alpha.asp</a></li>
-<li>beta: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/b/beta.asp">https://www.investopedia.com/terms/b/beta.asp</a></li>
-<li>sharpe: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/s/sharperatio.asp">https://www.investopedia.com/terms/s/sharperatio.asp</a></li>
-<li>信息比例: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/i/informationratio.asp">https://www.investopedia.com/terms/i/informationratio.asp</a></li>
-<li>sortino: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/s/sortinoratio.asp">https://www.investopedia.com/terms/s/sortinoratio.asp</a></li>
-<li>calmar: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/c/calmarratio.asp">https://www.investopedia.com/terms/c/calmarratio.asp</a></li>
-<li>skew: <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/s/skewness.asp">https://www.investopedia.com/terms/s/skewness.asp</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1890,7 +1795,7 @@ or <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span 
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1903,7 +1808,7 @@ or <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span 
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1946,7 +1851,7 @@ or <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span 
 	<div class="widget-wrap">
 	    <div id="myCanvasContainer" class="widget tagcloud">
 	        <canvas width="250" height="250" id="resCanvas" style="width=100%">
-	            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/about/" rel="tag">about</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ads/" rel="tag">ads</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awesome/" rel="tag">awesome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backtrader/" rel="tag">backtrader</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coding/" rel="tag">coding</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/empyrical/" rel="tag">empyrical</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/" rel="tag">gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/invest/" rel="tag">invest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/" rel="tag">ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/latex/" rel="tag">latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mdbook/" rel="tag">mdbook</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyfolio/" rel="tag">pyfolio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyside/" rel="tag">pyside</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/quant/" rel="tag">quant</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resume/" rel="tag">resume</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rqalpha/" rel="tag">rqalpha</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/skadnetwork/" rel="tag">skadnetwork</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/talib/" rel="tag">talib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vnpy/" rel="tag">vnpy</a><span class="tag-list-count">1</span></li></ul>
+	            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/about/" rel="tag">about</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ads/" rel="tag">ads</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awesome/" rel="tag">awesome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backtrader/" rel="tag">backtrader</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coding/" rel="tag">coding</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/empyrical/" rel="tag">empyrical</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gui/" rel="tag">gui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/invest/" rel="tag">invest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/" rel="tag">ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/latex/" rel="tag">latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mdbook/" rel="tag">mdbook</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyfolio/" rel="tag">pyfolio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyside/" rel="tag">pyside</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/quant/" rel="tag">quant</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/quantstats/" rel="tag">quantstats</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resume/" rel="tag">resume</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rqalpha/" rel="tag">rqalpha</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/skadnetwork/" rel="tag">skadnetwork</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/talib/" rel="tag">talib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vnpy/" rel="tag">vnpy</a><span class="tag-list-count">1</span></li></ul>
 	        </canvas>
 	    </div>
 	</div>
